@@ -11,7 +11,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps } from '@ionic-native/google-maps'
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { GoogleMaps } from '@ionic-native/google-maps'
     SplashScreen,
     Geolocation,
     GoogleMaps,
+    AdMobFree,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

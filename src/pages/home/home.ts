@@ -8,6 +8,14 @@ import { GoogleMaps, GoogleMap, GoogleMapOptions, GoogleMapsEvent, CameraPositio
   templateUrl: 'home.html'
 })
 export class HomePage {
+  //CONSTRUTOR
+  constructor(
+    public navCtrl: NavController,
+    private geolocation: Geolocation,
+    private googleMaps: GoogleMaps
+  ) {
+  }
+  
   //PROPRIEDADES  
   private location = {
     lat: null,
@@ -35,18 +43,10 @@ export class HomePage {
       lng: -43.931710,
       name: "Banheiro do Monstro"
     },
-  ]
+  ];
   
   map: GoogleMap;
 
-  //CONSTRUTOR
-  constructor(
-    public navCtrl: NavController,
-    private geolocation: Geolocation,
-    private googleMaps: GoogleMaps
-  ) {
-  }
-  
   //CARREGOU
   ionViewDidLoad() {
     this.getGeolocation();

@@ -1,0 +1,18 @@
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_1_blur">
+   <feGaussianBlur stdDeviation="0" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="66" width="66" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g filter="url(#svg_1_blur)" id="svg_1">
+   <path stroke-width="0" id="svg_2" d="m55.149999,0l-10.205,0c-3.037,0 -5.521,2.484 -5.521,5.521l0,16.239l-36.096,0l0,5.631l36.096,0l0,0.111c0,0.982 0.264,1.904 0.719,2.706l-35.279,0c0,8.841 7.037,16.373 16.896,19.241l0,14.551l26.625,0l0,-19.006c4.107,-3.134 6.908,-7.342 7.699,-12.057c2.596,-0.447 4.588,-2.717 4.588,-5.436l0,-21.98c0,-3.037 -2.484,-5.521 -5.522,-5.521z"/>
+  </g>
+  <text id="svg_4" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif" font-weight="bold" font-size="5px" fill="#000000" y="84" x="0">from the Noun Project</text>
+ </g>
+</svg>

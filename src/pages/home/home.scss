@@ -1,3 +1,20 @@
-page-home {
+ion-app._gmaps_cdv_ .nav.decor {
+	background-color: transparent !important;
+}
 
+page-home {
+	#map {
+		height: 100%;
+	}
+	
+	#location-button {
+		width: 50px;
+		height: 50px;
+		background-color: transparent;
+		
+		ion-icon {
+			font-size: 28px;
+			color: map-get($colors, blue)
+		}
+	}
 }

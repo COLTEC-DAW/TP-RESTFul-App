@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Adicionar Banheiro</ion-title>
+    
+    <ion-buttons end>
+    	<button ion-button color="danger" (click)="dismiss()">Cancelar</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<form [formGroup]="criarBanheiroForm">
+		<ion-item>
+			<ion-label floating>Nome do Banheiro</ion-label>
+			<ion-input formControlName="nome" type="text" ></ion-input>
+		</ion-item>
+	</form>
+	
+	<!-- <button ion-button (click)="testar()">teste</button> -->
+	
+	<div #mapa id="mapa"></div>
+</ion-content>

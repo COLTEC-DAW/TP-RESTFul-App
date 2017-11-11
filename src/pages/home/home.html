@@ -1,15 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Mapa</ion-title>
+    <ion-title>iPoo</ion-title>
     
     <ion-buttons end>
-      <button id="location-button" (click)="goToLocation()">
-        <ion-icon name="locate"></ion-icon>
+      <button ion-button icon-left color="danger" (click)="goToCriarBanheiro()">
+        <ion-icon name="add-circle"></ion-icon>
+        Add Banheiro
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <div #map id="map"></div>
+  
+  <!-- <ion-fab right bottom>
+	  <button ion-fab color="light" (click)="goToLocation()">
+	    <ion-icon name="locate" color="blue"></ion-icon>
+	  </button>
+  </ion-fab> -->
 </ion-content>

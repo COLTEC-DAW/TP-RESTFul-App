@@ -7,12 +7,15 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { CriarBanheiroPage } from '../pages/criar-banheiro/criar-banheiro';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { AdMobFree } from '@ionic-native/admob-free';
+import { BanheirosProvider } from '../providers/banheiros/banheiros';
+import { MapsProvider } from '../providers/maps/maps';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { AdMobFree } from '@ionic-native/admob-free';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    CriarBanheiroPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { AdMobFree } from '@ionic-native/admob-free';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    CriarBanheiroPage
   ],
   providers: [
     StatusBar,
@@ -40,7 +45,9 @@ import { AdMobFree } from '@ionic-native/admob-free';
     Geolocation,
     GoogleMaps,
     AdMobFree,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BanheirosProvider,
+    MapsProvider
   ]
 })
 export class AppModule {}

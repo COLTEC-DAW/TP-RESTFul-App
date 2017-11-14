@@ -1,6 +1,14 @@
+ion-app._gmaps_cdv_ .nav.decor {
+	background-color: transparent !important;
+}
+
 page-criar-banheiro {
-	#mapa {
-		// height: 500px;
-		// width: 90%;
+	#mapaCriarBanheiro {
+		height: 200px;
+		margin: -16px -16px 10px -16px;
+	}
+	
+	#criarBanheiroButton {
+		margin-top: 20px;
 	}
 }

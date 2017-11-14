@@ -35,4 +35,9 @@ export class BanheirosProvider {
   public getBanheiros(): any[] {
   	return this.banheiros;
   }
+  
+  public addBanheiro(data: any): boolean {
+    this.banheiros.push(data);
+    return true;
+  }
 }

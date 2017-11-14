@@ -17,7 +17,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       
-      // this.showAdMobBannerAds();
+      this.showAdMobBannerAds();
       // this.showAdMobInterstitialAds();
       // this.showRewardVideoAds();
     });

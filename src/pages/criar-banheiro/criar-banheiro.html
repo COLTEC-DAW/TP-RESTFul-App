@@ -10,14 +10,16 @@
 
 
 <ion-content padding>
-	<form [formGroup]="criarBanheiroForm">
+	<div #mapaCriarBanheiro id="mapaCriarBanheiro"></div>
+	
+	<form [formGroup]="criarBanheiroForm" (submit)="criarBanheiro()">
 		<ion-item>
 			<ion-label floating>Nome do Banheiro</ion-label>
 			<ion-input formControlName="nome" type="text" ></ion-input>
 		</ion-item>
+		
+		<button type="submit" id="criarBanheiroButton" ion-button full [disabled]="!criarBanheiroForm.valid">Criar Banheiro</button>
 	</form>
 	
 	<!-- <button ion-button (click)="testar()">teste</button> -->
-	
-	<div #mapa id="mapa"></div>
 </ion-content>

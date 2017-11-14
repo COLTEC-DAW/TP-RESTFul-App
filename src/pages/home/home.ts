@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, NavParams, ToastController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapsProvider } from '../../providers/maps/maps';
 import { CriarBanheiroPage } from '../criar-banheiro/criar-banheiro';
@@ -14,7 +14,8 @@ export class HomePage {
     public navCtrl: NavController,
     private geolocation: Geolocation,
     private mapsProvider: MapsProvider,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController
   ) {
   }
   
@@ -40,19 +41,26 @@ export class HomePage {
     }).then(() => {
       //Desenha o mapa + banheiros
       this.mapsProvider.loadMap(this.location, 'map').then(() => {
-        this.mapsProvider.showBanheirosOnMap();
+        this.mapsProvider.showBanheirosOnMap('map');
       });
     });
   }
   
-  public goToLocation(): void {
-    this.mapsProvider.goToLocation(this.location);
-  }
-  
   public goToCriarBanheiro(): void {
-    this.mapsProvider.pegarClick().then((data) => {
-      let modal = this.modalCtrl.create(CriarBanheiroPage, {lat: data.lat, lng: data.lng});
-      modal.present();
+    let toast = this.toastCtrl.create({
+      message: 'Selecione no mapa onde deseja adicionar um banheiro',
+      duration: 3000,
+      position: 'top',
+      showCloseButton: true,
+      closeButtonText: 'OK'
+    });
+    toast.present();
+    
+    this.mapsProvider.pegarClick('map').then((data) => {
+      this.mapsProvider.adicionarMarcador('map', data).then(() => {
+        // Navega para pagina de Criar Banheiro
+        this.navCtrl.setRoot(CriarBanheiroPage, {data: data});
+      });
     });
   }
 }

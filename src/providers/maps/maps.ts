@@ -12,7 +12,7 @@ export class MapsProvider {
   ) {
   }
   
-  map: GoogleMap;
+  map: GoogleMap[] = new Array<GoogleMap>();
   banheiros = this.banheirosProvider.getBanheiros();
   
   // Carrega mapa na tela
@@ -28,14 +28,14 @@ export class MapsProvider {
           tilt: 0
         }
       };
-      this.map = this.googleMaps.create(div, mapOptions);
+      this.map[div] = new GoogleMap(div, mapOptions);
       
       //Quando mapa estiver pronto
-      this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-        this.map.setMyLocationEnabled(true);
-        this.map.setIndoorEnabled(true);
-        this.map.setCompassEnabled(true);
-        this.map.setClickable(true);
+      this.map[div].one(GoogleMapsEvent.MAP_READY).then(() => {
+        this.map[div].setMyLocationEnabled(true);
+        this.map[div].setIndoorEnabled(true);
+        this.map[div].setCompassEnabled(true);
+        this.map[div].setClickable(true);      
         
         // Resolve a promessa
         resolve();
@@ -44,9 +44,9 @@ export class MapsProvider {
   }
   
   // Adiciona listener para criacao de banheiro
-  public pegarClick(): Promise<any> {
+  public pegarClick(div: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.map.one(GoogleMapsEvent.MAP_CLICK).then((data) => {
+      this.map[div].one(GoogleMapsEvent.MAP_CLICK).then((data) => {
         resolve(JSON.parse(data));
       });
     })
@@ -54,11 +54,10 @@ export class MapsProvider {
         
   
   //Adiciona marcadores dos banheiros
-  public showBanheirosOnMap(): void {
+  public showBanheirosOnMap(div: string): void {
   	this.banheiros.forEach((elem) => {
-      this.map.addMarker({
+      this.map[div].addMarker({
         title: elem.name,
-        icon: 'brown',
         draggable: false,
         position: {
           lat: elem.lat,
@@ -68,9 +67,24 @@ export class MapsProvider {
     });
   }
   
+  // Adiciona marcador ao mapa
+  public adicionarMarcador(div: string, location: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.map[div].addMarker({
+        animation: 'DROP',
+        position: {
+          lat: location.lat,
+          lng: location.lng
+        }
+      }).then(() => {
+        resolve();
+      });
+    });
+  }
+  
   // Centraliza posicao do usuario
-  public goToLocation(location: any): void {
-    this.map.animateCamera({
+  public goToLocation(div: string, location: any): void {
+    this.map[div].animateCamera({
       target: {
         lat: location.lat,
         lng: location.lng

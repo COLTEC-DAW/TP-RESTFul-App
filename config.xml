@@ -96,4 +96,6 @@
     <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyCiXH4JBlxNFP7N_f5kPa856f8Mt3Qh55w" />
     </plugin>
+    <allow-navigation href="http://10.0.0.30:8100" />
+    <allow-navigation href="http://172.20.10.7:8100" />
 </widget>

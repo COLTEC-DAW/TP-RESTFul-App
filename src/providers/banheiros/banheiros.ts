@@ -1,15 +1,32 @@
-import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
+import { Injectable } from '@angular/core'
+import 'rxjs/add/operator/map'
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BanheirosProvider {
+  banheirosRef: AngularFireList<any>
+  banheiros: Observable<any[]>
 
-  constructor() {
-    // console.log('Hello BanheirosProvider Provider');
+  constructor ( db: AngularFireDatabase ) {
+    this.banheirosRef = db.list('bathrooms')
+    // Use snapshotChanges().map() to store the key
+    this.banheiros = this.banheirosRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+    })
+    alert(this.banheiros)
+  } 
+
+  getBanheiros () {
+    return this.banheiros
   }
-  
+
+  addBanheiro (data) {
+    this.banheirosRef.push(data)
+  }
+
   // Banheiros
-  private banheiros = [
+  /*private banheirosNovos = [
     {
       lat: -19.876290,
       lng: -43.930687,
@@ -30,14 +47,5 @@ export class BanheirosProvider {
       lng: -43.931710,
       name: "Banheiro do Monstro"
     },
-  ];
-
-  public getBanheiros(): any[] {
-  	return this.banheiros;
-  }
-  
-  public addBanheiro(data: any): boolean {
-    this.banheiros.push(data);
-    return true;
-  }
+  ];*/
 }

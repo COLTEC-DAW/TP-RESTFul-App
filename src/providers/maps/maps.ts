@@ -2,18 +2,16 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { GoogleMaps, GoogleMap, GoogleMapOptions, GoogleMapsEvent, CameraPosition, MarkerOptions, Marker } from '@ionic-native/google-maps';
 import { BanheirosProvider } from '../banheiros/banheiros';
+import { FirebaseListObservable } from "angularfire2";
 
 @Injectable()
 export class MapsProvider {
 
-  constructor(
-    private googleMaps: GoogleMaps,
-    private banheirosProvider: BanheirosProvider
-  ) {
+  constructor( private googleMaps: GoogleMaps, private banheirosProvider: BanheirosProvider ) {
   }
   
+  banheiros = this.banheirosProvider.getBanheiros()
   map: GoogleMap[] = new Array<GoogleMap>();
-  banheiros = this.banheirosProvider.getBanheiros();
   
   // Carrega mapa na tela
   public loadMap(location: any, div: string): Promise<any> {

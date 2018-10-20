@@ -15,6 +15,7 @@ class ArtWork extends React.Component { // eslint-disable-line react/prefer-stat
 
     let status
     let request_url = API_ENDPOINT + 'collection/' + this.props.match.params.id+ '?key=' + API_KEY + '&format=json'
+
     let requestOptions = {
       method: 'GET',
       headers: {
@@ -23,15 +24,15 @@ class ArtWork extends React.Component { // eslint-disable-line react/prefer-stat
     }
     fetch(request_url, requestOptions)
       .then(response => {
-        if (status == 200)
-          console.log(response)
+        console.log(response)
+
       })
       .catch((err) => {
         console.log(err)
       })
 
-
   }
+  
   render () {
     return (
       <div></div>

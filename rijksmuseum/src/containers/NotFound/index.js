@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 
 
 class NotFound extends React.Component {
@@ -19,7 +18,10 @@ class NotFound extends React.Component {
 
     return (
       <div>
-
+        <p>
+          Uh, perhaps ur looking for one of those
+          <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=7&cad=rja&uact=8&ved=2ahUKEwjVnYDAhJbeAhVvx1kKHXxpCkIQFjAGegQICRAB&url=https%3A%2F%2Fwww.telegraph.co.uk%2Fart%2Fwhat-to-see%2Fthe-most-wanted-missing-paintings%2F&usg=AOvVaw3geq7qfkmphk-X5EFELejA"> lost paintings</a>
+        </p>
       </div>
     )
   }

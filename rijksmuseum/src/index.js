@@ -11,6 +11,8 @@ ReactDOM.render(
           <Route path="/" exact={true} component={App} />
           <Route path="/art-work/:id" component={ArtWork} />
           <Route path="/not-found" component={NotFound} />
+          <Route path="/*" component={NotFound} />
+
 
       </Switch>
   </ BrowserRouter>,

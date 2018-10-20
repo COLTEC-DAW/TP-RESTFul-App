@@ -1,5 +1,4 @@
 import React from 'react'
-import { API_ENDPOINT, API_KEY, MASHAPE_KEY } from '../../constants.js'
 // import { Link } from 'react-router-dom'
 
 

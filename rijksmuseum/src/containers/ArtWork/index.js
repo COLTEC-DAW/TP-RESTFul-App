@@ -68,35 +68,32 @@ class ArtWork extends React.Component {
     return (
       <div
         style={{
-          'height':'100vh',
+          'height':'100%',
           'padding':'0',
           'margin':'0',
-          'backgroundColor':'#000'
-
         }}>
 
         <div
           style = {{
             'backgroundImage': 'url("' + this.state.image + '")',
             'backgroundPosition': 'center',
-            'height':'80%',
-            'width':'100%',
+            'height':'100vh',
+            'position':'relative',
             'backgroundRepeat': 'no-repeat',
             'backgroundSize': 'cover',
-            'backgroundColor':'rgba(0,0,0,0.8)',
             'padding':'0'
           }}></div>
-
-        <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.95em', 'color':'#FFF', 'paddingLeft':'1%'}}>
-          {this.state.title}, {this.state.painter.name}, {this.state.dating}
-        </p>
-        <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.75em', 'color':'#afa9a9', 'paddingLeft':'1%'}}>
-          {materials}
-        </p>
-        <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.75em', 'color':'#FFF', 'paddingLeft':'1%'}}>
-          {this.state.description}
-        </p>
-
+        <div style={{'position': 'absolute', 'bottom': '0', 'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4))'}}>
+          <p style={{'fontFamily': 'Inconsolata', 'fontSize': '1.15em', 'color':'#FFF', 'paddingLeft':'1%'}}>
+            {this.state.title}, {this.state.painter.name}, {this.state.dating}
+          </p>
+          <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.8em', 'color':'#afa9a9', 'paddingLeft':'1%'}}>
+            {materials}
+          </p>
+          <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.9em', 'color':'#FFF', 'paddingLeft':'1%'}}>
+            {this.state.description}
+          </p>
+        </div>
       </div>
     )
   }

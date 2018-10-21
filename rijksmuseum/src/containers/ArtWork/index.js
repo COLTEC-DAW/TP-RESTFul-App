@@ -1,6 +1,5 @@
 import React from 'react'
 import { API_ENDPOINT, API_KEY, MASHAPE_KEY } from '../../constants.js'
-// import { Link } from 'react-router-dom'
 
 
 class ArtWork extends React.Component {
@@ -59,12 +58,10 @@ class ArtWork extends React.Component {
       .catch((err) => {
         console.log(err)
       })
-
   }
 
   render () {
     let materials = this.state.materials.join()
-
     return (
       <div
         style={{
@@ -83,7 +80,7 @@ class ArtWork extends React.Component {
             'backgroundSize': 'cover',
             'padding':'0'
           }}></div>
-        <div style={{'position': 'absolute', 'bottom': '0', 'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4))'}}>
+        <div style={{'position': 'absolute', 'width': '100%', 'bottom': '0', 'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4))'}}>
           <p style={{'fontFamily': 'Inconsolata', 'fontSize': '1.15em', 'color':'#FFF', 'paddingLeft':'1%'}}>
             {this.state.title}, {this.state.painter.name}, {this.state.dating}
           </p>
@@ -99,4 +96,4 @@ class ArtWork extends React.Component {
   }
 }
 
-export default ArtWork
+export default ArtWork;

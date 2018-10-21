@@ -12,7 +12,15 @@ class List extends React.Component { // eslint-disable-line react/prefer-statele
   }
 
   componentDidMount () {
-    let request_url = API_ENDPOINT + 'collection/?key=' + API_KEY + '&format=json&s=' + this.props.sorting + '&query=' + encodeURI(this.props.query)
+    let sorting, query
+
+    if(this.props.sorting)
+      sorting  = '&s=' + this.props.sorting
+    if(this.props.query)
+      query = '&query=' + encodeURI(this.props.query)
+
+    let request_url = API_ENDPOINT + 'collection/?key=' + API_KEY + '&format=json' + sorting + query
+    console.log(request_url);
     let requestOptions = {
       method: 'GET',
       headers: {
@@ -26,6 +34,7 @@ class List extends React.Component { // eslint-disable-line react/prefer-statele
         if(response){
           let aux = this.state.works
           response.artObjects.forEach(obj => aux.push(obj))
+          this.setState({'works': aux})
         } else {
           window.location.href = '/not-found';
         }
@@ -36,10 +45,10 @@ class List extends React.Component { // eslint-disable-line react/prefer-statele
   }
 
   render () {
-    let list = this.state.works.map(obj =>(
-      <ListMember obj={obj} key={obj._id}/>
-    ))
-
+    let list = []
+      this.state.works.forEach(obj => {
+      list.push(<ListMember obj={obj} key={obj.id}></ListMember>)
+    })
 
     return (
       <div>

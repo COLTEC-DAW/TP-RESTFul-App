@@ -51,8 +51,6 @@ class ArtWork extends React.Component {
             dating: response.dating.sortingDate,
             materials: response.materials
           })
-        } else {
-          window.location.href = '/not-found';
         }
       })
       .catch((err) => {
@@ -62,6 +60,20 @@ class ArtWork extends React.Component {
 
   render () {
     let materials = this.state.materials.join()
+    let image
+    if(this.state.image)
+     image = (
+       <div
+         style = {{
+           'backgroundImage': 'url("' + this.state.image + '")',
+           'backgroundPosition': 'center',
+           'height':'100vh',
+           'position':'relative',
+           'backgroundRepeat': 'no-repeat',
+           'backgroundSize': 'cover',
+           'padding':'0'
+         }}></div>
+     )
     return (
       <div
         style={{
@@ -69,25 +81,15 @@ class ArtWork extends React.Component {
           'padding':'0',
           'margin':'0',
         }}>
-
-        <div
-          style = {{
-            'backgroundImage': 'url("' + this.state.image + '")',
-            'backgroundPosition': 'center',
-            'height':'100vh',
-            'position':'relative',
-            'backgroundRepeat': 'no-repeat',
-            'backgroundSize': 'cover',
-            'padding':'0'
-          }}></div>
+        {image}
         <div style={{'position': 'absolute', 'width': '100%', 'bottom': '0', 'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4))'}}>
-          <p style={{'fontFamily': 'Inconsolata', 'fontSize': '1.15em', 'color':'#FFF', 'paddingLeft':'1%'}}>
+          <p className="" style={{'fontFamily': 'Inconsolata', 'fontSize': '1.15em', 'color':'#FFF', 'paddingLeft':'1%'}}>
             {this.state.title}, {this.state.painter.name}, {this.state.dating}
           </p>
-          <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.8em', 'color':'#afa9a9', 'paddingLeft':'1%'}}>
+          <p className="d-none d-md-block" style={{'fontFamily': 'Inconsolata', 'fontSize': '0.8em', 'color':'#afa9a9', 'paddingLeft':'1%'}}>
             {materials}
           </p>
-          <p style={{'fontFamily': 'Inconsolata', 'fontSize': '0.9em', 'color':'#FFF', 'paddingLeft':'1%'}}>
+          <p className="d-none d-md-block" style={{'fontFamily': 'Inconsolata', 'fontSize': '0.9em', 'color':'#FFF', 'paddingLeft':'1%'}}>
             {this.state.description}
           </p>
         </div>

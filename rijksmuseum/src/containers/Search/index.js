@@ -1,6 +1,6 @@
 import React from 'react'
+import NavBar from '../../components/NavBar'
 import List from '../../components/List'
-
 
 class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor (props) {
@@ -23,7 +23,8 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
 
     return (
       <div>
-      {list}
+        <NavBar/>
+        {list}
       </div>
     )
   }

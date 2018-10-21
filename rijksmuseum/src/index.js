@@ -5,6 +5,7 @@ import ArtWork from './containers/ArtWork';
 import Search from './containers/Search';
 import NotFound from './containers/NotFound';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -13,11 +14,9 @@ ReactDOM.render(
           <Route path="/art-work/:id" component={ArtWork} />
           <Route path="/search/:sorting/:query" component={Search} />
           <Route path="/*" component={NotFound} />
-          <Route path="/not-found" component={NotFound} />
-
-
 
       </Switch>
   </ BrowserRouter>,
    document.getElementById('root')
+
 );

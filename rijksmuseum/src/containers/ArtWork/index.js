@@ -9,6 +9,9 @@ class ArtWork extends React.Component {
       'objectNumber':this.props.match.params.id,
       'title':'',
       'image':'',
+      'imagePosition': '',
+      'imageX':'',
+      'imageY':'',
       'description':'',
       'painter':{
         'name': '',
@@ -49,8 +52,16 @@ class ArtWork extends React.Component {
               dateOfDeath: response.principalMakers[0].dateOfDeath
             },
             dating: response.dating.sortingDate,
-            materials: response.materials
+            materials: response.materials,
+            imageX: response.webImage.height,
+            imageY: response.webImage.width
           })
+
+          if(response.webImage.width > response.webImage.height)
+            this.setState({'imagePosition':'h'})
+          else
+            this.setState({'imagePosition':'v'})
+
         }
       })
       .catch((err) => {
@@ -61,25 +72,43 @@ class ArtWork extends React.Component {
   render () {
     let materials = this.state.materials.join()
     let image
-    if(this.state.image)
-     image = (
-       <div
-         style = {{
-           'backgroundImage': 'url("' + this.state.image + '")',
-           'backgroundPosition': 'center',
-           'height':'100vh',
-           'position':'relative',
-           'backgroundRepeat': 'no-repeat',
-           'backgroundSize': 'cover',
-           'padding':'0'
-         }}></div>
-     )
+    if(this.state.image){
+      if(this.state.imagePosition === 'h')
+       image = (
+         <div
+           style = {{
+             'backgroundImage': 'url("' + this.state.image + '")',
+             'backgroundPosition': 'center',
+             'height':'100vh',
+             'position':'relative',
+             'backgroundRepeat': 'no-repeat',
+             'backgroundSize': 'cover',
+             'padding':'0'
+           }}></div>
+       )
+      else
+      image = (
+        <img
+          className={'mx-auto d-block text-center img-fluid'}
+          src={this.state.image}
+          style = {{
+            'backgroundPosition': 'center',
+            'height':'100vh',
+            'position':'relative',
+            'align':'center',
+            'justify':'center',
+            'backgroundRepeat': 'no-repeat',
+            'padding':'0'
+          }}></img>
+      )
+    }
     return (
       <div
         style={{
           'height':'100%',
           'padding':'0',
           'margin':'0',
+          'backgroundColor':'black'
         }}>
         {image}
         <div style={{'position': 'absolute', 'width': '100%', 'bottom': '0', 'background': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4))'}}>

@@ -51,34 +51,57 @@ app.controller('Controller', ['InfoService', function(service){
   self.characters = [];
   self.character = {};
     
-  self.houses = [];
-  self.house = {};
-
   /* Família do personagem */
   self.father = {};
   self.mother = {};
   self.spouse = {};
 
-  var page = 1;
-  while (page < 200){ // Recupera todas os personagens
-    service.getMultiple('characters', page, function(answer) {
-        if (answer !== null) {
-            self.characters = self.characters.concat(answer);
-        }
-    });
-    page++;
 
-}
+  self.houses = [];
+  self.house = {};
 
-var page = 1;
-while (page < 200){
-  service.getMultiple('houses', page, function(answer) { // Recupera todos as casas
-      if (answer !== null) {
-          self.houses = self.houses.concat(answer);
-      }
-  });
-  page++;
-}
+  /* Lord atual e ramos mais jovens */ 
+  self.currentLord = {};
+  self.cadetBranches = [];
+
+
+  self.books = [];
+  self.book = {};
+
+
+
+    var page = 1;
+    while (page < 200){ // Recupera todas os personagens
+        service.getMultiple('characters', page, function(answer) {
+            if (answer !== null) {
+                self.characters = self.characters.concat(answer);
+            }
+        });
+        page++;
+
+    }
+
+    page = 1;
+    while (page < 200){
+        service.getMultiple('houses', page, function(answer) { // Recupera todas as casas
+            if (answer !== null) {
+                self.houses = self.houses.concat(answer);
+            }
+        });
+        page++;
+    }
+    
+    page = 1;
+    while (page < 200){
+        service.getMultiple('books', page, function(answer) { // Recupera todos os livros
+            if (answer !== null) {
+                self.books = self.books.concat(answer);
+            }
+        });
+        page++;
+    }
+
+
 
 
     // Recupera um personagem
@@ -115,10 +138,40 @@ while (page < 200){
     // Recupera uma casa específica
     self.getHouse = function(url) {
         service.getSingle(url, function(answer) {
-        if (answer !== null) {
-            self.house = answer;
-        }
+            if (answer !== null) {
+                self.house = answer;
+            }
+            service.getSingle(self.house.currentLord, function(answer) {
+                if (answer !== null) {
+                  self.currentLord = answer;
+                  }
+              });
+           
+            for (let i=0; i<self.house.cadetBranches.length; i++){  
+                service.getSingle(self.house.cadetBranches[i], function(answer) {
+                    if (answer !== null) {
+                        self.cadetBranches = self.cadetBranches.concat(answer);
+                    }
+                });
+            }
         });
+
+         /* Volta para o topo */
+         document.body.scrollTop = 0; // For Safari
+         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    // Recupera um livro específico
+    self.getBook = function(url) {
+        service.getSingle(url, function(answer){
+            if (answer !== null) {
+                self.book = answer;
+            }
+        });
+
+        /* Volta para o topo */
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
 }]);
 

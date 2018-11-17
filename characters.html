@@ -24,7 +24,7 @@
     
     <h3>Todos os personagens</h3>
     Pesquisa: <input type="text" ng-model="searchInput"><br>
-    Limite de busca: <input type="number" value="10" ng-model="limit"  ng-init="limit = 10"><br>
+    Limite de busca: <input type="number" ng-model="limit"  ng-init="limit = 10"><br>
     Casa: <select>
         <option ng-repeat="house in ctrl.houses" value="">{{house.name.substr(6, house.name.length -1)}}</option>
     </select>

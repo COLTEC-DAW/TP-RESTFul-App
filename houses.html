@@ -5,42 +5,35 @@
             <p>Region: {{ctrl.house.region}}</p>
             <p>Coat of Arms: {{ctrl.house.coatOfArms}}</p>
             <p>Founded: {{ctrl.house.founded}}</p> 
-            <p>Current Lord: {{ctrl.house.currentLord}}</p>
+            <p>Current Lord: {{ctrl.currentLord.name}}</p>
+            <p>Words: {{ctrl.house.words}}</p>
 
             <p>Seats:
-                <span ng-repeat="aliase in ctrl.character.aliases">{{aliase}}, </span>
+                <span ng-repeat="seat in ctrl.house.seats">{{seat}}, </span>
             </p>
             <p>Titles:
-                <span ng-repeat="title in ctrl.character.titles">{{title}}, </span>
+                <span ng-repeat="title in ctrl.house.titles">{{title}}, </span>
             </p>
 
             <p>Cadet Branches:
-                <span ng-repeat="cadet in ctrl.house.cadetBranches">{{cadet}}</span>
-            </p>
-
-            <p>Sworn Members:
-                <span ng-repeat="member in ctrl.house.swornMembers">{{member}}</span>
+                <span ng-repeat="cadet in ctrl.cadetBranches">{{cadet.name}}, </span>
             </p>
     
         </div>
         
         <h3>Todos as casas</h3>
         Pesquisa: <input type="text" ng-model="searchInput"><br>
-        Limite de busca: <input type="number" ng-model="limit"><br>
-        Casa: <select>
-            <option ng-repeat="house in ctrl.houses" value="">{{house.name.substr(6, house.name.length -1)}}</option>
-        </select>
-    
+        Limite de busca: <input type="number" ng-model="limit" ng-init="limit = 10"><br>
     
         <div class="row">
-            <div class="col-sm-3" ng-repeat="char in ctrl.characters | filter:searchInput | orderBy:'name' | limitTo:limit">
+            <div class="col-sm-3" ng-repeat="house in ctrl.houses | filter:searchInput | orderBy:'name' | limitTo:limit">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                <h5 class="card-title">{{char.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{char.aliases[0]}}</h6>
-                <p class="card-text">Gender: {{char.gender}}</p>
-                <p class="card-text">Culture: {{char.culture}}</p>
-                <a href="" class="card-link" ng-click="ctrl.getCharacter(char.url)">Ver detalhes</a>
+                <h5 class="card-title">{{house.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{house.words}}</h6>
+                <p>{{house.coatOfArms}}</p>
+                <p class="card-text">Seat: {{house.seats[0]}}</p>
+                <a href="" class="card-link" ng-click="ctrl.getHouse(house.url)">Ver detalhes</a>
                 </div>
             </div>
             </div>

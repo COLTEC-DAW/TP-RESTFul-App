@@ -1,0 +1,47 @@
+<div>
+    <div>
+        <h3>Personagem selecionado</h3>
+        <p>Name: {{ctrl.character.name}}</p>
+        <p>Gender: {{ctrl.character.gender}}</p>
+        <p>Culture: {{ctrl.character.culture}}</p>
+        <p>Born: {{ctrl.character.born}}</p> 
+        <p>Died: {{ctrl.character.died}}</p>
+        <p>Father: {{ctrl.father.name}}</p>
+        <p>Mother: {{ctrl.mother.name}}</p>
+        <p>Spouse: {{ctrl.spouse.name}}</p>
+        <p>Aliases:
+        <span ng-repeat="aliase in ctrl.character.aliases">{{aliase}}, </span>
+        </p>
+        <p>Titles:
+        <span ng-repeat="title in ctrl.character.titles">{{title}}, </span>
+        </p>
+        <p>
+        Played by:
+        <span ng-repeat="actor in ctrl.character.playedBy">{{actor}}, </span>
+        </p>
+
+    </div>
+    
+    <h3>Todos os personagens</h3>
+    Pesquisa: <input type="text" ng-model="searchInput"><br>
+    Limite de busca: <input type="number" value="10" ng-model="limit"  ng-init="limit = 10"><br>
+    Casa: <select>
+        <option ng-repeat="house in ctrl.houses" value="">{{house.name.substr(6, house.name.length -1)}}</option>
+    </select>
+
+
+    <div class="row">
+        <div class="col-sm-3" ng-repeat="char in ctrl.characters | filter:searchInput | orderBy:'name' | limitTo:limit">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{char.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{char.aliases[0]}}</h6>
+            <p class="card-text">Gender: {{char.gender}}</p>
+            <p class="card-text">Culture: {{char.culture}}</p>
+            <a href="" class="card-link" ng-click="ctrl.getCharacter(char.url)">Ver detalhes</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+  

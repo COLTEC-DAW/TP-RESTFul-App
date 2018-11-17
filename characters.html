@@ -23,11 +23,11 @@
     </div>
     
     <h3>Todos os personagens</h3>
-    Pesquisa: <input type="text" ng-model="searchInput"><br>
-    Limite de busca: <input type="number" ng-model="limit"  ng-init="limit = 10"><br>
-    Casa: <select>
-        <option ng-repeat="house in ctrl.houses" value="">{{house.name.substr(6, house.name.length -1)}}</option>
-    </select>
+    Pesquisa: <input type="text" ng-model="searchInput">
+    Limite de busca: <input type="number" ng-model="limit"  ng-init="limit = 10">
+    Casa: <select ng-options="house.name for house in ctrl.houses" ng-change="filterByHouse(selectHouse)" ng-model="selectHouse"></select>
+    Livro: <select ng-options="book.name for book in ctrl.books" ng-change="filterByBook(selectBook)" ng-model="selectBook"></select>
+
 
 
     <div class="row">

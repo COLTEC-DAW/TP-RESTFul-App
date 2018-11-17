@@ -30,6 +30,12 @@
                   {{ launch.details }}
                   <br>
                   <time>{{ parseDate(launch.launch_date_local) }}</time>
+                  <div class="is-right">
+                    <button class="button is-primary is-outlined is-small"
+                      @click="openModal(launch)">
+                      More Information
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -37,15 +43,25 @@
         </div>
       </div>
     </div>
+    <b-modal :active.sync="isLaunchModalActive" has-modal-card>
+      <launch-detail-modal
+        v-bind:launch="modalData"
+      />
+    </b-modal>
   </div>
 </template>
 
 <script>
+import LaunchDetailModal from '@/components/LaunchDetailModal.vue'
+
 export default {
+  components: { LaunchDetailModal },
   name: 'Launch',
   data: function () {
     return {
       launches: '',
+      isLaunchModalActive: false,
+      modalData: '',
       pagination: {
         totalData: null,
         current: 1,
@@ -79,6 +95,10 @@ export default {
         minute: 'numeric'
       })
       return dateParsed
+    },
+    openModal (data) {
+      this.isLaunchModalActive = true
+      this.modalData = data
     }
   },
 

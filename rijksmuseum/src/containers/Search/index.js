@@ -1,7 +1,7 @@
 import React from 'react'
-import NavBar from '../../components/NavBar'
 import List from '../../components/List'
 import Pagination from '../../components/PaginationMenu'
+import { Container, Row, Col } from 'reactstrap'
 
 
 class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -31,11 +31,12 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
     let pag = (<Pagination page={this.state.page}/>)
 
     return (
-      <div>
-        <NavBar  page={page}/>
-        <div>{list}</div>
-        <div>{pag}</div>
-      </div>
+      <Row style={{maxWidth: '100vw'}}>
+        <Col>
+          <div>{list}</div>
+          <div>{pag}</div>
+        </Col>
+      </Row>
     )
   }
 }

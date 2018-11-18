@@ -32,12 +32,9 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
 
     return (
       <div>
-        <NavBar page={page}/>
-        <div style={{'width':'100vw'}}>
-          {list}
-        </div>
-        <div style={{'display': 'inline-block'}}>{pag}</div>
-
+        <NavBar  page={page}/>
+        <div>{list}</div>
+        <div>{pag}</div>
       </div>
     )
   }

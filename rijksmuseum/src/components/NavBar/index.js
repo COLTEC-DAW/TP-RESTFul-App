@@ -4,7 +4,7 @@ import { faSearch } from '@fortawesome/fontawesome-free-solid'
 
 
 import {
-  Button, Input, InputGroup, InputGroupAddon, Row,
+  Button, Input, InputGroup, InputGroupAddon, Row, Col,
   Collapse, Navbar, NavbarToggler, NavbarBrand, Nav
 } from 'reactstrap';
 
@@ -45,44 +45,41 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
   }
 
   render () {
-
     return (
-      <div>
-        <Navbar className="px-2" color="light" light expand="md">
-          <NavbarBrand className="py-1" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum api</NavbarBrand>
-          <NavbarToggler className="py-1" onClick={this.toggle} />
+      <Row>
+        <Col>
+          <Navbar style={{width: '100vw', marginLeft: '-15px', marginRight: '-15px'}} color="light" light expand="md">
+            <NavbarBrand className="py-1" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum api</NavbarBrand>
+            <NavbarToggler className="py-1" onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="offset-8 py-1 " navbar>
+                <Row>
+                  <Input name="sorting" onChange={(event) => this.handleInputChange(event)} type="select" id="exampleSelect" className="col-md-6 col-sm-3" >
+                    <option value=""> Sorting Options </option>
+                    <option value={"relevance"}> relevance </option>
+                    <option value={"chronologic"}> oldests </option>
+                    <option value={"achronologic"}> newests </option>
+                    <option value={"artist"}> artist </option>
+                  </Input>
 
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="offset-8 py-1 " navbar>
-
-              <Row>
-                <Input name="sorting" onChange={(event) => this.handleInputChange(event)} type="select" id="exampleSelect" className="col-md-6 col-sm-3" >
-                  <option value=""> Sorting Options </option>
-                  <option value={"relevance"}> relevance </option>
-                  <option value={"chronologic"}> oldests </option>
-                  <option value={"achronologic"}> newests </option>
-                  <option value={"artist"}> artist </option>
-                </Input>
-
-                <InputGroup className="col-md-6 col-sm-7 p-0">
-                  <Input name="query" value={this.state.query} onChange={(event) => this.handleInputChange(event)}/>
-                  <InputGroupAddon addonType="append">
-                    <Button
-                      style={{'borderWidth':'5px !important', 'borderStyle': 'solid', 'borderColor':'#FFF !important'}}
-                      color="secondary"
-                      onClick={() => this.onPress(this.state.sorting, this.state.query)}
-                    >
-                      <FontAwesomeIcon icon={faSearch} />
-                    </Button>
-                  </InputGroupAddon>
-                </InputGroup>
-
-              </Row>
-            </Nav>
-          </Collapse>
-
-        </Navbar>
-      </div>
+                  <InputGroup className="col-md-6 col-sm-7 ">
+                    <Input name="query" value={this.state.query} onChange={(event) => this.handleInputChange(event)}/>
+                    <InputGroupAddon addonType="append">
+                      <Button
+                        style={{'borderWidth':'5px !important', 'borderStyle': 'solid', 'borderColor':'#FFF !important'}}
+                        color="secondary"
+                        onClick={() => this.onPress(this.state.sorting, this.state.query)}
+                        >
+                        <FontAwesomeIcon icon={faSearch} />
+                      </Button>
+                    </InputGroupAddon>
+                  </InputGroup>
+                </Row>
+              </Nav>
+            </Collapse>
+          </Navbar>
+        </Col>
+      </Row>
     )
   }
 }

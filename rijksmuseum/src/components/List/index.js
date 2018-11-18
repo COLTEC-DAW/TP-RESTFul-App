@@ -52,7 +52,7 @@ class List extends React.Component { // eslint-disable-line react/prefer-statele
     })
 
     return (
-      <div>
+      <div className="p-0 continer-fluid">
         {list}
       </div>
     )

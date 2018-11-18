@@ -4,7 +4,7 @@ import { faSearch } from '@fortawesome/fontawesome-free-solid'
 
 
 import {
-  Button, Input, InputGroup, InputGroupAddon, Row, Col,
+  Button, Input, InputGroup, InputGroupAddon, Row, Container,
   Collapse, Navbar, NavbarToggler, NavbarBrand, Nav
 } from 'reactstrap';
 
@@ -28,7 +28,7 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
 
   onPress(sorting, query){
     if(sorting && query)
-      window.location.href = '/search/'+ sorting + '/' + query + '/' + 0
+      window.location.href = '/search/'+ sorting + '/' + query + '/' + 1
   }
 
   handleInputChange(event){
@@ -46,11 +46,10 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
 
   render () {
     return (
-      <Row>
-        <Col>
-          <Navbar style={{width: '100vw', marginLeft: '-15px', marginRight: '-15px'}} color="light" light expand="md">
-            <NavbarBrand className="py-1" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum api</NavbarBrand>
-            <NavbarToggler className="py-1" onClick={this.toggle} />
+      <Container fluid={true} className="p-0">
+          <Navbar className="px-4" style={{backgroundColor: 'rgb(117, 117, 113)', width: '100vw'}} color="light" light expand="md">
+            <NavbarBrand className="py-1 px-0" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum app</NavbarBrand>
+            <NavbarToggler className="py-1 px-0" onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="offset-8 py-1 " navbar>
                 <Row>
@@ -78,8 +77,7 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
               </Nav>
             </Collapse>
           </Navbar>
-        </Col>
-      </Row>
+      </Container>
     )
   }
 }

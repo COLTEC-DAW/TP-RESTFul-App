@@ -1,7 +1,7 @@
 import React from 'react'
 import {API_ENDPOINT, API_KEY, MASHAPE_KEY} from '../../constants.js'
 import ListMember from '../ListMember'
-import { Container, Row, Col } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 
 class List extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor (props) {
@@ -50,7 +50,7 @@ class List extends React.Component { // eslint-disable-line react/prefer-statele
     this.state.works.forEach(obj => {
       list.push(
         <Col sm="4">
-          <ListMember obj={obj} key={obj.id}></ListMember>
+          <ListMember obj={obj}></ListMember>
         </Col>
       )
     })

@@ -23,26 +23,8 @@
             <router-link to="/about">About</router-link>
           </a>
 
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                <router-link to="/launches">Launches</router-link>
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
+          <div class="navbar-item">
+            <router-link to="/launches">Launches</router-link>
           </div>
         </div>
       </div>

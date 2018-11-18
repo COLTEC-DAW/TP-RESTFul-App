@@ -12,15 +12,16 @@ class List extends React.Component { // eslint-disable-line react/prefer-statele
   }
 
   componentDidMount () {
-    let sorting, query
+    let sorting, query, p = ''
 
     if(this.props.sorting)
       sorting  = '&s=' + this.props.sorting
     if(this.props.query)
-      query = '&query=' + encodeURI(this.props.query)
+      query = '&q=' + encodeURI(this.props.query)
+    if(this.props.page)
+      p = '&p=' + this.props.page
 
-    let request_url = API_ENDPOINT + 'collection/?key=' + API_KEY + '&format=json' + sorting + query
-    console.log(request_url);
+    let request_url = API_ENDPOINT + 'collection/?key=' + API_KEY + sorting + query + p + '&format=json'
     let requestOptions = {
       method: 'GET',
       headers: {

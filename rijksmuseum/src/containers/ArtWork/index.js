@@ -91,6 +91,7 @@ class ArtWork extends React.Component {
         <img
           className={'mx-auto d-block text-center img-fluid'}
           src={this.state.image}
+          alt="Some pic"
           style = {{
             'backgroundPosition': 'center',
             'height':'100vh',

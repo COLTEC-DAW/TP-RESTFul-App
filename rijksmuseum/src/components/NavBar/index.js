@@ -1,6 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/fontawesome-free-solid'
+
+
 import {
   Button, Input, InputGroup, InputGroupAddon, Row,
   Collapse, Navbar, NavbarToggler, NavbarBrand, Nav
@@ -25,9 +27,8 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
   }
 
   onPress(sorting, query){
-    console.log('q');
-    window.location.href = '/search/'+ sorting + '/' + query;
-
+    if(sorting && query)
+      window.location.href = '/search/'+ sorting + '/' + query + '/' + 0
   }
 
   handleInputChange(event){
@@ -47,18 +48,19 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
 
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand className="py-1" style={{'color':'rgb(61, 59, 59)'}} href="/">museum api</NavbarBrand>
+        <Navbar className="px-2" color="light" light expand="md">
+          <NavbarBrand className="py-1" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum api</NavbarBrand>
           <NavbarToggler className="py-1" onClick={this.toggle} />
 
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto py-1" navbar>
+            <Nav className="offset-8 py-1 " navbar>
+
               <Row>
-              <Input name="sorting" onChange={(event) => this.handleInputChange(event)} type="select" id="exampleSelect" className="col-md-6 col-sm-3" >
+                <Input name="sorting" onChange={(event) => this.handleInputChange(event)} type="select" id="exampleSelect" className="col-md-6 col-sm-3" >
                   <option value=""> Sorting Options </option>
                   <option value={"relevance"}> relevance </option>
-                  <option value={"oldest"}> oldests </option>
-                  <option value={"newest"}> newests </option>
+                  <option value={"chronologic"}> oldests </option>
+                  <option value={"achronologic"}> newests </option>
                   <option value={"artist"}> artist </option>
                 </Input>
 
@@ -74,6 +76,7 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
                     </Button>
                   </InputGroupAddon>
                 </InputGroup>
+
               </Row>
             </Nav>
           </Collapse>

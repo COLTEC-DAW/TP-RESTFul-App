@@ -1,6 +1,8 @@
 import React from 'react'
 import NavBar from '../../components/NavBar'
 import List from '../../components/List'
+import Pagination from '../../components/PaginationMenu'
+
 
 class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor (props) {
@@ -14,17 +16,28 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
   componentDidMount () {
     this.setState({
       'sorting' : this.props.match.params.sorting,
-      'query': this.props.match.params.query
+      'query': this.props.match.params.query,
+      'page': this.props.match.params.page
     })
   }
 
   render () {
-    let list = (<List sorting={this.props.match.params.sorting} query={decodeURI(this.props.match.params.query)}></List>)
+    let list = (<List sorting={this.props.match.params.sorting} page={this.props.match.params.page} query={decodeURI(this.props.match.params.query)}></List>)
+    let page = 1
+
+    if(this.state.page)
+      page = this.state.page
+
+    let pag = (<Pagination page={this.state.page}/>)
 
     return (
       <div>
-        <NavBar/>
-        {list}
+        <NavBar page={page}/>
+        <div style={{'width':'100vw'}}>
+          {list}
+        </div>
+        <div style={{'display': 'inline-block'}}>{pag}</div>
+
       </div>
     )
   }

@@ -1,10 +1,15 @@
 <div>
-        <div>
+
+    <div class="container row mx-auto">
+        <div class="col-4 pt-4 mt-4 mr-4">
+            <img src="https://s3.amazonaws.com/gs-geo-images/b25c82d0-7c3d-436c-8ddb-1986705e57c6_l.png" alt="Espada de aço valiriano"  title="Espada de aço valiriano">
+        </div>
+        <div class="col-4">
             <h3>Livro selecionado</h3>
             <p>Name: {{ctrl.book.name}}</p>
             <p>ISBN: {{ctrl.book.isbn}}</p>
             <p>Number of pages: {{ctrl.book.numberOfPages}}</p>
-            <p>Publisher: {{ctrl.book.publisher}}</p> 
+            <p>Publisher: {{ctrl.book.publisher}}</p>
             <p>Country: {{ctrl.book.country}}</p>
             <p>Released: {{ctrl.book.released.substr(0,10)}}</p>
 
@@ -12,23 +17,30 @@
                 <span ng-repeat="author in ctrl.book.authors">{{author}}, </span>
             </p>
         </div>
-        
-        <h3>Livros</h3>
-        Pesquisa: <input type="text" ng-model="searchInput"><br>
-    
+        <div class="col-2 pt-4 mt-4">
+            <img src="https://s3.amazonaws.com/gs-geo-images/b25c82d0-7c3d-436c-8ddb-1986705e57c6_l.png" alt="Espada de aço valiriano"  title="Espada de aço valiriano">
+        </div>
+    </div>
+
+
+    <h3>Livros</h3>
+    Pesquisa: <input type="text" ng-model="searchInput"><br>
+
+    <div class="container">
         <div class="row">
-            <div class="col-sm-3" ng-repeat="book in ctrl.books | filter:searchInput">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                <h5 class="card-title">{{book.name}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{book.authors[0]}}</h6>
-                <p class="card-text">Number of Pages: {{book.numberOfPages}}</p>
-                <p class="card-text">Publisher: {{book.publisher}}</p>
-                <a href="" class="card-link" ng-click="ctrl.getBook(book.url)">Ver detalhes</a>
+            <div class="col-sm-4" ng-repeat="book in ctrl.books | filter:searchInput">
+                <div class="card mt-3 mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{book.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{book.authors[0]}}</h6>
+                        <p class="card-text">Number of Pages: {{book.numberOfPages}}</p>
+                        <p class="card-text">Publisher: {{book.publisher}}</p>
+                        <a href="" class="card-link" ng-click="ctrl.getBook(book.url)">Ver detalhes</a>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
+</div>
       
     

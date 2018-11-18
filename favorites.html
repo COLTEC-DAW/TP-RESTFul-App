@@ -1,0 +1,48 @@
+<!--
+    NOT WORKING!
+-->
+
+<div ng-app="MyApp" ng-controller="CookiesController">
+
+    <h2>Characters</h2>
+
+    <div class="row">
+        <div ng-repeat="ar in this.GetCookies() track by $index">
+            <div class="col-sm-4" ng-repeat="arr in ctrl.getCharacter(this.ar)">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ctrl.character.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{aliase}}</h6>
+    
+                        <p class="card-text">Gender: {{ctrl.character.gender}}</p>
+                        <p class="card-text">Culture: {{ctrl.character.culture}}</p>
+                        <p class="card-text">Born: {{ctrl.character.born}}</p>
+                        <p class="card-text">Died: {{ctrl.character.died}}</p>
+                        <p class="card-text">Father: {{ctrl.father.name}}</p>
+                        <p class="card-text">Mother: {{ctrl.mother.name}}</p>
+                        <p class="card-text">Spouse: {{ctrl.spouse.name}}</p>
+                        <p class="card-text">Aliases:
+                            <span ng-repeat="aliase in ctrl.character.aliases">{{arr.aliase}}, </span>
+                        </p>
+                        <p class="card-text">Titles:
+                            <span ng-repeat="title in ctrl.character.titles">{{title}}, </span>
+                        </p>
+                        <p class="card-text">Played by:
+                            <span ng-repeat="actor in ctrl.character.playedBy">{{actor}}, </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div>
+houses
+</div>
+
+
+<div>
+books
+</div>

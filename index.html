@@ -6,6 +6,7 @@
     <!-- Angular -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.min.js"></script>
 
     <script src="app.js"></script>
 
@@ -16,9 +17,9 @@
 
   <body ng-app="got">
     <!-- Menu -->
-    <div class="bg-dark">
-        <h1 class="text-light text-center">Game of Thrones</h1>
-  
+    <div class="bg-dark pt-3">
+          <img class="pt-2 mx-auto d-block" id="title" src="https://fontmeme.com/permalink/181118/310e4153e0017b7755ad304f63d448a7.png" alt="title">
+
         <ul class="nav justify-content-center">
           <li class="nav-item">
             <a class="nav-link text-light" href="#/!">Home</a>
@@ -31,6 +32,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="#!books">Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#!favorites">Favorites</a>
           </li>
         </ul>
     </div>

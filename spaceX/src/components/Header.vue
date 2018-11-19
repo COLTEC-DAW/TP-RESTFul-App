@@ -12,7 +12,6 @@
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item link-white"><router-link to="/">HOME</router-link></a>
-                <a class="navbar-item link-white"><router-link to="/about">ABOUT</router-link></a>
                 <a class="navbar-item link-white "><router-link to="/launches">LAUNCHES</router-link></a>
             </div>
             <div class="navbar-end">

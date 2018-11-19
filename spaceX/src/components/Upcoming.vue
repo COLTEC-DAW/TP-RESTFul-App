@@ -3,7 +3,7 @@
         <section class="p-5 column is-6 has-text-centered">
             <div class="card">
               <div class="card-content">
-                <h1 class="subtitle">Next launch from NASA</h1>
+                <h1 class="subtitle">Next launch from SpaceX</h1>
                 <h1 class="title">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</h1>
               </div>
             </div>

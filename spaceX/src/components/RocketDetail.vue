@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h2 class="title is-2"> {{this.rocketData.rocket_name}} </h2>
     <div>
       <h4 class="title is-4">Geral Characteristics</h4>
       <p>Cost Per Launch: {{this.rocketData.cost_per_launch}}</p>

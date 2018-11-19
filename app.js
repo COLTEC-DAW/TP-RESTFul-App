@@ -226,7 +226,7 @@ app.controller('ControllerChars', ['$scope', 'InfoService', function ($scope, se
 app.controller('ControllerBooks', ['InfoService', function (service) {
     var self = this;
     self.books = []; // Todos os livros
-    self.book = {}; // Livros selecionados
+    self.book = {}; // Livros selecionado
 
     /* Recupera todos os livros */
     page = 1;
@@ -494,7 +494,8 @@ app.controller('ControllerFavorites', ['InfoService', function (service) {
         location.reload();
     }
 }]);
-/*
+
+/* Cookies em angular 
 app.controller('CookiesController', ['$scope', '$cookies', function ($scope, $cookies) {
     $scope.SetCookies = function (att) {
         var arrayChar = [];

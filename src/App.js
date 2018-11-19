@@ -26,6 +26,13 @@ class App extends Component {
      .catch(e => console.log(e))
   }
 
+  fetchTrends = () => {
+    fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${key}&limit=36&lang=pt`)
+     .then(resp => resp.json())
+     .then(json => this.setState({giphys:json.data}))
+     .catch(e => console.log(e))
+  }
+
   fetchRandom = () => {
     fetch(`http://api.giphy.com/v1/gifs/random?api_key=${key}`)
      .then(resp => resp.json())
@@ -52,6 +59,9 @@ class App extends Component {
 
   render() {
     let body=undefined;
+    if(this.state.giphys.length === 0 && !this.state.selected){
+      this.fetchTrends();
+    }
     if(!this.state.selected){
       body = (<Gifs setSelected={this.setSelected} gifs={this.state.giphys}/>);
     } else{

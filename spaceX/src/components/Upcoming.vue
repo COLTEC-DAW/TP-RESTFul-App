@@ -25,6 +25,7 @@ export default {
   name: 'upcoming',
   data () {
     return {
+      flight_number: 72,
       timer: '',
       wordString: '',
       start: '',
@@ -49,25 +50,11 @@ export default {
   },
 
   created () {
-    this.wordString = JSON.parse({
-      'day': 'Day',
-      'hours': 'Hours',
-      'minutes': 'Minuts',
-      'seconds': 'Seconds',
-      'expired': 'Event has been expired.',
-      'running': 'Till the end of event.',
-      'upcoming': 'Till start of event.',
-      'status': {
-        'expired': 'Expired',
-        'running': 'Running',
-        'upcoming': 'Future'
-      }
-    })
   },
 
   methods: {
     getUpcomingLaunchData: function () {
-      this.$http.get('https://api.spacexdata.com/v3/launches/upcoming/?flight_number=72').then((response) => {
+      this.$http.get('https://api.spacexdata.com/v3/launches/upcoming/?flight_number=' + this.flight_number).then((response) => {
         this.upcoming = response.data
         this.start = new Date(Date.parse(this.upcoming[0].launch_date_local)).getTime()
         this.end = new Date().getTime()
@@ -89,18 +76,11 @@ export default {
 
       // Find the distance between now an the count down date
       var distance = start - now
-      var passTime = end - now
-      console.log(passTime)
       if (distance < 0) {
-        this.message = this.wordString.expired
-        this.statusType = 'expired'
-        this.statusText = this.wordString.status.expired
         clearInterval(this.interval)
+        this.flight_number++
       } else if (distance > 0) {
         this.calcTime(distance)
-        this.message = this.wordString.upcoming
-        this.statusType = 'upcoming'
-        this.statusText = this.wordString.status.upcoming
       }
     },
     parseDate: function (date) {

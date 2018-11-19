@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <Header/> 
-    
+    <Header/>
+
   </div>
 </template>
 
@@ -17,4 +17,3 @@ export default {
   }
 }
 </script>
-

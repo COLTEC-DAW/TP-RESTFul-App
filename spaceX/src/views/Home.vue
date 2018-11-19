@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    
+
     <!-- Adicionar seções: -->
 
     <!-- Next launch coming (contador) -->
@@ -12,13 +12,12 @@
 </template>
 
 <script>
-import Upcoming from '@/components/Upcoming.vue';
-
+import Upcoming from '@/components/Upcoming.vue'
 
 // @ is an alias to /src
 export default {
   name: 'home',
-  components: { 
+  components: {
     Upcoming
   }
 }

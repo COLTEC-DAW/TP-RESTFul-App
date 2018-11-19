@@ -3,8 +3,7 @@
     <carousel :scrollPerPage="true" :perPage="1">
       <div v-for="image in data" :key="image">
         <slide>
-          Slide Content
-          <!-- <img :src="image" style="width: 300px; max-width: 100%; height: 130px" alt="Image of slide"> -->
+          <img :src="image" style="width: 300px; max-width: 100%; height: 130px" alt="Image of slide">
         </slide>
       </div>
     </carousel>

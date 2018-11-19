@@ -79,6 +79,7 @@ export default {
       if (distance < 0) {
         clearInterval(this.interval)
         this.flight_number++
+        this.getUpcomingLaunchData()
       } else if (distance > 0) {
         this.calcTime(distance)
       }

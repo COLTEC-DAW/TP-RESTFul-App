@@ -40,7 +40,6 @@
     Casa: <select ng-options="house.name for house in ctrl.houses" ng-change="filterByHouse(selectHouse)" ng-model="selectHouse"></select>
     Livro: <select ng-options="book.name for book in ctrl.books" ng-change="filterByBook(selectBook)" ng-model="selectBook"></select>
 
-
     <div class="container">
         <div class="row">
             <div class="col-sm-4" ng-repeat="char in ctrl.characters | filter:searchInput | orderBy:'name' | limitTo:limit">

@@ -11,14 +11,14 @@
         <nav class="is-transparent column" role="navigation" aria-label="main navigation">
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item"><router-link to="/">Home</router-link></a>
-                <a class="navbar-item"><router-link to="/about">About</router-link></a>
-                <a class="navbar-item"><router-link to="/launches">Launches</router-link></a>
-                <a class="navbar-item"><router-link to="/rockets">Rockets</router-link></a>
+                <a class="navbar-item link-white"><router-link to="/">Home</router-link></a>
+                <a class="navbar-item link-white"><router-link to="/about">About</router-link></a>
+                <a class="navbar-item link-white "><router-link to="/launches">Launches</router-link></a>
+                <a class="navbar-item link-white"><router-link to="/rockets">Rockets</router-link></a>
             </div>
             <div class="navbar-end">
-              <a class="navbar-item"><router-link to="/">Home</router-link></a>
-              <a class="navbar-item"><router-link to="/about">About</router-link></a>
+              <a class="navbar-item link-white"><router-link to="/">Home</router-link></a>
+              <a class="navbar-item link-white"><router-link to="/about">About</router-link></a>
             </div>
           </div>
         </nav>
@@ -37,12 +37,12 @@ section .title {
   color: aliceblue
 }
 
-a {
-  color: rgba(236, 237, 238, 0.74) !important; 
+.link-white a{
+  color: rgba(236, 237, 238, 0.74) !important;
 }
 
-a:hover {
-  color: white !important;
+.link-white:hover {
+  color: rgb(0, 0, 0,0.2) !important;
   background-color: rgb(0, 0, 0,0.2) !important
 }
 

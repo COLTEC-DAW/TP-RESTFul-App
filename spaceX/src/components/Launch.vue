@@ -54,7 +54,7 @@ export default {
       pagination: {
         totalData: null,
         current: 1,
-        perPage: 6,
+        perPage: 12,
         order: 'is-left',
         size: '',
         isSimple: false,

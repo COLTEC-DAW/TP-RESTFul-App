@@ -1,14 +1,14 @@
 <template>
   <div class="rocketsDetails">
-    <Rocket/>
+    <RocketDetail/>
   </div>
 </template>
 <script>
-import Rocket from '@/components/RocketDetail.vue'
+import RocketDetail from '@/components/RocketDetail.vue'
 export default {
   name: 'rocketDetails',
   components: {
-    Rocket
+    RocketDetail
   }
 }
 </script>

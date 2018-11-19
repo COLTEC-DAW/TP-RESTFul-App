@@ -6,7 +6,7 @@
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <img :src="launch.links.mission_patch" alt="Placeholder image">
+            <img :src="launch.links.mission_patch" alt="">
           </figure>
         </div>
         <div class="media-content">
@@ -21,6 +21,11 @@
         <p><a @click="goToRocketDetail(launch.rocket.rocket_id)">Rocket: {{ launch.rocket.rocket_name }}</a></p>
         <time><b>Launch Date:</b> {{ parseDate(launch.launch_date_local) }}</time>
       </div>
+      <div class="columns is-centered">
+        <div class="column is-9" v-if="launch.links.flickr_images.length > 0">
+          <carousel :data="launch.links.flickr_images"/>
+        </div>
+      </div>
     </div>
     <footer class="modal-card-foot">
       <button class="button" type="button" @click="$parent.close()">Close</button>
@@ -29,7 +34,11 @@
 </template>
 
 <script>
+import Carousel from '@/components/Carousel'
 export default {
+  components: {
+    Carousel
+  },
   props: {
     launch: {
       type: Object,

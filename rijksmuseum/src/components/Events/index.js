@@ -18,10 +18,11 @@ constructor (props) {
 componentWillMount () {
   let d = new Date();
   let date = d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate()
-  this.setState({'date':date})
+  let dd = d.getDate()  + '/' + d.getMonth() + '/' +  d.getFullYear()
+  this.setState({'date':dd})
 
 
-  let request_url = API_ENDPOINT + 'agenda/' + '2013-10-18' + '?key=' + API_KEY + '&format=json'
+  let request_url = API_ENDPOINT + 'agenda/' + date + '?key=' + API_KEY + '&format=json'
   let requestOptions = {
     method: 'GET',
     headers: {

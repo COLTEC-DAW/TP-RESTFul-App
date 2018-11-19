@@ -52,7 +52,7 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
             <NavbarToggler className="py-1 px-0" onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto py-1 " navbar>
-                <Row>
+                <Row className="m-0" >
                   <Input name="sorting" onChange={(event) => this.handleInputChange(event)} type="select" id="exampleSelect" className="col-md-6 col-sm-3" >
                     <option value=""> Sorting Options </option>
                     <option value={"relevance"}> relevance </option>

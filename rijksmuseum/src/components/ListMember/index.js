@@ -1,7 +1,6 @@
 import React from 'react'
 import notfound from '../../assets/no-image.jpg'
-import { Card, CardImg, CardBody,
-  CardTitle, CardImgOverlay, Button} from 'reactstrap';
+import { Card, CardImg, CardTitle, CardImgOverlay, Button} from 'reactstrap';
 
 class ListMember extends React.Component {
   constructor (props) {

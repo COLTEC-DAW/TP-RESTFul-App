@@ -32,7 +32,7 @@ class Search extends React.Component { // eslint-disable-line react/prefer-state
     let pag = (<Pagination style={{'bottom':'0'}} page={page}/>)
 
     return (
-      <Row style={{maxWidth: '100vw'}}>
+      <Row style={{maxWidth: '100vw', 'overflow': 'hidden'}}>
         <NavBar />
         <Col>
           <div className="mt-3">{list}</div>

@@ -24,6 +24,12 @@ export default new Router({
       name: 'launches',
 
       component: () => import('./views/Launches.vue')
+    },
+    {
+      path: '/rockets/:id',
+      name: 'rocketDetails',
+
+      component: () => import('./views/RocketsDetail.vue')
     }
   ]
 })

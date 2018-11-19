@@ -1,7 +1,7 @@
 <template>
     <div class="back">
       <div class="columns hd">
-        <section class="p-5 column  is-12 has-text-centered center-align">
+      <section id="header" class="p-5 column  is-12 has-text-centered center-align">
           <img src="../assets/logo.png" width="150px">
           <h1 class="title is-1">SpaceX</h1>
         </section>
@@ -31,7 +31,7 @@
 
 .p-5 { padding: 5% 0 }
 
-section .title {
+#header .title {
   font-size: 100px !important;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serifS;
   color: aliceblue
@@ -62,5 +62,7 @@ nav {
 </style>
 
 <script>
-export default {}
+export default {
+  name: 'header'
+}
 </script>

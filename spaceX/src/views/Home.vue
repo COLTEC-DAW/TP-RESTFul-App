@@ -1,6 +1,12 @@
 <template>
   <div class="home">
-    <h1>Welcome</h1>
+    
+    <!-- Adicionar seções: -->
+
+    <!-- Next launch coming (contador) -->
+
+    <!-- Carrossel de imagens de launches (ao clicar sobre um, vai para a page especifica) -->
+
   </div>
 </template>
 

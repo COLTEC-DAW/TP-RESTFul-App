@@ -10,18 +10,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 class App extends Component {
   render() {
-
-    let root = document.getElementById('root')
-    let width = document.body.clientWidth;
-    root.width = width
-    root.style.width = width
-
     let body = document.getElementsByTagName('body')
-    body[0].style.width = width
-    body[0].style.overflow = "hidden"
-
-    console.log(body[0].style)
-
+    body[0].style.overflowX = "hidden"
 
     return (
       <BrowserRouter>

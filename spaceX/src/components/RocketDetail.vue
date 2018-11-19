@@ -28,14 +28,14 @@
       </div>
     </div>
     <div>
-      <h4 class="title is-4">First stage</h4>
-      <p>Engines: {{ this.rocketData.engines }}</p>
-      <p>Fuel Amount: {{ this.rocketData.fuel_amount_tons }} </p>
-      <div>
-        <h5 class="title is-5">Thrust Sea Level</h5>
-        <p></p>
-        <p></p>
-      </div>
+      <h4 class="title is-4">Engines</h4>
+      <p>Number: {{this.rocketData.engines.number}}</p>
+      <p>Type: {{this.rocketData.engines.type}}</p>
+      <p>Version: {{this.rocketData.engines.version}}</p>
+      <p>Layout: {{this.rocketData.engines.layout}}</p>
+      <p>Engine Loss Maximum: {{this.rocketData.engines.engine_loss_max}}</p>
+      <p>Propellant 1: {{this.rocketData.engines.propellant_1}}</p>
+      <p>Propellant 2: {{this.rocketData.engines.propellant_2}}</p>
     </div>
   </div>
 </template>

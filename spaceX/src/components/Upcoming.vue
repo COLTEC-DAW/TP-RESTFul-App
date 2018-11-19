@@ -4,20 +4,10 @@
             <h1 class="subtitle">Next launch from NASA</h1>
             <div>
                 <div class="day">
-                    <span class="number">{{ days }}</span>
-                    <div class="format">{{ wordString.day }}</div>
-                </div>
-                <div class="hour">
-                    <span class="number">{{ hours }}</span>
-                    <div class="format">{{ wordString.hours }}</div>
-                </div>
-                <div class="min">
-                    <span class="number">{{ minutes }}</span>
-                    <div class="format">{{ wordString.minutes }}</div>
-                </div>
-                <div class="sec">
-                    <span class="number">{{ seconds }}</span>
-                    <div class="format">{{ wordString.seconds }}</div>
+                    <span class="number">{{ days }} d</span>
+                    <span class="number">{{ hours }} h</span>
+                    <span class="number">{{ minutes }} m</span>
+                    <span class="number">{{ seconds }} s</span>
                 </div>
                 <div class="message">{{ message }}</div>
                 <div class="status-tag" :class="statusType">{{ statusText }}</div>
@@ -45,10 +35,10 @@ export default {
       start: '',
       end: '',
       interval: '',
-      days: '',
-      minutes: '',
-      hours: '',
-      seconds: '',
+      days: 0,
+      minutes: 0,
+      hours: 0,
+      seconds: 0,
       message: '',
       statusType: '',
       statusText: '',
@@ -58,10 +48,6 @@ export default {
 
   mounted () {
     this.getUpcomingLaunchData()
-    this.start = new Date(this.upcoming.launch_date_local).getTime()
-    this.end = new Date().getTime()
-    // Update the count down every 1 second
-    console.log(this.timerCount(this.start, this.end))
     this.interval = setInterval(() => {
       this.timerCount(this.start, this.end)
     }, 1000)
@@ -80,14 +66,27 @@ export default {
         'expired': 'Expired',
         'running': 'Running',
         'upcoming': 'Future'
-      } })
+      }
+    })
   },
 
   methods: {
     getUpcomingLaunchData: function () {
       this.$http.get('https://api.spacexdata.com/v3/launches/upcoming/?flight_number=72').then((response) => {
         this.upcoming = response.data
+        this.start = new Date(Date.parse(this.upcoming[0].launch_date_local)).getTime()
+        this.end = new Date().getTime()
+        // Update the count down every 1 second
+        this.timerCount(this.start, this.end)
       })
+    },
+    calcTime: function (dist) {
+      // Time calculations for days, hours, minutes and seconds
+      this.days = Math.floor(dist / (1000 * 60 * 60 * 24))
+      console.log(this.days)
+      this.hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      this.minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60))
+      this.seconds = Math.floor((dist % (1000 * 60)) / 1000)
     },
     timerCount: function (start, end) {
       // Get todays date and time
@@ -96,18 +95,13 @@ export default {
       // Find the distance between now an the count down date
       var distance = start - now
       var passTime = end - now
-
-      if (distance < 0 && passTime < 0) {
+      console.log(passTime)
+      if (distance < 0) {
         this.message = this.wordString.expired
         this.statusType = 'expired'
         this.statusText = this.wordString.status.expired
         clearInterval(this.interval)
-      } else if (distance < 0 && passTime > 0) {
-        this.calcTime(passTime)
-        this.message = this.wordString.running
-        this.statusType = 'running'
-        this.statusText = this.wordString.status.running
-      } else if (distance > 0 && passTime > 0) {
+      } else if (distance > 0) {
         this.calcTime(distance)
         this.message = this.wordString.upcoming
         this.statusType = 'upcoming'
@@ -124,13 +118,6 @@ export default {
       })
       return dateParsed
     }
-  },
-  calcTime: function (dist) {
-    // Time calculations for days, hours, minutes and seconds
-    this.days = Math.floor(dist / (1000 * 60 * 60 * 24))
-    this.hours = Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-    this.minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60))
-    this.seconds = Math.floor((dist % (1000 * 60)) / 1000)
   }
 }
 </script>

@@ -11,14 +11,13 @@
         <nav class="is-transparent column" role="navigation" aria-label="main navigation">
           <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item link-white"><router-link to="/">Home</router-link></a>
-                <a class="navbar-item link-white"><router-link to="/about">About</router-link></a>
-                <a class="navbar-item link-white "><router-link to="/launches">Launches</router-link></a>
-                <a class="navbar-item link-white"><router-link to="/rockets">Rockets</router-link></a>
+                <a class="navbar-item link-white"><router-link to="/">HOME</router-link></a>
+                <a class="navbar-item link-white"><router-link to="/about">ABOUT</router-link></a>
+                <a class="navbar-item link-white "><router-link to="/launches">LAUNCHES</router-link></a>
             </div>
             <div class="navbar-end">
-              <a class="navbar-item link-white"><router-link to="/">Home</router-link></a>
-              <a class="navbar-item link-white"><router-link to="/about">About</router-link></a>
+              <a href="http://www.spacex.com" class="navbar-item link-white">OFFICIAL SITE</a>
+              <a href="https://api.spacexdata.com" class="navbar-item link-white">API</a>
             </div>
           </div>
         </nav>
@@ -29,6 +28,8 @@
 
 <style>
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 .p-5 { padding: 5% 0 }
 
 #header .title {
@@ -37,18 +38,19 @@
   color: aliceblue
 }
 
-.link-white a{
+a.link-white a {
   color: rgba(236, 237, 238, 0.74) !important;
 }
 
-.link-white:hover {
-  color: rgb(0, 0, 0,0.2) !important;
+a.link-white:hover {
+  color: rgba(236, 237, 238, 0.74) !important;
   background-color: rgb(0, 0, 0,0.2) !important
 }
 
 nav {
   margin: auto !important;
   width: 50% !important;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .is-transparent {

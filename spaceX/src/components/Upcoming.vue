@@ -1,19 +1,14 @@
 <template>
     <div class="columns upcoming">
         <section class="p-5 column is-6 has-text-centered">
-            <h1 class="subtitle">Next launch from NASA</h1>
-            <div>
-                <div class="day">
-                    <span class="number">{{ days }} d</span>
-                    <span class="number">{{ hours }} h</span>
-                    <span class="number">{{ minutes }} m</span>
-                    <span class="number">{{ seconds }} s</span>
-                </div>
-                <div class="message">{{ message }}</div>
-                <div class="status-tag" :class="statusType">{{ statusText }}</div>
+            <div class="card">
+              <div class="card-content">
+                <h1 class="subtitle">Next launch from NASA</h1>
+                <h1 class="title">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</h1>
+              </div>
             </div>
         </section>
-        <section class="p-5 is-6" v-for="upcoming in upcoming" :key="upcoming">
+        <section id="launch_info" class="p-5 is-6" v-for="upcoming in upcoming" :key="upcoming">
             <!-- Dados dessa missão -->
             <h1 class="title">{{upcoming.mission_name}}</h1>
             <h2 class="subtitle">{{upcoming.launch_site.site_name_long}}</h2>
@@ -128,8 +123,12 @@ export default {
 }
 .upcoming {
     font-family: 'Brandon Grotesque','brandon-grotesque-n7','brandon-grotesque',Helvetica,sans-serif;
+    background-color: #1b202e
+}
+#launch_info .title, #launch_info .subtitle, time{
+    color: rgb(199, 199, 199) !important
+}
+.upcoming .card {
+    background-color: rgb(202, 202, 202);
 }
 </style>
-// Background imagem de uma estaçao de foguete sei la
-// Cards para o coutdown e as informações
-// Pegar todos os upcomings e so mostrar o que a date é maior que a atual

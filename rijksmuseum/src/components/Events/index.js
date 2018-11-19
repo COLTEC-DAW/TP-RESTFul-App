@@ -35,9 +35,7 @@ componentWillMount () {
     .then(response => {
       this.setState({'events':response.options})
     })
-
   }
-
 
   render (){
     let events = this.state.events.map((item) => {
@@ -65,13 +63,11 @@ componentWillMount () {
     }
 
     return (
-
       <div >
         <h2 className="mt-5 px-4">Events happening  in {this.state.date}</h2>
         <div className="mt-2 px-4 ">
         {events}
         </div>
-
       </div>
     )
   }

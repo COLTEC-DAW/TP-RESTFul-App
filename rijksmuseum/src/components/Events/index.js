@@ -21,8 +21,6 @@ componentWillMount () {
   this.setState({'date':date})
 
 
-  console.log(date);
-
   let request_url = API_ENDPOINT + 'agenda/' + '2013-10-18' + '?key=' + API_KEY + '&format=json'
   let requestOptions = {
     method: 'GET',
@@ -34,7 +32,6 @@ componentWillMount () {
   fetch(request_url, requestOptions)
     .then((response) => response.json())
     .then(response => {
-      console.log(response.options);
       this.setState({'events':response.options})
     })
 
@@ -69,8 +66,8 @@ componentWillMount () {
     return (
 
       <div >
-        <h2 className="mt-5 ml-auto">happening  in {this.state.date}</h2>
-        <div className="mt-2 px-2 ">
+        <h2 className="mt-5 px-4">Events happening  in {this.state.date}</h2>
+        <div className="mt-2 px-4 ">
         {events}
         </div>
 

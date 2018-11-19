@@ -1,108 +1,65 @@
 import React, { Component } from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption
-} from 'reactstrap';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import nightwatch from "../../assets/nightwatch.jpg"
+import farmers from "../../assets/farmers.jpg"
+import gallery from "../../assets/gallery.jpg"
+import windmill from "../../assets/windmill.jpg"
+import { Card, CardImg, CardBody,
+  CardTitle, CardImgOverlay, Button} from 'reactstrap';
 
-
-const items = [
-  {
-    id: 1,
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    id: 2,
-    altText: 'Slide 2',
-    caption: 'Slide 2'
-  },
-  {
-    id: 3,
-    altText: 'Slide 3',
-    caption: 'Slide 3'
-  }
-];
-
-class Example extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { activeIndex: 0 };
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-    this.goToIndex = this.goToIndex.bind(this);
-    this.onExiting = this.onExiting.bind(this);
-    this.onExited = this.onExited.bind(this);
-  }
-
-  onExiting() {
-    this.animating = true;
-  }
-
-  onExited() {
-    this.animating = false;
-  }
-
-  next() {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  previous() {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return;
-    this.setState({ activeIndex: newIndex });
-  }
-
-  render() {
-    const { activeIndex } = this.state;
-
-    const slides = items.map((item) => {
+class DemoCarousel extends Component {
+    render() {
+      let title_style = {
+        'position': 'relative',
+        'textAlign': 'center',
+        'padding': '0',
+        'paddingTop': '35%',
+        'margin':'auto',
+        'width': '80%',
+        'color': 'white',
+        'textShadow': '0 0 3px #000000',
+        'fontSize': '1.4em'
+      }
       return (
-        <CarouselItem
-          className="custom-tag"
-          tag="div"
-          key={item.id}
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-        >
-          <CarouselCaption className="text-danger" captionText={item.caption} captionHeader={item.caption} />
-        </CarouselItem>
-      )
-    })
+          <div className="container-fluid">
+            <Carousel
+              infiniteLoop
+              autoPlay
+              showThumbs={false}
+              showStatus={false}
+              style={{'backgroundColor':'white', 'maxHeight':'90vh !important', 'margin':'auto'}}>
 
-    return (
-      <div>
-        <style>
-          {
-            `.custom-tag {
-                max-width: 100%;
-                height: 500px;
-                background: black;
-              }`
-          }
-        </style>
-        <Carousel
-          activeIndex={activeIndex}
-          next={this.next}
-          previous={this.previous}
-        >
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-          {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-        </Carousel>
-      </div>
-    );
-  }
+                <div style={{'objectFit':'cover', 'maxHeight':'90vh'}}>
+                    <img style={{'objectFit':'cover', 'height': '90vh'}} src={nightwatch} />
+                    <CardImgOverlay className="p-0">
+                      <CardTitle style={title_style}>NightWatch - Rembrandt van Rijn</CardTitle>
+                    </CardImgOverlay>
+                </div>
+                <div style={{'objectFit':'cover', 'maxHeight':'90vh'}}>
+                    <img style={{'objectFit':'cover', 'height': '90vh'}} src={farmers} />
+                    <CardImgOverlay className="p-0">
+                      <CardTitle style={title_style}>Farm in Provence - Vincent Van Gogh</CardTitle>
+                    </CardImgOverlay>
+                </div>
+                <div style={{'objectFit':'cover', 'maxHeight':'90vh'}}>
+                    <img style={{'objectFit':'cover', 'height': '90vh'}} src={gallery} />
+                    <CardImgOverlay className="p-0">
+                      <CardTitle style={title_style}> The Art Gallery of Jan Gildemeester Jansz - Rembrandt van Rijn</CardTitle>
+                    </CardImgOverlay>
+                </div>
+                <div style={{'objectFit':'cover', 'maxHeight':'90vh'}}>
+                    <img style={{'objectFit':'cover', 'height': '90vh'}} src={windmill} />
+                    <CardImgOverlay className="p-0">
+                      <CardTitle style={title_style}>The Windmill at Wijk bij Duurstede - Jacob Isaacksz</CardTitle>
+                    </CardImgOverlay>
+                </div>
+
+            </Carousel>
+          </div>
+      )
+    }
 }
 
-export default Example;
+export default DemoCarousel

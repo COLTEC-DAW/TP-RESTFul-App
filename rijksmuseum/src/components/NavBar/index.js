@@ -48,10 +48,10 @@ class NavBar extends React.Component { // eslint-disable-line react/prefer-state
     return (
       <Container fluid={true} className="p-0">
           <Navbar className="px-4" style={{backgroundColor: 'rgb(117, 117, 113)', width: '100vw'}} color="light" light expand="md">
-            <NavbarBrand className="py-1 px-0" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum app</NavbarBrand>
+            <NavbarBrand className="py-1 px-0" style={{'color':'rgb(61, 59, 59)'}} href="/">rijksmuseum</NavbarBrand>
             <NavbarToggler className="py-1 px-0" onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="offset-8 py-1 " navbar>
+              <Nav className="ml-auto py-1 " navbar>
                 <Row>
                   <Input name="sorting" onChange={(event) => this.handleInputChange(event)} type="select" id="exampleSelect" className="col-md-6 col-sm-3" >
                     <option value=""> Sorting Options </option>

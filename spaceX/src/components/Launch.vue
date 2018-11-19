@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-5">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
         <search-bar class="" @pressedBackButton="onPressedBackButtonSearchBar" @searchData="onSearchData" v-bind:data="launches"/>

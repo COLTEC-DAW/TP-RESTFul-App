@@ -1,0 +1,14 @@
+img {
+    width: inherit;
+    border: 1px black solid;
+}
+
+a{
+    word-wrap: break-word;
+}
+
+a.fa-times{
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}

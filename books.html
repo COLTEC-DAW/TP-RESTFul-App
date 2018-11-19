@@ -31,6 +31,14 @@
             <div class="col-sm-4" ng-repeat="book in ctrl.books | filter:searchInput">
                 <div class="card mt-3 mb-3" style="width: 18rem;">
                     <div class="card-body">
+
+                        <!-- Button favorites  -->
+                        <label for="{{book.url}}" class="custom-checkbox">
+                            <input type="checkbox" id="{{book.url}}" ng-click="ctrl.cookie(book.url)"/>
+                            <i class="glyphicon glyphicon-star-empty"></i>
+                            <i class="glyphicon glyphicon-star"></i>
+                        </label>
+
                         <h5 class="card-title">{{book.name}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{book.authors[0]}}</h6>
                         <p class="card-text">Number of Pages: {{book.numberOfPages}}</p>

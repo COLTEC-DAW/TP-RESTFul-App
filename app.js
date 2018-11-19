@@ -78,7 +78,6 @@ app.controller('Controller', ['$scope', 'InfoService', function ($scope, service
     self.book = {};
 
 
-
     var page = 1;
     while (page < 200) { // Recupera todas os personagens
         service.getMultiple('characters', page, function (answer) {
@@ -112,7 +111,33 @@ app.controller('Controller', ['$scope', 'InfoService', function ($scope, service
     }
 
 
-
+    $(document).ready(function () {
+        /* Adiciona checked em favoritos */
+        var urls = JSON.parse(getCookie('characters'));
+        for (let i=0; i<urls.length; i++){
+            service.getSingle(urls[i], function (answer) {
+                if (document.getElementById(answer.url) != null) {
+                    document.getElementById(answer.url).setAttribute('checked', '');
+                }
+            });
+        }
+        var urls = JSON.parse(getCookie('houses'));
+        for (let i=0; i<urls.length; i++){
+            service.getSingle(urls[i], function (answer) {
+                if (document.getElementById(answer.url) != null) {
+                    document.getElementById(answer.url).setAttribute('checked', '');
+                }
+            });
+        }
+        var urls = JSON.parse(getCookie('books'));
+        for (let i=0; i<urls.length; i++){
+            service.getSingle(urls[i], function (answer) {
+                if (document.getElementById(answer.url) != null) {
+                    document.getElementById(answer.url).setAttribute('checked', '');
+                }
+            });
+        }
+    });
 
     // Recupera um personagem
     self.getCharacter = function (url) {
@@ -184,6 +209,7 @@ app.controller('Controller', ['$scope', 'InfoService', function ($scope, service
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
 
+    // Filtra personagens pela casa
     $scope.filterByHouse = function (house) {
         self.characters = [];
         for (let i = 0; i < house.swornMembers.length; i++) {
@@ -195,6 +221,7 @@ app.controller('Controller', ['$scope', 'InfoService', function ($scope, service
         }
     }
 
+    // Filtra personagens pelo livro
     $scope.filterByBook = function (book) {
         self.characters = [];
         for (let i = 0; i < book.characters.length; i++) {
@@ -206,12 +233,74 @@ app.controller('Controller', ['$scope', 'InfoService', function ($scope, service
         }
     }
 
+    // Retorna com todos os personagens
     $scope.backToAll = function () {
         self.characters = self.allCharacters;
     }
+
+    
+    // Retorna os favoritos
+    this.getFavorites = function(tipo){
+        var itens = [];
+        var urls = JSON.parse(getCookie(tipo));
+        for (let i=0; i<urls.length; i++){
+            service.getSingle(urls[i], function (answer) {
+                if (answer !== null) {
+                    itens.push(answer);
+                }
+            });
+        }
+        return itens;
+    }
+
+    // Cria e deleta cookies //
+    this.cookie = function(url){
+        var cookies = null;
+        var tipo = '';
+        if (url.includes('characters')){
+            cookies = getCookie('characters');
+            tipo = 'characters';
+        }else if (url.includes('houses')){
+            cookies = getCookie('houses');
+            tipo = 'houses';
+        }else if (url.includes('books')){
+            cookies = getCookie('houses');
+            tipo = 'books';
+        }      
+
+        if (cookies.includes(url)){
+            cookies = JSON.parse(cookies);
+            cookies.splice(cookies.indexOf(url), 1);
+            
+        }else{
+            if (cookies == ''){
+                cookies = '[]';
+            }
+            cookies = JSON.parse(cookies);
+            cookies.push(url);
+        }
+        document.cookie= tipo+'='+JSON.stringify(cookies);
+        location.reload();
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
 }]);
 
-
+/*
 app.controller('CookiesController', ['$scope', '$cookies', function ($scope, $cookies) {
     $scope.SetCookies = function (att) {
         var arrayChar = [];
@@ -230,4 +319,7 @@ app.controller('CookiesController', ['$scope', '$cookies', function ($scope, $co
     $scope.ClearCookies = function () {
         $cookies.remove('urlChar');
     };
-}]);
+
+
+    
+}]); */

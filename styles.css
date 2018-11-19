@@ -1,0 +1,45 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+
+  /* Required Styling */
+  
+  label input[type="checkbox"] {
+    display: none;
+  }
+  
+  .custom-checkbox {
+    margin-right: 2px;
+    position: absolute;
+    cursor: pointer;
+    font-size: 22px;
+    top: 0;
+    right: 0
+  }
+  
+  .custom-checkbox .glyphicon {
+    color: gold;
+    position: absolute;
+    top: 0.4em;
+    left: -1.25em;
+    font-size: 0.75em;
+  }
+  
+  .custom-checkbox .glyphicon-star-empty {
+    color: gray;
+  }
+  
+  .custom-checkbox .glyphicon-star {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .custom-checkbox:hover .glyphicon-star{
+    opacity: 0.5;
+  }
+  
+  .custom-checkbox input[type="checkbox"]:checked ~ .glyphicon-star {
+    opacity: 1;
+  }
+
+  label{
+      align-self: flex-end;
+  }

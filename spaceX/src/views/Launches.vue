@@ -19,6 +19,7 @@ export default {
 <style>
 .launches {
   max-width: 100%;
-  margin-top: 5px;
+  margin-top: -20px;
+  background-color: #1b202e
 }
 </style>

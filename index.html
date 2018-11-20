@@ -1,25 +1,19 @@
-<html lang="en">
+<html ng-app="news">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Times cartola</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script data-require="angular-route@1.4.0" data-semver="1.4.0" src="https://code.angularjs.org/1.4.0/angular-route.js"></script>
   <script src="app.js"></script>
 </head>
 
-<body ng-app="times">
-    <div ng-controller="TimesController as timeCtrl">
-      
-        <h1>Times CF</h1>
-        
-        <table>
-          <tr><td><b>Time</b></td></tr>
-          <tr ng-repeat="time in timeCtrl.times">
-            <td>{{time.nome}}</td> 
-          </tr>
-        </table>
-      </div>
+<body>
+    
+    <div class="jumbotron">
+      <ng-view></ng-view>
+    </div>
   
 </body>
 </html>

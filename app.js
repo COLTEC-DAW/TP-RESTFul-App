@@ -1,14 +1,35 @@
 
-var app = angular.module('times', []);
+var app = angular.module('news', ['ngRoute']);
 
-
-
-app.factory('TimesService', function($http){
+app.config(function($routeProvider) {
   
-  var timesService = {};
+  $routeProvider.when("/", 
+    {
+      templateUrl: "noticias.html",
+      controller: "NewsController",
+      controllerAs: "newsCtrl"
+    }
+  )
+  .when("/noticia", 
+    {
+      templateUrl: "noticiaSingle.html",
+      controller: "NewsController",
+      controllerAs: "newsCtrl"
+    }
+  )
+  .otherwise(
+    {
+      redirectTo: "/"    
+    }
+  );
+});
+
+app.factory('NewsService', function($http){
   
-  timesService.getTimes = function(callback) {
-    $http.get('https://api.cartolafc.globo.com/times?q=%5Bnome').then(function(response) {
+  var newsService = {};
+  
+  newsService.getNews = function(callback) {
+    $http.get('https://api.hnpwa.com/v0/news/1.json').then(function(response) {
       var answer = response.data;
       callback(answer);
     },
@@ -18,38 +39,41 @@ app.factory('TimesService', function($http){
     });
   };
   
-  // timesService.getTime = function(timeName, callback) {
-  //   $http.get('https://api.cartolafc.globo.com/times?q=' + timeName).then(function(response) {
-  //     var answer = response.data;
-  //     callback(answer);
-  //   },
-  //   function(response) {
-  //     var answer = null;
-  //     callback(answer);
-  //   });
-  // };
+  newsService.getNew = function(id, callback) {
+    $http.get('https://api.hnpwa.com/v0/item/' + id + '.json').then(function(response) {
+      var answer = response.data;
+      callback(answer);
+    },
+    function(response) {
+      var answer = null;
+      callback(answer);
+    });
+  };
   
-  return timesService;
+  return newsService;
 });
 
 
-app.controller('TimesController', ['TimesService', function(timesService){
+app.controller('NewsController', ['NewsService', function(newsService){
   var self = this;
-  self.times = [];
-  self.time = {};
+  self.news = [];
+  self.new = {};
  
-  timesService.getTimes(function(answer) {
+  newsService.getNews(function(answer) {
     if (answer !== null) {
-      self.times = answer;
+      self.news = answer;
     }
   });
-  
-  // this.getDetalhes = function(timeName) {
-  //   timesService.getTime(timeName, function(answer) {
-  //     if (answer !== null) {
-  //       self.time = answer;
-  //     }
-  //   }); 
-  // }
 
+  this.getDetalhes = function(id) {
+    newsService.getNew(id, function(answer) {
+      if (answer !== null) {
+        self.new = answer;
+      }
+    }); 
+  }
+
+  
 }]); 
+
+

@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html ng-app="CartolaFC">
+<html ng-app="news">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CartolaFC da Info</title>
-    <script src="angular-1.7.5/angular.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        angular.module('CartolaFC', [])
-        .controller('DadosAPI', function(){
-            $teste.x = "Deu certo!"
-        })
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Times cartola</title>
+  <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
+  <script data-require="angular-route@1.4.0" data-semver="1.4.0" src="https://code.angularjs.org/1.4.0/angular-route.js"></script>
+  <script src="app.js"></script>
 </head>
-<body ng-controller="DadosAPI">
-    {{ x }}
+
+<body>
+    
+    <div class="jumbotron">
+      <ng-view></ng-view>
+    </div>
+  
 </body>
 </html>

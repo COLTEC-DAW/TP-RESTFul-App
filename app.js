@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
       controllerAs: "newsCtrl"
     }
   )
-  .when("/noticia", 
+  .when("/noticia/:id", 
     {
       templateUrl: "noticiaSingle.html",
       controller: "NewsController",
@@ -54,7 +54,7 @@ app.factory('NewsService', function($http){
 });
 
 
-app.controller('NewsController', ['NewsService', function(newsService){
+app.controller('NewsController', ['NewsService', '$location', function(newsService, $location){
   var self = this;
   self.news = [];
   self.new = {};
@@ -70,10 +70,13 @@ app.controller('NewsController', ['NewsService', function(newsService){
       if (answer !== null) {
         self.new = answer;
       }
-    }); 
+    });
+    $location.path("noticia/"+id);
   }
 
   
 }]); 
+
+
 
 

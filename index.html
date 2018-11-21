@@ -2,40 +2,57 @@
 <html ng-app="myApp">
   <head>
     <meta charset="utf-8">
-    <title>FlickerAPI - Principal</title>
+    <title>GuardianAPI - Principal</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
   <body class="bg-light">
+    <div ng-controller="GuardianController as GC">
 
-    <!-- navbar -->
-    <div ng-controller=" as ">
+      <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">GuardianAPI</a>
+        <a class="navbar-brand" href="index.html">GuardianAPI</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+          <ul class="navbar-nav mr-auto col-12">
+            <li class="nav-item col-6">
+              <form novalidate class="form-inline my-2 my-lg-0 col-12">
+                <input class="form-control mr-sm-2 col-8" type="text" ng-model="searchText" placeholder="Search"/>
+                <input class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="GC.getNoticiasSearch(searchText)" value="Send"/>
+              </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">Sections</a>
+              <div class="dropdown-menu">
+                <div ng-repeat="x in GC.sections">
+                  <a ng-click="GC.getNoticiasSection(x)">{{x}}</a>
+                  <div class="dropdown-divider"></div>
+                </div>
+              </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
       </nav>
-    </div>
 
-    <!-- Photos -->
-    <div class="col-12">
+      <!-- Noticias -->
+      <div class="col-12">
+        <div ng-repeat="i in GC.noticias">
+          <a href="{{i.webURL}}">
+            <div style="height: 400px" class="jumbotron col-3 float-left m-5">
+              <div class="bg-secondary">
+                <p class="text-warning text-center text-uppercase">{{i.sectionId}}</p>
+              </div>
+              <h5 class="text-dark">{{i.webTitle}}</h1>
+              <hr class="my-4">
+              <p class="text-primary">{{i.id}}</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

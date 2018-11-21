@@ -1,28 +1,5 @@
 
-var app = angular.module('news', ['ngRoute']);
-
-app.config(function($routeProvider) {
-  
-  $routeProvider.when("/", 
-    {
-      templateUrl: "noticias.html",
-      controller: "NewsController",
-      controllerAs: "newsCtrl"
-    }
-  )
-  .when("/noticia/:id", 
-    {
-      templateUrl: "noticiaSingle.html",
-      controller: "NewsController",
-      controllerAs: "newsCtrl"
-    }
-  )
-  .otherwise(
-    {
-      redirectTo: "/"    
-    }
-  );
-});
+var app = angular.module('news',[]);
 
 app.factory('NewsService', function($http){
   
@@ -54,27 +31,37 @@ app.factory('NewsService', function($http){
 });
 
 
-app.controller('NewsController', ['NewsService', '$location', function(newsService, $location){
+app.controller('NewsController', ['NewsService', function(newsService){
   var self = this;
   self.news = [];
+  self.principais = [];
   self.new = {};
  
   newsService.getNews(function(answer) {
     if (answer !== null) {
       self.news = answer;
+      self.setPrincipais();
     }
   });
 
-  this.getDetalhes = function(id) {
+  this.getSingleNotice = function(id) {
     newsService.getNew(id, function(answer) {
-      if (answer !== null) {
-        self.new = answer;
+      if (answer !== null) {                
+        self.new=answer;
       }
     });
-    $location.path("noticia/"+id);
   }
 
-  
+
+  this.setPrincipais = function(){
+      for(let i=0; i<self.news.length; i++){
+        if (self.news[i].points >= 150){
+          self.principais.push(self.news[i]);  
+          console.log(self.principais);
+        }
+      }
+  }
+
 }]); 
 
 

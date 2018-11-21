@@ -1,19 +1,49 @@
-<html ng-app="news">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Times cartola</title>
+  <title>Hacker News API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
-  <script data-require="angular-route@1.4.0" data-semver="1.4.0" src="https://code.angularjs.org/1.4.0/angular-route.js"></script>
   <script src="app.js"></script>
 </head>
 
-<body>
+<body ng-app="news">
+
+  <input type="text" ng-model="search">
     
-    <div class="jumbotron">
-      <ng-view></ng-view>
-    </div>
+  <div ng-controller="NewsController as newsCtrl">
+
+      <h1>Notícia Selecionada:</h1>
+      <h3>Titulo:   {{newsCtrl.new.title}}</h3>
+      <p>Autor:     {{newsCtrl.new.user}}</p>
+      <p>Tempo:     {{newsCtrl.new.time_ago}}</p>
+      <p>Tipo:      {{newsCtrl.new.type}}</p>
   
+    <div class="container-fluid">
+      <div class="row">
+        <table class="offset-sm-1 col-sm-4">
+            <tr><td><b>Notícias Principais</b></td></tr>
+            <tr ng-repeat="new in newsCtrl.principais">
+              <td>{{new.title}}</td> <td><button ng-click="newsCtrl.getSingleNotice(new.id)">Detalhes</button></td>
+            </tr>
+        </table>
+
+
+        <table class="offset-sm-1 col-sm-4">
+            <tr><td><b>Notícias</b></td></tr>
+            <tr ng-repeat="new in newsCtrl.news | filter:search">
+              <td>{{new.title}}</td> <td><button ng-click="newsCtrl.getSingleNotice(new.id)">Detalhes</button></td>
+            </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

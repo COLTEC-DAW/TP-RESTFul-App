@@ -1,16 +1,17 @@
-<div *ngIf="person">
+<div class="mt-5" *ngIf="person">
   <p>
-  {{person.name}}
+    Nome: {{person.name}}
   </p>
   <p>
-  {{person.birth_year}}
-  </p><p>
-  {{person.gender}}
+    Ano de nascimento: {{person.birth_year}}
   </p>
   <p>
-  {{person.height}} cm
+    Gênero: {{person.gender}}
   </p>
   <p>
-  {{person.mass}} kg
+    Altura: {{person.height}} cm
+  </p>
+  <p>
+    Peso: {{person.mass}} kg
   </p>
 </div>

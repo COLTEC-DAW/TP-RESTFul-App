@@ -10,7 +10,15 @@ export class HackernewsService {
   constructor(private http: Http) { }
 
   public search_people(query: string, callback, callbackerror){
-    this.http.get(environment.api_endpoint + 'people/?search=' + query).subscribe(
+    let random = Math.floor(Math.random()*(1000-1+1)+1)
+    let aux = query
+    console.log(query)
+    if(query == undefined){
+      aux = random
+    }
+    console.log(aux)
+
+    this.http.get(environment.api_endpoint + 'people/?search=' + aux).subscribe(
       success => {
         callback(success.json())
       },
@@ -43,6 +51,7 @@ export class HackernewsService {
   }
 
   public get_person(id, callback, callbackerror){
+
     this.http.get(environment.api_endpoint + 'people/' + id).subscribe(
       success => {
         callback(success.json())
@@ -52,6 +61,7 @@ export class HackernewsService {
       }
     )
   }
+
   public get_planet(id, callback, callbackerror){
     this.http.get(environment.api_endpoint + 'planets/' + id).subscribe(
       success => {

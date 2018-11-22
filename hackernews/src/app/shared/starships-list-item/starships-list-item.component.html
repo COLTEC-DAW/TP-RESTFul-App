@@ -1,1 +1,5 @@
-<p [routerLink] = "'/starships/' + starship.url.slice(30) " >{{starship?.name}}</p>
+<div [routerLink] = "'/starships/' + starship.url.slice(30) " class="card">
+  <div class="card-body">
+    {{starship?.name}}
+  </div>
+</div>

@@ -1,0 +1,57 @@
+
+body{
+    overflow-x: hidden;
+}
+
+#navbar{
+    background-color: #B00000 !important;
+}
+
+#brand{
+    color: whitesmoke;
+    font-size: 40px;
+    font-family: 'Righteous', cursive;
+}
+
+#noticiaSelecionada{
+    padding-top:3%;
+    padding-bottom:3%;
+    background-color: #f2f2f2; 
+}
+
+#noticiaSelecionada a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #B00000; 
+}
+
+#mainContainer{
+    padding-left: 0;
+    padding-right: 0;
+    font-family: 'Muli', sans-serif;
+}
+
+#newsContainer{
+    padding-top: 5%;
+}
+
+/*Estilização dos Componentes da Lista*/
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#title_notice{
+    color: #B00000;
+}
+
+#destaquesContainer{
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    padding: 5% 3%;
+}
+

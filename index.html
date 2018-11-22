@@ -6,7 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
     <script src="app.js"></script>
   </head>
-  <body class="bg-light">
+  <body class="bg-warning">
 
     <div ng-controller="GuardianController as GC">
 
@@ -25,7 +25,7 @@
                 <input class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="GC.getNoticiasSearch(searchText)" value="Send"/>
               </form>
             </li>
-            <li class="nav-item dropdown col-3">
+            <li class="nav-item dropdown offset-1 col-3">
               <input class="col-8 dropdown-toggle form-control" id="navbarDropdown" role="search" data-toggle="dropdown" ng-model="searchSection" type="text" placeholder="Search for sections">
               <div class="dropdown-menu">
                 <div class="col-12" ng-repeat="x in GC.sections | filter:searchSection | limitTo: 5">
@@ -70,6 +70,7 @@
               <img class="img-thumbnail" src="{{GC.noticia.thumbnail}}" alt="thumbnail">
               <br><br>
               <p>{{GC.noticia.trailText}}.</p>
+              <a href="{{GC.noticia.webURL}}">Ir para a notícia</a>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

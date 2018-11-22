@@ -1,10 +1,5 @@
 var app = angular.module('myApp', []);
 
-app.controller('SingleGuardianController', ['GuardianService', function(guardianService) {
-
-  this.noticias = "aaaaaaaaaa";
-}]);
-
 app.controller('GuardianController', ['GuardianService', function(guardianService) {
 
   var self = this;
@@ -36,7 +31,7 @@ app.controller('GuardianController', ['GuardianService', function(guardianServic
       }
     }
   }
-
+ 
   guardianService.getNoticias(function(answer) {
     if(answer !== null) {
       self.tratarResultado(answer);

@@ -9,7 +9,6 @@
   <body class="bg-light">
 
     <div ng-controller="GuardianController as GC">
-
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.html">GuardianAPI</a>
@@ -41,7 +40,7 @@
       <!-- Noticias -->
       <div class="col-12">
         <div ng-repeat="i in GC.noticias">
-          <a ng-click="GC.selectNoticia(i.id)" data-toggle="modal" data-target="#exampleModal">
+          <a href="singleNoticia.html">
             <div style="height: 600px" class="jumbotron col-3 float-left m-5">
               <div class="bg-secondary">
                 <p class="text-warning text-center text-uppercase">{{i.sectionId}}</p>
@@ -53,28 +52,6 @@
               <p class="text-primary">{{i.webPublicationDate | date:'medium'}}</p>
             </div>
           </a>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">{{GC.noticia.webPublicationDate | date:'medium'}}<br><p class="text-uppercase text-warning">{{GC.noticia.sectionId}}</p><br>{{GC.noticia.webTitle}}</h5>
-              <button type="button" class="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <img class="img-thumbnail" src="{{GC.noticia.thumbnail}}" alt="thumbnail">
-              <br><br>
-              <p>{{GC.noticia.trailText}}.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
       </div>
     </div>

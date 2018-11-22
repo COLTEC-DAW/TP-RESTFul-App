@@ -1,5 +1,10 @@
 var app = angular.module('myApp', []);
 
+app.controller('SingleGuardianController', ['GuardianService', function(guardianService) {
+
+  this.noticias = "aaaaaaaaaa";
+}]);
+
 app.controller('GuardianController', ['GuardianService', function(guardianService) {
 
   var self = this;
@@ -8,18 +13,33 @@ app.controller('GuardianController', ['GuardianService', function(guardianServic
   self.noticia = {};
   self.APIurl = "https://content.guardianapis.com/";
 
+  self.tratarResultado = function(answer) {
+    noticiasJSON = answer.response.results;
+    for(var k in noticiasJSON) {
+      var noticia = {
+        id: noticiasJSON[k].id,
+        webPublicationDate: noticiasJSON[k].webPublicationDate,
+        thumbnail: noticiasJSON[k].fields.thumbnail,
+        trailText: noticiasJSON[k].fields.trailText,
+        sectionId: noticiasJSON[k].sectionId,
+        webURL: noticiasJSON[k].webUrl,
+        webTitle: noticiasJSON[k].webTitle
+      }
+      self.noticias.push(noticia);
+    }
+  }
+
+  self.selectNoticia = function(id) {
+    for(var k in self.noticias) {
+      if (self.noticias[k].id == id) {
+        self.noticia = self.noticias[k];
+      }
+    }
+  }
+
   guardianService.getNoticias(function(answer) {
     if(answer !== null) {
-      noticiasJSON = answer.response.results;
-      for(var k in noticiasJSON) {
-        var noticia = {
-          id: noticiasJSON[k].id,
-          sectionId: noticiasJSON[k].sectionId,
-          webURL: noticiasJSON[k].webUrl,
-          webTitle: noticiasJSON[k].webTitle
-        }
-        self.noticias.push(noticia);
-      }
+      self.tratarResultado(answer);
     }
   });
 
@@ -36,37 +56,17 @@ app.controller('GuardianController', ['GuardianService', function(guardianServic
     self.noticias = [];
   }
 
-  self.sectionPolitics
-
   self.getNoticiasSection = function(section) {
     guardianService.getNoticiasSection(section, function(answer) {
       self.resetNoticias();
-      noticiasJSON = answer.response.results;
-      for(var k in noticiasJSON) {
-        var noticia = {
-          id: noticiasJSON[k].id,
-          sectionId: noticiasJSON[k].sectionId,
-          webURL: noticiasJSON[k].webUrl,
-          webTitle: noticiasJSON[k].webTitle
-        }
-        self.noticias.push(noticia);
-      }
+      self.tratarResultado(answer);
     });
   }
 
   self.getNoticiasSearch = function(search) {
     guardianService.getNoticiasSearch(search, function(answer) {
       self.resetNoticias();
-      noticiasJSON = answer.response.results;
-      for(var k in noticiasJSON) {
-        var noticia = {
-          id: noticiasJSON[k].id,
-          sectionId: noticiasJSON[k].sectionId,
-          webURL: noticiasJSON[k].webUrl,
-          webTitle: noticiasJSON[k].webTitle
-        }
-        self.noticias.push(noticia);
-      }
+      self.tratarResultado(answer);
     });
   }
 }]);
@@ -75,9 +75,10 @@ app.factory('GuardianService', function($http){
 
   var guardianService = {};
   var APIurl = "https://content.guardianapis.com/";
+  var APIsearch = "search?api-key=2936efab-4bcf-4254-b273-1344474cc484&show-fields=all"
 
   guardianService.getNoticias = function(callback) {
-    $http.get(APIurl + 'search?api-key=2936efab-4bcf-4254-b273-1344474cc484').then(function(response) {
+    $http.get(APIurl + APIsearch).then(function(response) {
       var answer = response.data;
       callback(answer);
     },
@@ -99,7 +100,7 @@ app.factory('GuardianService', function($http){
   };
 
   guardianService.getNoticiasSection = function(section, callback) {
-    $http.get(APIurl + 'search?api-key=2936efab-4bcf-4254-b273-1344474cc484&section=' + section).then(function(response) {
+    $http.get(APIurl + APIsearch + '&section=' + section).then(function(response) {
       var answer = response.data;
       callback(answer);
     },
@@ -110,7 +111,7 @@ app.factory('GuardianService', function($http){
   };
 
   guardianService.getNoticiasSearch = function(search, callback) {
-    $http.get(APIurl + 'search?api-key=2936efab-4bcf-4254-b273-1344474cc484&q=' + search).then(function(response) {
+    $http.get(APIurl + APIsearch + '&q=' + search).then(function(response) {
       var answer = response.data;
       callback(answer);
     },

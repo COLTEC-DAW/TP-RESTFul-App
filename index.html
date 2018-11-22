@@ -7,36 +7,78 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script data-require="angular.js@1.4.6" data-semver="1.4.6" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.6/angular.min.js"></script>
   <script src="app.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">  
 </head>
 
 <body ng-app="news">
 
-  <input type="text" ng-model="search">
+  <nav class="navbar navbar-expand-lg " id="navbar">
+      <a class="navbar-brand" id="brand" href="#">HackerNEWS</a>
+      <button class="navbar-toggler" id="botaomenu" type="button" data-target="#sidebar" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="navbar-nav mr-auto"> 
+          </ul>
+          <form class="form-inline my-2 my-lg-0" id="formsearch">
+              <input class="form-control mr-sm-2" type="text" ng-model="search" placeholder="Notícias" aria-label="Search">
+          </form>
+      </div>
+  </nav>
+
     
   <div ng-controller="NewsController as newsCtrl">
 
-      <h1>Notícia Selecionada:</h1>
-      <h3>Titulo:   {{newsCtrl.new.title}}</h3>
-      <p>Autor:     {{newsCtrl.new.user}}</p>
-      <p>Tempo:     {{newsCtrl.new.time_ago}}</p>
-      <p>Tipo:      {{newsCtrl.new.type}}</p>
   
-    <div class="container-fluid">
-      <div class="row">
-        <table class="offset-sm-1 col-sm-4">
-            <tr><td><b>Notícias Principais</b></td></tr>
-            <tr ng-repeat="new in newsCtrl.principais">
-              <td>{{new.title}}</td> <td><button ng-click="newsCtrl.getSingleNotice(new.id)">Detalhes</button></td>
-            </tr>
-        </table>
-
-
-        <table class="offset-sm-1 col-sm-4">
-            <tr><td><b>Notícias</b></td></tr>
+    <div class="container-fluid" id="mainContainer">
+      
+      <div id="noticiaSelecionada">
+          <div class="offset-sm-3 offset-md-3 offset-lg-3 col-sm-6 col-md-6 col-lg-6">
+            <a href="{{newsCtrl.new.url}}"><h3>{{newsCtrl.new.title}}</h3></a>
+            <p>Autor:     {{newsCtrl.new.user}}</p>
+            <p>Upvotes:   {{newsCtrl.new.points}}</p>
+            <p>Postado à: {{newsCtrl.new.time_ago}}</p>
+          </div>
+      </div>
+      
+      <div class="row" id="newsContainer">
+        
+        <table class="offset-sm-1 offset-md-1 offset-lg-1 col-sm-5 col-md-6 col-lg-6">
+            <tr><td><h2>Notícias</h2></td></tr>
             <tr ng-repeat="new in newsCtrl.news | filter:search">
-              <td>{{new.title}}</td> <td><button ng-click="newsCtrl.getSingleNotice(new.id)">Detalhes</button></td>
+              <td>
+                <div class="list-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <a ng-click="newsCtrl.getSingleNotice(new.id)" class="list-group-item list-group-item-action flex-column align-items-start card">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1" id="title_notice">{{new.title}}</h4>
+                            <small>{{new.user}}</small>
+                        </div>     
+                    </a>
+                </div>
+                <br/>
+              </td> 
             </tr>
         </table>
+
+        
+        
+        <div class="offset-sm-1 offset-md-1 offset-lg-1 col-sm-4 col-md-3 col-lg-3" >
+          <div class="card" id="destaquesContainer">
+              <table>
+                  <tr><td><h4>Notícias em destaque</h4><hr/></td></tr>
+              
+                  <tr ng-repeat="new in newsCtrl.principais">
+                      <td><a ng-click="newsCtrl.getSingleNotice(new.id)">{{new.title}}</a><p/></td>
+                  </tr>
+              </table>  
+          </div>
+        </div>
+
       </div>
     </div>
 

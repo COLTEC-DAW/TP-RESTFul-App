@@ -74,7 +74,7 @@ function buildArtistCard(Artist_Card){
     }
     Top5LyricsList += "</ul>";
     let card = `
-    <a href="#" class="mx-auto my-5 flex flex-col items-center bg-neutral-700 border rounded-lg shadow-md md:flex-row md:max-w-xl border-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <a href="#" style="width: 350px;" class="mx-auto my-5 flex flex-col items-center bg-neutral-700 border rounded-lg shadow-md md:flex-row md:max-w-xl border-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700">
     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://s2.vagalume.com/${Artist_Card.photoUrl}" alt="">
     <div class="flex flex-col justify-between p-4 leading-normal">
     <h5 class="mb-2 text-2xl font-bold tracking-tight text-slate-100 dark:text-white">${Artist_Card.name}</h5>

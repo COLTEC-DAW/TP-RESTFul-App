@@ -85,11 +85,21 @@ function buildArtistCard(Artist_Card){
     return card;
 }
 function generateLyricsText(lyricsJson){
+    let paragraphStyleClasses = ["text-lime-300", "mx-auto", "d-block", "text-center", "my-5"];
     responseContainer.innerHTML = "";
-    const paragraph = document.createElement("p");
-    paragraph.classList.add("text-lime-300");
-    console.log(lyricsJson.mus[0].text);
-    paragraph.appendChild(document.createTextNode(lyricsJson.mus[0].text));
+    let lyrics = lyricsJson.mus[0].text;
+    let paragraph = document.createElement("p");
+    paragraph.classList.add(...paragraphStyleClasses);
+    for (let i = 0; i < lyrics.length; i++){
+        if (lyrics[i] != "\n"){
+            paragraph.innerHTML += lyrics[i];
+        }   
+        else{
+            responseContainer.appendChild(paragraph);
+            paragraph = document.createElement("p");
+            paragraph.classList.add(...paragraphStyleClasses);
+        }
+    }
     responseContainer.appendChild(paragraph);
 }
 function generateLyricsNotFound(){

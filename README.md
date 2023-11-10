@@ -1,10 +1,10 @@
 # Trabalho Prático: Aplicativo REST
 
-Data de Apresentação: 25/11/2022
+**Data de Entrega: 24/11**
 
-Grupo: Dois a Três alunos
+Grupo: Três alunos
 
-Valor: 08 pontos
+Valor: 10 pontos
 
 ## O mundo RESTFUL
 
@@ -19,9 +19,6 @@ Seu aplicativo deverá implementar as seguintes funcionalidades:
 * **Listagem geral:** Seu aplicativo deverá listar os recursos da API. A listagem deverá se adaptar ao tipo de dado servido pela API.
 * **Seleção de recursos:** Seu aplicativo deverá permitir que o usuário selecione um dos recursos da lista e então exibir seus detalhes.
 * **Busca de recursos:** O usuário poderá buscar por um recurso específico através de um mecanismo de busca.
-
-**Obs: Você deverá implementar uma funcionalidade por integrante!** 
-Isto é, se seu grupo possui dois integrantes, você poderá escolhar duas das três funcionalidades a ser implementada.
 
 ## Avaliação
 
@@ -38,6 +35,10 @@ Segue abaixo uma lista de sugestões de APIs públicas que estão disponíveis p
 Caso deseja buscar por outras sugestões, sugiro começar olhando [aqui](https://github.com/public-apis/public-apis). 
 
 **IMPORTANTE: Seu grupo deverá escolher uma API que ainda não fui utilizada em trabalhos anteriores nesta ou em outras disciplinas!!**
+
+## Entrega
+
+Deverá ser entregue, junto do pull request, um link para um vídeo com duração de 5 a 7 minutos contendo a apresentação do aplicativo desenvolvido.
 
 ### Finanças
 

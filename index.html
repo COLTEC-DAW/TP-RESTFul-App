@@ -7,41 +7,51 @@
     <title>The Movie DB Simple Client</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
+    <script src="js/plugins/jquery.simplePagination.js"></script>
+
 
     <script src="js/api/checkApiKey.js"></script>
-    <script src="js/apiForm.js"></script>
     <script src="js/api/getPopularMovies.js"></script>
-    <script src="js/showMovieList.js"></script>
+    <script src="js/api/searchMovie.js"></script>
+    <script src="js/configureApiForm.js"></script>
     <script src="js/configureHeader.js"></script>
+    <script src="js/configureSearchBar.js"></script>
+    <script src="js/utils.js"></script>
 
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/search-bar.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/movie-list.css">
+    <link rel="stylesheet" href="css/simplePagination.css">
 </head>
 
 <body>
-
+    <div class="header"></div>
+    <div class="search-bar"></div>
+    <div class="movie-list"></div>
+    <div id="pagination-container"></div>
     <script>
         $(document).ready(function () {
             var apiKey = localStorage.getItem('apiKey');
 
             // Carrega o formulário para pegar a Api Key
             if (!apiKey) {
-                $('body').load('components/form.html', apiForm)
+                $('body').load('components/form.html', configureApiForm)
             } else {
                 // Carrega o header
-                $('body').load('components/header.html', configureHeader)
+                $('.header').load('components/header.html', configureHeader)
 
-                showMovieList();
+                // Carrega a barra de pesquisa
+                $('.search-bar').load('components/search-bar', configureSearchBar)
+
+                loadMovieList(1, getPopularMovies);
             }
-
-
-
         })
-
-
-
     </script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,41 @@
+/* Estilo para a lista de filmes */
+.movie-list {
+display: flex;
+flex-wrap: wrap;
+}
+
+/* Estilo para cada card de filme */
+.movie-card {
+width: 200px;
+margin: 10px;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+}
+
+.movie-card img {
+max-width: 100%;
+height: auto;
+}
+
+
+/* Estilos para a paginação */
+/* #pagination-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#pagination-container button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #337ab7;
+    color: #fff;
+    border: 1px solid #337ab7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#pagination-container button:hover {
+    background-color: #23527c;
+    border-color: #1e466e;
+} */

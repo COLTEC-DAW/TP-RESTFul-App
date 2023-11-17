@@ -1,8 +1,8 @@
-function apiForm(){
+function configureApiForm(){
     $('#apiForm').submit(function (event) {
         event.preventDefault();
 
-        var apiKey = $('#apiKeyInput').val();
+        let apiKey = $('#apiKeyInput').val();
 
         let success = () => {
             localStorage.setItem('apiKey', apiKey);

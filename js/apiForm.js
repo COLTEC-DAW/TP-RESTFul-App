@@ -6,7 +6,7 @@ function apiForm(){
 
         let success = () => {
             localStorage.setItem('apiKey', apiKey);
-            
+            window.location.reload();            
         };
 
         let error = () => {

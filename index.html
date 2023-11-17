@@ -7,40 +7,39 @@
     <title>The Movie DB Simple Client</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/checkApiKey.js"></script>
-    <script src="js/apiForm.js"></script>
 
+    <script src="js/api/checkApiKey.js"></script>
+    <script src="js/apiForm.js"></script>
+    <script src="js/api/getPopularMovies.js"></script>
+    <script src="js/showMovieList.js"></script>
+    <script src="js/configureHeader.js"></script>
+
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/form.css">
 </head>
 
 <body>
-    <p id="status"></p>
 
-
-    
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var apiKey = localStorage.getItem('apiKey');
 
             // Carrega o formulário para pegar a Api Key
-            if(!apiKey){
+            if (!apiKey) {
                 $('body').load('components/form.html', apiForm)
+            } else {
+                // Carrega o header
+                $('body').load('components/header.html', configureHeader)
+
+                showMovieList();
             }
+
 
 
         })
 
 
 
-        // $(document).ready(function() {
-        //     var apiKey = localStorage.getItem('apiKey');
-
-        //     if (!apiKey) {
-        //         window.location.href = 'api-form.html';
-        //     }else{
-        //         $('#status').text('API Key: ' + apiKey);
-        //     }
-        // });
     </script>
 
 </body>

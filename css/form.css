@@ -1,0 +1,55 @@
+/* Estilo para o contêiner do formulário */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para o formulário */
+#apiForm {
+    margin-bottom: 20px;
+}
+
+#apiForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#apiKeyInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#saveApiKeyButton {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#saveApiKeyButton:hover {
+    background-color: #45a049;
+}
+
+/* Estilo para o contêiner de resultado */
+.result-container {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#resultText {
+    margin: 0;
+}

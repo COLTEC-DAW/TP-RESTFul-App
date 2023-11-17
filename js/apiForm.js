@@ -1,5 +1,22 @@
-$(document).ready(function() {
-    // Exemplo de uso da função com uma chave de API
-    var apiKeyToCheck = '057f97bcdcd279df032dbfc4352e5ff6'; // Substitua pela sua chave real
-    checkApiKey(apiKeyToCheck);
-});
+function apiForm(){
+    $('#apiForm').submit(function (event) {
+        event.preventDefault();
+
+        var apiKey = $('#apiKeyInput').val();
+
+        let success = () => {
+            localStorage.setItem('apiKey', apiKey);
+            
+        };
+
+        let error = () => {
+            $('#resultText').text('Error, check your key and try again.');
+        };
+
+        if (apiKey.trim() !== '') {
+            checkApiKey(apiKey, success, error);
+        } else {
+           $('#resultText').text('Empty key is not allowed.');
+        }
+    });
+}

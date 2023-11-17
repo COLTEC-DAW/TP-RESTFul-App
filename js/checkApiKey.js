@@ -6,12 +6,7 @@ function checkApiKey(apiKey, success, error) {
             'accept': 'application/json',
             'Authorization': 'Bearer ' + apiKey
         },
-        success: () => {
-            localStorage.setItem('apiKey', apiKey);
-            window.location.href = 'index.html';
-        },
-        error: () => {
-            $('#error-message').css('display', 'block');
-        }
+        success: success,
+        error: error
     });
 }

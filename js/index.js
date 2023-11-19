@@ -1,53 +1,61 @@
 const api_url = 'https://api.frankfurter.app/'
 
-const converter = () =>
+const converter = (conversor) =>
 {
-    const num  = $('#num_ref').val()
-    const ref  = $('#moeda_ref').val()
-    const conv = $('#moeda_conv').val()
+    const num  = conversor.children('.num_ref').val()
+    const ref  = conversor.children('.moeda_ref').val()
+    const conv = conversor.children('.moeda_conv').val()
 
     if(num != '' && ref != '' && conv != '')
     {
         if(ref == conv)
         {
-            $('#num_conv').text(parseFloat(num).toFixed(2))
+            conversor.children('.num_conv').text(parseFloat(num).toFixed(2))
         }
-        else
+        else if(conversor.attr('id') == 'converter_hj')
         {
             $.get(api_url + 'latest?amount=' + num + '&from=' + ref + '&to=' + conv)
             .done(res =>
-                $('#num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
+                conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
+            )
+        }
+        else
+        {
+            const date = conversor.children('.date_search').val()
+            $.get(api_url + date + '?amount=' + num + '&from=' + ref + '&to=' + conv)
+            .done(res =>
+                conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
             )
         }
     }
     else
     {
-        $('#num_conv').text(0.00.toFixed(2))
+        conversor.children('.num_conv').text(0.00.toFixed(2))
     }
 }
 
 let current_page = $('#pagina_principal')
 let currencies
 
-$('#btn_main').on('click', () =>
+const muda_pag = (e =>
 {
     current_page.hide()
-    current_page = $('#pagina_principal')
+    current_page = e
     current_page.show()
 })
 
-$('#btn_hj').on('click', () =>
-{
-    current_page.hide()
-    current_page = $('#moedas_hj')
-    current_page.show()
-})
+$('#btn_main').on('click', () => muda_pag($('#pagina_principal')))
+$('#btn_hj').on('click', () => muda_pag($('#moedas_hj')))
+$('#btn_his').on('click', () => muda_pag($('#historico')))
 
-$('#num_ref').on('change', converter)
+$('#converter_hj .num_ref').on('change', () => converter($('#converter_hj')))
+$('#converter_hj .moeda_ref').on('change', () => converter($('#converter_hj')))
+$('#converter_hj .moeda_conv').on('change', () => converter($('#converter_hj')))
 
-$('#moeda_ref').on('change', converter)
-
-$('#moeda_conv').on('change', converter)
+$('#converter_his .num_ref').on('change', () => converter($('#converter_his')))
+$('#converter_his .moeda_ref').on('change', () => converter($('#converter_his')))
+$('#converter_his .moeda_conv').on('change', () => converter($('#converter_his')))
+$('#converter_his .date_search').on('change', () => converter($('#converter_his')))
 
 /* AVAILABLE CURRENCIES */
 
@@ -101,8 +109,7 @@ setTimeout(() =>
             option = '<option value="' + c + '">'
             option += c + ' (' + currencies[c] + ')'
             option += '</option>'
-            $('#moeda_ref').append(option)
-            $('#moeda_conv').append(option)
+            Array($('.moeda')).forEach(e => e.append(option))
         })
     }        
 }, 1000)

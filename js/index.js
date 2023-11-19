@@ -97,8 +97,7 @@ setTimeout(() =>
     {
         const option = '<option value="">Opções Indisponíveis</option>'
         
-        $('#moeda_ref').append(option)
-        $('#moeda_conv').append(option)
+        Array($('.moeda')).forEach(e => e.append(option))
     }
     else
     {

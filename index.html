@@ -11,7 +11,8 @@
 
         <img src="" title="logo do site" alt="logo do site">
         <ul>
-            <li><button>Página Principal</button></li>
+            <li><button id="btn_main">Página Principal</button></li>
+            <li><button id="btn_hj">Moedas Hoje</button></li>
         </ul>
 
     </header>
@@ -19,7 +20,6 @@
     <div id="area_da_pagina">
 
         <main id="pagina_principal">
-
             
             <h1>fINAnce</h1>
             <h2>
@@ -28,14 +28,45 @@
             </h2>
 
             <article>
-                <h3>
-                    Página Principal
-                </h3>
+                <h3>Página Principal</h3>
                 <p>
                     (Explicação)
                 </p>
             </article>
+            <article>
+                <h3>Moedas Hoje</h3>
+                <p>
+                    (Explicação)
+                </p>
+            </article>
+        </main>
+        <main id="moedas_hj" hidden>
+            
+            <h1>Moedas Hoje</h1>
+            <h2>Confira aqui as cotações do dia</h2>
 
+            <article>
+                <h3>Principais</h3>
+                <ul id="principais">
+
+                </ul>
+            </article>
+            <article>
+                <h3>Favoritos</h3>
+                <ul id="favoritos">
+
+                </ul>
+            </article>
+            <article>
+                <h3>Converter</h3>
+                <div id="converter">
+                    <input id="num_ref" type="number" step="0.01">
+                    <input id="moeda_ref" type="text">
+                    &#8644;
+                    <span id="num_conv">0</span> 
+                    <input id="moeda_conv" type="text">
+                </div>
+            </article>
         </main>
 
     </div>

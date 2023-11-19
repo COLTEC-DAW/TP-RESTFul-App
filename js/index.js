@@ -27,6 +27,7 @@ const converter = () =>
 }
 
 let current_page = $('#pagina_principal')
+let currencies
 
 $('#btn_main').on('click', () =>
 {
@@ -48,24 +49,60 @@ $('#moeda_ref').on('change', converter)
 
 $('#moeda_conv').on('change', converter)
 
+/* AVAILABLE CURRENCIES */
+
 $.get(api_url + 'currencies')
 .done(res =>
 {
-    let option
+    currencies = res
+})
+.fail(erro =>
+{
+    currencies = null
+})
 
-    Object.keys(res).forEach(c =>
+/* MAIN CONVERSIONS */
+
+$.get(api_url + 'latest?amount=1&from=BRL&to=AUD,CAD,CHF,EUR,GBP,JPY,USD')
+.done(res =>
+{
+    let item
+
+    Object.keys(res.rates).forEach(c =>
     {
-        option = '<option value="' + c + '">'
-        option += c + ' (' + res[c] + ')'
-        option += '</option>'
-        $('#moeda_ref').append(option)
-        $('#moeda_conv').append(option)
+        item = '<li>BRL (' + currencies['BRL'] + ') 1.00 &#8644; '
+        item += c + ' (' + currencies[c] + ') '
+        item += parseFloat(res.rates[c]).toFixed(2) + '</li>'
+        $('#principais').append(item)
     });
 })
 .fail(erro =>
 {
-    const option = '<option value="">Opções Indisponíveis</option>'
-    
-    $('#moeda_ref').append(option)
-    $('#moeda_conv').append(option)
+    $('#principais').append('<li>Conversões Indisponíveis</li>')
 })
+
+/* OPTIONS FOR CONVERSION */
+
+setTimeout(() =>
+{
+    if(currencies == null)
+    {
+        const option = '<option value="">Opções Indisponíveis</option>'
+        
+        $('#moeda_ref').append(option)
+        $('#moeda_conv').append(option)
+    }
+    else
+    {
+        let option
+    
+        Object.keys(currencies).forEach(c =>
+        {
+            option = '<option value="' + c + '">'
+            option += c + ' (' + currencies[c] + ')'
+            option += '</option>'
+            $('#moeda_ref').append(option)
+            $('#moeda_conv').append(option)
+        })
+    }        
+}, 1000)

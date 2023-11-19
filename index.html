@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css">
     <title>fINAnce</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
@@ -60,11 +61,13 @@
             <article>
                 <h3>Converter</h3>
                 <div id="converter">
-                    <input id="num_ref" type="number" step="0.01">
-                    <input id="moeda_ref" type="text">
+
+                    <input id="num_ref" type="number" step="0.01" value="1.00">
+                    <input id="moeda_ref" type="text" value="">
                     &#8644;
                     <span id="num_conv">0</span> 
-                    <input id="moeda_conv" type="text">
+                    <input id="moeda_conv" type="text" value="">
+
                 </div>
             </article>
         </main>
@@ -79,6 +82,6 @@
         </p>
     </footer>
 
-    <script type="module" src="./js/index.js"></script>
+    <script src="./js/index.js"></script>
 </body>
 </html>

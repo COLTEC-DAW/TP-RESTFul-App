@@ -69,30 +69,30 @@ $.get(api_url + 'currencies')
     currencies = null
 })
 
-/* MAIN CONVERSIONS */
-
-$.get(api_url + 'latest?amount=1&from=BRL&to=AUD,CAD,CHF,EUR,GBP,JPY,USD')
-.done(res =>
-{
-    let item
-
-    Object.keys(res.rates).forEach(c =>
-    {
-        item = '<li>BRL (' + currencies['BRL'] + ') 1.00 &#8644; '
-        item += c + ' (' + currencies[c] + ') '
-        item += parseFloat(res.rates[c]).toFixed(2) + '</li>'
-        $('#principais').append(item)
-    });
-})
-.fail(erro =>
-{
-    $('#principais').append('<li>Conversões Indisponíveis</li>')
-})
-
-/* OPTIONS FOR CONVERSION */
-
 setTimeout(() =>
 {
+    /* MAIN CONVERSIONS */
+
+    $.get(api_url + 'latest?amount=1&from=BRL&to=AUD,CAD,CHF,EUR,GBP,JPY,USD')
+    .done(res =>
+    {
+        let item
+
+        Object.keys(res.rates).forEach(c =>
+        {
+            item = '<li>BRL (' + currencies['BRL'] + ') 1.00 &#8644; '
+            item += c + ' (' + currencies[c] + ') '
+            item += parseFloat(res.rates[c]).toFixed(2) + '</li>'
+            $('#principais').append(item)
+        })
+    })
+    .fail(erro =>
+    {
+        $('#principais').append('<li>Conversões Indisponíveis</li>')
+    })
+
+    /* OPTIONS FOR CONVERSION */
+
     if(currencies == null)
     {
         const option = '<option value="">Opções Indisponíveis</option>'

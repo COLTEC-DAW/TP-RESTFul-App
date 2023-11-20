@@ -12,20 +12,34 @@ const converter = (conversor) =>
         {
             conversor.children('.num_conv').text(parseFloat(num).toFixed(2))
         }
-        else if(conversor.attr('id') == 'converter_hj')
+        else switch(conversor.attr('id'))
         {
-            $.get(api_url + 'latest?amount=' + num + '&from=' + ref + '&to=' + conv)
-            .done(res =>
-                conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
-            )
-        }
-        else
-        {
-            const date = conversor.children('.date_search').val()
-            $.get(api_url + date + '?amount=' + num + '&from=' + ref + '&to=' + conv)
-            .done(res =>
-                conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
-            )
+            case 'converter_hj':
+            
+                $.get(api_url + 'latest?amount=' + num + '&from=' + ref + '&to=' + conv)
+                .done(res =>
+                    conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
+                )
+                break;
+            case 'converter_his':
+                
+                const date = conversor.children('.date_search').val()
+                
+                $.get(api_url + date + '?amount=' + num + '&from=' + ref + '&to=' + conv)
+                .done(res =>
+                    conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
+                )
+                break;
+            case 'cotacao_periodo':
+
+                const begin = conversor.children('.date_begin').val()
+                const end   = conversor.children('.date_end').val()
+                    
+                $.get(api_url + begin + '..' + end + '?from=' + ref + '&to=' + conv)
+                .done(res =>
+                    console.log(res)
+                )
+                break;
         }
     }
     else
@@ -48,14 +62,14 @@ $('#btn_main').on('click', () => muda_pag($('#pagina_principal')))
 $('#btn_hj').on('click', () => muda_pag($('#moedas_hj')))
 $('#btn_his').on('click', () => muda_pag($('#historico')))
 
-$('#converter_hj .num_ref').on('change', () => converter($('#converter_hj')))
-$('#converter_hj .moeda_ref').on('change', () => converter($('#converter_hj')))
-$('#converter_hj .moeda_conv').on('change', () => converter($('#converter_hj')))
+$('#converter_hj').children('input, select')
+.on('change', () => converter($('#converter_hj')))
 
-$('#converter_his .num_ref').on('change', () => converter($('#converter_his')))
-$('#converter_his .moeda_ref').on('change', () => converter($('#converter_his')))
-$('#converter_his .moeda_conv').on('change', () => converter($('#converter_his')))
-$('#converter_his .date_search').on('change', () => converter($('#converter_his')))
+$('#converter_his').children('input, select')
+.on('change', () => converter($('#converter_his')))
+
+$('#cotacao_periodo').children('input, select')
+.on('change', () => converter($('#cotacao_periodo')))
 
 /* AVAILABLE CURRENCIES */
 
@@ -110,5 +124,5 @@ setTimeout(() =>
             option += '</option>'
             Array($('.moeda')).forEach(e => e.append(option))
         })
-    }        
-}, 1000)
+    }
+}, 1500)

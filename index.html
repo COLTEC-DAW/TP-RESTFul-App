@@ -81,7 +81,7 @@
 
             <article>
                 <h3>Cotação em Data Específica</h3>
-                <div id="converter_his">
+                <form id="converter_his">
 
                     <input class="date_search" type="date">
                     <select class="moeda moeda_ref">
@@ -93,8 +93,23 @@
                         <option value=""></option>
                     </select>
                     <span class="num_conv">0.00</span>
+                </form>
+            </article>
+            <article>
+                <h3>Cotações em um Dado Período</h3>
+                <form id="cotacao_periodo">
 
-                </div>
+                    <select class="moeda moeda_ref">
+                        <option value=""></option>
+                    </select>
+                    &#8644;
+                    <select class="moeda moeda_conv">
+                        <option value=""></option>
+                    </select>
+                    <input class="date_begin" type="date">
+                    <input class="date_end" type="date">
+
+                </form>
             </article>
         </main>
     </div>

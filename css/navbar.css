@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #343a40;
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+
+.navbar-dark .navbar-brand img {
+    margin-right: 10px;
+}
+
+.navbar-text {
+    color: #fff;
+}
+
+.creative-button {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}

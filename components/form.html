@@ -1,10 +1,12 @@
-<div class="form-container">
-    <form id="apiForm">
-        <label for="apiKey">API KEY:</label>
-        <input type="text" id="apiKeyInput" required>
-        <button type="submit" id="saveApiKeyButton">Save</button>
+<div class="container mt-5">
+    <form id="apiKeyForm">
+        <div class="mb-3">
+            <label for="apiKey" class="form-label">API KEY:</label>
+            <input type="text" class="form-control" id="apiKeyInput" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="saveApiKeyButton">Save</button>
     </form>
-    <div class="result-container">
+    <div class="result-container mt-3">
         <p id="resultText"></p>
     </div>
 </div>

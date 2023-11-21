@@ -12,24 +12,22 @@ function displayPagination(totalPages, currentPage, getMoviesApi, query) {
 }
 
 function createMovieModal(movieInfo) {
-    console.log('haha: ')
-    console.log(movieInfo)
 
-    $('#movie-modal').load('../components/movie-modal.html', () => {
-        $('#modal-title').text(movieInfo.title);
-        $('#modal-overview').text(movieInfo.overview);
-        $('#modal-poster').attr('src', 'https://image.tmdb.org/t/p/w500' + movieInfo.poster_path);
-        $('#modal-release-date').text(movieInfo.release_date);
-        $('#modal-runtime').text(movieInfo.runtime);
-        $('#modal-tagline').text(movieInfo.tagline);
+    $('#modal-loader').load('../components/movie-modal.html', () => {
+        $('#modalTitle').text(movieInfo.title);
+        $('#modalOverview').text(movieInfo.overview);
+        $('#modalPoster').attr('src', 'https://image.tmdb.org/t/p/w500' + movieInfo.poster_path);
+        $('#modalReleaseDate').text(movieInfo.release_date);
+        $('#modalRuntime').text(movieInfo.runtime);
+        $('#modalTagline').text(movieInfo.tagline);
 
-        var genresList = $('#modal-genres');
+        var genresList = $('#modalGenres');
         genresList.empty();
         movieInfo.genres.forEach(function (genre) {
             genresList.append('<li>' + genre.name + '</li>');
         });
 
-        $('#movie-modal').css('display', 'flex');
+        $('#movieModal').css('display', 'flex');
     });
 }
 

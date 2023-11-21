@@ -1,12 +1,12 @@
-function configureApiForm(){
-    $('#apiForm').submit(function (event) {
+function configureApiKeyForm() {
+    $('#apiKeyForm').submit(function (event) {
         event.preventDefault();
 
         let apiKey = $('#apiKeyInput').val();
 
         let success = () => {
             localStorage.setItem('apiKey', apiKey);
-            window.location.reload();            
+            window.location.reload();
         };
 
         let error = () => {
@@ -16,7 +16,7 @@ function configureApiForm(){
         if (apiKey.trim() !== '') {
             checkApiKey(apiKey, success, error);
         } else {
-           $('#resultText').text('Empty key is not allowed.');
+            $('#resultText').text('Empty key is not allowed.');
         }
     });
 }

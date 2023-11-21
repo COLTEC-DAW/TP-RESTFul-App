@@ -4,7 +4,7 @@ function configureSearchBar() {
 
         console.log(query)
         if (query) {
-            loadMovieList(1, searchMovie, queryk)
+            loadMovieList(1, searchMovie, query)
         }
     });
 

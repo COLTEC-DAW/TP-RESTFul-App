@@ -11,14 +11,52 @@ function displayPagination(totalPages, currentPage, getMoviesApi, query) {
 
 }
 
-function buildMovieCard(movie) {
+function createMovieModal(movieInfo) {
+    console.log('haha: ')
+    console.log(movieInfo)
+
+    $('#movie-modal').load('../components/movie-modal.html', () => {
+        $('#modal-title').text(movieInfo.title);
+        $('#modal-overview').text(movieInfo.overview);
+        $('#modal-poster').attr('src', 'https://image.tmdb.org/t/p/w500' + movieInfo.poster_path);
+        $('#modal-release-date').text(movieInfo.release_date);
+        $('#modal-runtime').text(movieInfo.runtime);
+        $('#modal-tagline').text(movieInfo.tagline);
+
+        var genresList = $('#modal-genres');
+        genresList.empty();
+        movieInfo.genres.forEach(function (genre) {
+            genresList.append('<li>' + genre.name + '</li>');
+        });
+
+        $('#movie-modal').css('display', 'flex');
+    });
+}
+
+
+function createMovieCard(movie) {
     let movieCard = $('<div class="movie-card">');
+    var poster = $('<img>').attr('src', 'https://image.tmdb.org/t/p/w500' + movie.poster_path);
     var title = $('<h3>').text(movie.title);
     var releaseDate = $('<p>').text('Release Date: ' + movie.release_date);
     var overview = $('<p>').text(movie.overview);
-    var poster = $('<img>').attr('src', 'https://image.tmdb.org/t/p/w500' + movie.poster_path);
 
-    movieCard.append(title, releaseDate, overview, poster);
+    var moreButton = $('<button>').text('More');
+    moreButton.click(() => {
+        let success = (res) => {
+            createMovieModal(res)
+        }
+
+        let error = (res) => {
+            console.log('Error getting movie info.')
+        }
+
+        console.log(movie.id)
+        getMovieDetails(movie.id, success, error)
+
+    });
+    
+    movieCard.append(title, releaseDate, overview, poster, moreButton);
 
     return movieCard;
 }
@@ -32,14 +70,12 @@ function loadMovieList(page, getMoviesApi, query) {
 
 
         moviesReq.results.forEach(movie => {
-            movieList.append(buildMovieCard(movie));
+            movieList.append(createMovieCard(movie));
         })
-        
+
         displayPagination(moviesReq.total_pages, moviesReq.page, getMoviesApi, query)
 
         $(window).scrollTop(0);
-
-        console.log(moviesReq)
     }
 
     let error = (error) => {

@@ -9,4 +9,8 @@ function configureNavbar() {
         window.location.reload();
     })
 
+    $('.navbar-brand').on('click', function() {
+        window.location.href = '../index.html'; 
+    });
+
 }

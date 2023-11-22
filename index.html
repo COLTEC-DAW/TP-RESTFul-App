@@ -28,16 +28,13 @@
 
     <link rel="stylesheet" href="css/body.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <!-- <link rel="stylesheet" href="css/search-bar.css"> -->
-    <!-- <link rel="stylesheet" href="css/form.css"> -->
-    <!-- <link rel="stylesheet" href="css/movie-list.css"> -->
-    <link rel="stylesheet" href="css/simplePagination.css">
-    <!-- <link rel="stylesheet" href="css/movie-modal.css"> -->
+    <link rel="stylesheet" href="css/pagination.css">
 </head>
 
 <body>
     <div id="navbarLoader"></div>
     <div id="searchBarLoader"></div>
+    <div id="infoLoader"></div>
     <div id="movieListLoader"></div>
     <div id="paginationContainer"></div>
     <div id="modalLoader"></div>
@@ -59,7 +56,8 @@
                 // Carrega a barra de pesquisa
                 $('#searchBarLoader').load('components/search-bar.html', configureSearchBar)
 
-                loadMovieList(1, getPopularMovies);
+                // Carrega a lista de filmes populares
+                loadPopularMoviesList();
             }
         })
     </script>

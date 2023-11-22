@@ -1,0 +1,82 @@
+/* CSS para Paginação Bonita em Modo Escuro com Estilo Semelhante ao Bootstrap Dark */
+
+ul.simple-pagination {
+    list-style: none;
+}
+
+.simple-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 5px 5px 0;
+    margin: 0;
+}
+
+.simple-pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.simple-pagination li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    float: left;
+}
+
+span.ellipse.clickable {
+    cursor: pointer;
+}
+
+.ellipse input {
+    width: 3em;
+}
+
+.dark-theme span {
+    cursor: pointer;
+}
+
+.dark-theme a,
+.dark-theme span {
+    float: left;
+    color: #FFF; /* Altera a cor da fonte para branco */
+    font-size: 16px; /* Aumenta o tamanho da fonte */
+    line-height: 24px;
+    font-weight: normal;
+    text-align: center;
+    border: 1px solid #343a40; /* Cor semelhante ao Bootstrap Dark */
+    min-width: 14px;
+    padding: 8px 12px; /* Aumenta o padding para tornar os botões maiores */
+    margin: 0 5px 0 0;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background: #343a40; /* Cor de fundo semelhante ao Bootstrap Dark */
+}
+
+.dark-theme a:hover,
+.dark-theme li:not(.disabled):not(.active) span:hover {
+    text-decoration: none;
+    background: #23272b; /* Cor de fundo ao passar o mouse semelhante ao Bootstrap Dark */
+}
+
+.dark-theme .current {
+    background: #007bff; /* Cor de fundo da página atual semelhante ao Bootstrap Dark */
+    color: #FFF;
+    border-color: #007bff; /* Cor da borda da página atual semelhante ao Bootstrap Dark */
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+    cursor: default;
+}
+
+.dark-theme .ellipse {
+    background: #23272b; /* Cor de fundo da elipse semelhante ao Bootstrap Dark */
+    border: none;
+    border-radius: 3px; /* Adiciona bordas arredondadas semelhantes ao Bootstrap */
+    box-shadow: none;
+    font-weight: bold;
+    cursor: default;
+}

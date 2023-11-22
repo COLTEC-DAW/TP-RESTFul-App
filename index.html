@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </head>
+    <body>
+        <script src="app.js"></script>
+
+        <main>
+            <input type="text" placeholder="recurso" id="recurso">
+            <button onclick="buscarRecurso()">Buscar</button>
+
+            <button onclick="listarRecursos()">Listar</button>
+
+            <p id="name" class="name"></p>
+            <p id="resources" class="resources"></p>
+
+            <div id="result" class="result"></div>
+            <p id="error" class="error"></p>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+body{
+    background-color: lightgray;
+}
+
+main{
+    border: 2px solid #3498db;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    min-height: 500px;
+    margin: 0 auto;
+}
+
+/* Reset de estilos para o input */
+input {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  
+  /* Estilo do input text */
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #363636;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  /* Efeito de foco no input text */
+  input[type="text"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+  }
+  
+  /* Estilo para placeholder do input text */
+  input[type="text"]::placeholder {
+    color: black;
+  }
+  
+  /* Estilo para texto digitado no input text */
+  input[type="text"]:-ms-input-placeholder,
+  input[type="text"]::-ms-input-placeholder,
+  input[type="text"]:-moz-placeholder,
+  input[type="text"]::-moz-placeholder,
+  input[type="text"]::placeholder {
+    color: black;
+  }
+  
+  /* Estilo para ícone dentro do input (opcional) */
+  .input-icon {
+    position: relative;
+  }
+  
+  .input-icon i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+  }
+
+/* Estilo do botão */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #3498db;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Efeito de hover no botão */
+  button:hover:not(.butRes) {
+    background-color: #2980b9;
+  }
+  
+  /* Efeito de foco no botão */
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+  }
+  
+  /* Estilo para botão desabilitado */
+  button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+  }
+  
+  /* Estilo para ícone dentro do botão (opcional) */
+  .button-icon {
+    margin-right: 5px;
+  }
+  
+.butRes{
+    background: none;
+    border: none;
+    color: #3498db; /* Cor do link */
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+  }
+  
+  /* Efeito de hover no botão (opcional) */
+  .butRes:hover {
+    text-decoration: none;
+    color: #2980b9; /* Cor do link ao passar o mouse */
+  }
+  

@@ -1,5 +1,5 @@
 function createMovieCard(movie) {
-    const movieCard = $('<div class="card mx-5 mb-5 bg-dark text-light h-100">');
+    const movieCard = $('<div class="card bg-dark text-light h-100">');
 
     const posterCol = $('<div class="col-md-4 col-12">').append(
         $('<img class="img-fluid rounded-start w-100 h-100">')

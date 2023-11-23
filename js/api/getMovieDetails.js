@@ -1,6 +1,6 @@
 function getMovieDetails(movieId, success, error) {
     $.ajax({
-        url: 'https://api.themoviedb.org/3/movie/'+String(movieId).trim(),
+        url: 'https://api.themoviedb.org/3/movie/' + String(movieId).trim(),
         method: 'GET',
         headers: {
             'accept': 'application/json',
@@ -10,11 +10,9 @@ function getMovieDetails(movieId, success, error) {
             'language': 'en-US'
         },
         success: (a) => {
-            console.log(a)   
+            console.log(a)
             success(a)
         },
         error: error
     });
 }
-
-// --url 'https://api.themoviedb.org/3/movie/872585?language=en-US' \

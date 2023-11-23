@@ -1,19 +1,19 @@
 function configureApiKeyForm() {
-    $('#apiKeyForm').submit(function (event) {
+    $('#apiKeyForm').submit((event) => {
         event.preventDefault();
 
-        let apiKey = $('#apiKeyInput').val();
+        const apiKey = $('#apiKeyInput').val().trim();
 
-        let success = () => {
+        const success = () => {
             localStorage.setItem('apiKey', apiKey);
             window.location.reload();
         };
 
-        let error = () => {
+        const error = () => {
             $('#resultText').text('Error, check your key and try again.');
         };
 
-        if (apiKey.trim() !== '') {
+        if (apiKey !== '') {
             checkApiKey(apiKey, success, error);
         } else {
             $('#resultText').text('Empty key is not allowed.');

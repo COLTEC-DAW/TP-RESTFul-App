@@ -7,16 +7,17 @@
     <title>fINAnce</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
     <header>
 
         <img src="" title="logo do site" alt="logo do site">
-        <ul>
-            <li><button id="btn_main">Página Principal</button></li>
-            <li><button id="btn_hj">Moedas Hoje</button></li>
-            <li><button id="btn_his">Histórico</button></li>
-        </ul>
+        
+        <button id="btn_his">Histórico</button>
+        <button id="btn_hj">Moedas Hoje</button>
+        <button id="btn_main">Página Principal</button>
 
     </header>
 
@@ -60,7 +61,7 @@
             </article>
             <article>
                 <h3>Converter</h3>
-                <div id="converter_hj">
+                <div class='conversor' id="converter_hj">
 
                     <select class="moeda moeda_ref">
                         <option value=""></option>
@@ -82,7 +83,7 @@
 
             <article>
                 <h3>Cotação em Data Específica</h3>
-                <form id="converter_his">
+                <div class='conversor' id="converter_his">
 
                     <input class="date_search" type="date">
                     <select class="moeda moeda_ref">
@@ -94,11 +95,11 @@
                         <option value=""></option>
                     </select>
                     <span class="num_conv">0.00</span>
-                </form>
+                </div>
             </article>
             <article>
                 <h3>Cotações em um Dado Período</h3>
-                <form id="cotacao_periodo">
+                <div class='conversor' id="cotacao_periodo">
 
                     <select class="moeda moeda_ref">
                         <option value=""></option>
@@ -112,7 +113,7 @@
 
                     <div id="grafico_cotacao_periodo"></div>
 
-                </form>
+                </div>
             </article>
         </main>
     </div>

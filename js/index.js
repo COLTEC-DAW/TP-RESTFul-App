@@ -91,6 +91,7 @@ const converter_periodo = () =>
                     })
 
                     Plotly.newPlot('grafico_cotacao_periodo', data, layout)
+                    $(window).on('resize', e => Plotly.newPlot('grafico_cotacao_periodo', data, layout))
                 })
     }
 }

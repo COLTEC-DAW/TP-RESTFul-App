@@ -61,15 +61,37 @@ const converter_periodo = () =>
 {
     const conversor = $('#cotacao_periodo')
 
-    const ref   = conversor.children('.moeda_ref').val()
-    const conv  = conversor.children('.moeda_conv').val()
-    const begin = conversor.children('.date_begin').val()
-    const end   = conversor.children('.date_end').val()
+    const ref    = conversor.children('.moeda_ref').val()
+    const conv   = conversor.children('.moeda_conv').val()
+    const begin  = conversor.children('.date_begin').val()
+    const end    = conversor.children('.date_end').val()
+    const data   = []
+    const dates  = []
+    const rates  = []
+    const layout = {}
 
     if(ref != '' && conv != '' && begin != '' && end != '' && ref != conv && begin < end)
     {
         $.get(api_url + begin + '..' + end + '?from=' + ref + '&to=' + conv)
-            .done(res => console.log(res))
+            .done(res =>
+                {
+                    layout.title = 'Valor de ' + ref + ' 1.00 em ' + conv
+                    Object.keys(res.rates).forEach(date =>
+                        {
+                            dates.push(date)
+                            rates.push(res.rates[date][conv])
+                        })
+                    
+                    data.push
+                    ({
+                        type: 'scatter',
+                        mode: 'lines',
+                        x: dates,
+                        y: rates
+                    })
+
+                    Plotly.newPlot('grafico_cotacao_periodo', data, layout)
+                })
     }
 }
 

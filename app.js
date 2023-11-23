@@ -3,7 +3,7 @@ function listarRecursos() {
     document.getElementById("resources").innerText = " ";
 
     $.ajax({
-        url: 'https://api.chess.com/pub/player/hikaru',
+        url: 'https://api.chess.com/pub/player/thalesed',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -33,7 +33,7 @@ function buscarRecurso(recurso) {
     document.getElementById("resources").style = "display: none;";
     $.ajax({
         //url: 'https://anapioficeandfire.com/api/characters/583',
-        url: 'https://api.chess.com/pub/player/hikaru',
+        url: 'https://api.chess.com/pub/player/thalesed',
         dataType: 'json',
         success: function (data) {
             // Verifica se o recurso fornecido existe nos dados

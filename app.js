@@ -1,13 +1,15 @@
-function listarRecursos(){
+function listarRecursos() {
     document.getElementById("resources").style = "display: grid;";
     document.getElementById("resources").innerText = " ";
+
     $.ajax({
-        url: 'http://data.fixer.io/api/latest?access_key=d4148233556a36282035fa1e5ea85c92',
+        url: 'https://api.chess.com/pub/player/hikaru',
+        type: 'GET',
         dataType: 'json',
         success: function (data) {
             // Manipule os dados conforme necessário para listar os recursos desejados
             var resources = Object.keys(data);
-    
+
             // Exiba os recursos na sua página HTML
             var resourcesList = $('#resources');
             resources.forEach(function (resource) {
@@ -30,7 +32,8 @@ function buscarRecurso(recurso) {
     }
     document.getElementById("resources").style = "display: none;";
     $.ajax({
-        url: 'http://data.fixer.io/api/latest?access_key=d4148233556a36282035fa1e5ea85c92',
+        //url: 'https://anapioficeandfire.com/api/characters/583',
+        url: 'https://api.chess.com/pub/player/hikaru',
         dataType: 'json',
         success: function (data) {
             // Verifica se o recurso fornecido existe nos dados

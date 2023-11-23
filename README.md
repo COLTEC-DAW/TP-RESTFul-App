@@ -2,9 +2,18 @@
 
 **Data de Entrega: 24/11**
 
-Grupo: Três alunos
+Grupo: Kaio Fernandes, Gabrielle Maia, Thales Davi
 
 Valor: 10 pontos
+
+## Observações:
+- O código aqui presente começou a ser desenvolvido em outro repositório ao invés do Fork.
+- Para rodar o código basta utilizar os seguintes comandos:
+```node
+npm install
+npm run dev
+```
+- Pode testar o código funcionando no seguinte link também: [Dexpedia](https://regal-nougat-f12725.netlify.app)
 
 ## O mundo RESTFUL
 

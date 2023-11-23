@@ -1,6 +1,7 @@
 ## Grupo:
 - Leonardo Prado
 - Guilherme Luiz
+- Leandro Rodrigues
 
 ## Api Vagalume
 Link de acesso à documentação: https://api.vagalume.com.br/docs/

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagalume DAW</title>
+    
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Vagalume DAW</h1>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">Sobre</a></li>
+        </ul>
+    </header>
+    <main>
+        <section class="title">
+            <h2>Busque pelos artistas que desejar!</h2>
+            <p>Encontre o perfil dos artistas, as músicas mais famosas, os melhores álbuns e muito mais</p>
+        </section>
+        
+        <div class="busca">
+            <input type="text" id="busca" placeholder="Nome do artista/banda" onkeydown="verificaEnter(event)">
+            <button onclick="busca()">Pesquisar</button>
+        </div>
+        <span id="count-resu" style="margin: 20px;"></span>
+        
+        <div id="artistas-box">
+            
+        </div>
+</main>
+
+</body>
+<script>
+const busca = () => {
+    let procu = document.getElementById('busca').value;
+
+    fetch(`https://api.vagalume.com.br/search.art?apikey=660a4395f992ff67786584e238f501aa&q=${procu}`)
+    .then(p => p.json())
+    .then(p => p.response.docs)
+    .then(p => mostrarResultados(p))
+
+}
+
+const verificaEnter = (event) => {
+    if(event.key == 'Enter'){
+        busca();
+    }
+}
+
+const mostrarResultados = results => {
+    const div = document.getElementById('artistas-box')
+    
+    let childToRemove = div.lastElementChild;
+
+    while(childToRemove != null){
+        div.removeChild(childToRemove);
+        childToRemove = div.lastElementChild;
+    }
+
+    document.getElementById('count-resu').innerHTML = `Resultados para a busca: ${results.length}`;
+
+    results.forEach(e => {
+        let card = document.createElement('div');
+        let title = document.createElement('h2');
+        let btn = document.createElement('button');
+        let link = document.createElement('a');
+        
+        card.className = 'card'
+
+        link.innerHTML = 'Ir para o artista'
+        btn.appendChild(link);
+        btn.onclick = () => {
+            localStorage.setItem('url', e.url)
+            window.location.href = './artist.html' 
+        }   
+
+        title.appendChild(document.createTextNode(e.band));
+
+        card.appendChild(title);
+        card.appendChild(btn);
+
+        div.appendChild(card);
+    });
+    
+    if(results.length === 0){
+        let noResults = document.createElement('h3')
+        noResults.appendChild(document.createTextNode('Sem resultados para a busca'))
+        div.appendChild(noResults)
+        document.getElementById('count-resu').innerHTML = ''
+    }
+}
+</script>
+</html>

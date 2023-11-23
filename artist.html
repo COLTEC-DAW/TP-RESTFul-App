@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagalume DAW</title>
+
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/artist.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Vagalume DAW</h1>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">Sobre</a></li>
+        </ul>
+    </header>
+    <section class="img-wrapper">
+        <img src="" alt="Imagem do artista/banda" id="img-art">
+        <div class="info-wrapper">
+            <h2 id="art-name"></h2>
+
+            <div id="genre">
+            </div>
+
+            <h6><a href="" id="pag-vag" target="_blank">Página do vagalume</a></h6>
+        </div>
+    </section>
+    <main>
+        <section>
+            <div class="toggle">
+                <h2>Top Songs </h2>
+                <button onclick="toggleTopSongs()">Mostrar/Esconder</button>
+            </div>
+            <div id="top-songs">
+            </div>
+
+            <div class="toggle">
+                <h2>Albuns: </h2>
+                <button onclick="toggleAlbums()">Mostrar/Esconder</button>
+            </div>
+            <div id="albums">
+            </div>
+        </section>
+    </main>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let url = localStorage.getItem('url');
+        
+        fetch(`https://www.vagalume.com.br/${url}/index.js`)
+        .then(p => p.json())
+        .then(p => p.artist)
+        .then(p => {
+            document.getElementById('art-name').innerHTML = p.desc;
+            document.getElementById('pag-vag').href = `https://www.vagalume.com.br/${p.url}/`;
+            document.getElementById('img-art').src = `https://www.vagalume.com.br/${p.pic_medium}`;
+            
+            p.genre.forEach(e => {
+                let h6 = document.createElement('h6');
+                h6.appendChild(document.createTextNode(e.name));
+                document.getElementById('genre').appendChild(h6);
+            });
+
+            p.toplyrics.item.forEach(e => {
+                let card = document.createElement('div');
+                let songName = document.createElement('h3');
+                let songUrl = document.createElement('a');
+
+                songName.innerHTML = e.desc;
+                songUrl.href = `https://www.vagalume.com.br${e.url}`;
+                songUrl.innerHTML = 'Ir para música'
+                songUrl.target = '_blank'
+
+                card.appendChild(songName);
+                card.appendChild(songUrl);
+
+                document.getElementById('top-songs').appendChild(card);
+            })
+
+            p.albums.item.forEach(e => {
+                let card = document.createElement('div');
+                let cardName = document.createElement('div');
+                let albumName = document.createElement('h3');
+                let albumUrl = document.createElement('a');
+                let year = document.createElement('span')
+                let gravadora = document.createElement('span')
+
+                albumName.innerHTML = e.desc;
+                albumUrl.href = `https://www.vagalume.com.br${e.url}`;
+                albumUrl.target = '_blank';
+                albumUrl.innerHTML = 'Ir para o album';
+                year.innerHTML = e.year
+                // Pelo visto a API não retorna mais esse dado
+                // gravadora.innerHTML = e.label
+
+                cardName.appendChild(albumName);
+                // Pelo visto a API não retorna mais esse dado
+                // e.label ? cardName.appendChild(gravadora) : '';
+                
+                card.appendChild(cardName);
+                card.appendChild(albumUrl);
+                e.year ? cardName.appendChild(year) : '';
+                
+                document.getElementById('albums').appendChild(card);
+            })
+        })
+    })
+
+    const toggleTopSongs = () => {
+        let topSongs = document.getElementById('top-songs'); 
+        if(topSongs.style.display == 'none'){
+            topSongs.style.display = 'block'
+        }else{
+            topSongs.style.display = 'none';
+        }
+    }
+    const toggleAlbums = () => {
+        let albums = document.getElementById('albums'); 
+        if(albums.style.display == 'none'){
+            albums.style.display = 'block'
+        }else{
+            albums.style.display = 'none';
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,57 @@
+#img-art{
+    border-radius: 100%;
+}
+
+.img-wrapper {
+    background-color: #070904;
+    padding: 50px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info-wrapper{
+    font-size: 30px;
+    margin-left: 8vw;
+}
+.info-wrapper > * {padding-bottom: 10px;}
+.info-wrapper > h6 > a{color: white;}
+.info-wrapper > h6 > a:hover{color: lightgrey;}
+
+#genre{
+    display: flex;
+    flex-direction: row;
+}
+
+#genre > * {padding-left: 10px;}
+#genre > *:first-child {padding-left: 0;}
+
+
+.toggle{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.toggle > button{
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+#top-songs > div{
+    margin: 23px 0;
+}
+
+#albums > div{
+    margin: 23px 0;
+
+}
+
+@media (max-width: 700px) {
+    .img-wrapper {flex-direction: column;}
+    .info-wrapper{
+        font-size: 24px;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}

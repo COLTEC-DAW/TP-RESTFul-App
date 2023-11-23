@@ -1,0 +1,12 @@
+h1, h2, p, ol, li {
+    margin-top: 5px;
+}
+
+ol{
+ padding-left: 40px;
+}
+
+p, li {
+    font-family: sans-serif;
+    font-size: 18px;
+}

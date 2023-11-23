@@ -1,0 +1,53 @@
+* {
+    margin: 0; 
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+main {padding: 20px;}
+
+header {
+    background-color: #161715;
+    color: white;
+    padding: 15px 25px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+header > ul > li > a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+header > ul > li > a:hover {
+    color: lightgray;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+}
+
+button {
+    background-color: #161715;
+    color: white;
+    padding: 5px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 0;
+}
+
+button:hover{
+    background-color: lightgray;
+}

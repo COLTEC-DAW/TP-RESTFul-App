@@ -1,10 +1,12 @@
 const api_url = 'https://api.frankfurter.app/'
 
-const converter = (conversor) =>
+const converter_hj = () =>
 {
-    const num  = conversor.children('.num_ref').val()
+    const conversor = $('#converter_hj')
+
     const ref  = conversor.children('.moeda_ref').val()
     const conv = conversor.children('.moeda_conv').val()
+    const num  = conversor.children('.num_ref').val()
 
     if(num != '' && ref != '' && conv != '')
     {
@@ -12,39 +14,62 @@ const converter = (conversor) =>
         {
             conversor.children('.num_conv').text(parseFloat(num).toFixed(2))
         }
-        else switch(conversor.attr('id'))
+        else
         {
-            case 'converter_hj':
-            
-                $.get(api_url + 'latest?amount=' + num + '&from=' + ref + '&to=' + conv)
+            $.get(api_url + 'latest?amount=' + num + '&from=' + ref + '&to=' + conv)
                 .done(res =>
                     conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
                 )
-                break;
-            case 'converter_his':
-                
-                const date = conversor.children('.date_search').val()
-                
-                $.get(api_url + date + '?amount=' + num + '&from=' + ref + '&to=' + conv)
-                .done(res =>
-                    conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
-                )
-                break;
-            case 'cotacao_periodo':
-
-                const begin = conversor.children('.date_begin').val()
-                const end   = conversor.children('.date_end').val()
-                    
-                $.get(api_url + begin + '..' + end + '?from=' + ref + '&to=' + conv)
-                .done(res =>
-                    console.log(res)
-                )
-                break;
         }
     }
     else
     {
         conversor.children('.num_conv').text(0.00.toFixed(2))
+    }
+}
+
+const converter_his = () =>
+{
+    const conversor = $('#converter_his')
+
+    const ref  = conversor.children('.moeda_ref').val()
+    const conv = conversor.children('.moeda_conv').val()
+    const num  = conversor.children('.num_ref').val()
+    const date = conversor.children('.date_search').val()
+
+    if(num != '' && ref != '' && conv != '')
+    {
+        if(ref == conv)
+        {
+            conversor.children('.num_conv').text(parseFloat(num).toFixed(2))
+        }
+        else if(date != '')
+        {
+            $.get(api_url + date + '?amount=' + num + '&from=' + ref + '&to=' + conv)
+                .done(res =>
+                    conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
+                )
+        }
+    }
+    else
+    {
+        conversor.children('.num_conv').text(0.00.toFixed(2))
+    }
+}
+
+const converter_periodo = () =>
+{
+    const conversor = $('#cotacao_periodo')
+
+    const ref   = conversor.children('.moeda_ref').val()
+    const conv  = conversor.children('.moeda_conv').val()
+    const begin = conversor.children('.date_begin').val()
+    const end   = conversor.children('.date_end').val()
+
+    if(ref != '' && conv != '' && begin != '' && end != '' && ref != conv && begin < end)
+    {
+        $.get(api_url + begin + '..' + end + '?from=' + ref + '&to=' + conv)
+            .done(res => console.log(res))
     }
 }
 
@@ -63,13 +88,13 @@ $('#btn_hj').on('click', () => muda_pag($('#moedas_hj')))
 $('#btn_his').on('click', () => muda_pag($('#historico')))
 
 $('#converter_hj').children('input, select')
-.on('change', () => converter($('#converter_hj')))
+.on('change', converter_hj)
 
 $('#converter_his').children('input, select')
-.on('change', () => converter($('#converter_his')))
+.on('change', converter_his)
 
 $('#cotacao_periodo').children('input, select')
-.on('change', () => converter($('#cotacao_periodo')))
+.on('change', converter_periodo)
 
 /* AVAILABLE CURRENCIES */
 

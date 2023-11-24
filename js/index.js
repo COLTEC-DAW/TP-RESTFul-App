@@ -20,6 +20,9 @@ const converter_hj = () =>
                 .done(res =>
                     conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
                 )
+                .fail(res =>
+                    conversor.children('.num_conv').text('Informações Indisponíveis no Momento!')
+                )
         }
     }
     else
@@ -48,6 +51,9 @@ const converter_his = () =>
             $.get(api_url + date + '?amount=' + num + '&from=' + ref + '&to=' + conv)
                 .done(res =>
                     conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
+                )
+                .fail(res =>
+                    conversor.children('.num_conv').text('Informações Indisponíveis no Momento!')
                 )
         }
     }
@@ -93,6 +99,9 @@ const converter_periodo = () =>
                     Plotly.newPlot('grafico_cotacao_periodo', data, layout)
                     $(window).on('resize', e => Plotly.newPlot('grafico_cotacao_periodo', data, layout))
                 })
+            .fail(res =>
+                conversor.children('#grafico_cotacao_periodo').text('Informações Indisponíveis no Momento!')
+            )
     }
 }
 

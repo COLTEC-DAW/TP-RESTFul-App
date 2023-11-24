@@ -63,6 +63,8 @@ function criaCardCasas(houses) {
   function adicionaComportamento() {
     var searchInput = document.getElementById('search');
     var searchButton = document.getElementById('button');
+    var parentElement = document.getElementsByClassName('results_houses');
+
     console.log(searchInput.value);
     searchButton.addEventListener('click', () => {
       var characters = document.querySelectorAll('.houses_info');
@@ -76,7 +78,14 @@ function criaCardCasas(houses) {
         dataType: 'json',
         success: function (data) {
           console.log(data);
-          criaCardCasas(data[0]);
+          if(data[0]==null){
+            var minhaDiv = $('<div class="houses_info"></div>');
+            minhaDiv.append("<p>house not found</p>")
+            $(parentElement).append(minhaDiv);
+          }else{
+            criaCardCasas(data[0]);
+          }
+          
           // Manipula os dados recebidos da API
         },
         error: function (error) {

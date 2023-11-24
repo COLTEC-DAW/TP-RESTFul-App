@@ -1,6 +1,96 @@
-.info_hidden{
+
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #d8ab74;
+}.info_hidden{
     display: none;
 }
-.info_show{
-    display: initial;
+.lista_item{
+    list-style-type: none;
+}
+.item_link{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.logo{
+    width: 20%;
+}
+.item_link:hover{
+    color:#A66C24;
+    text-decoration: underline;
+}
+.navbar_lista{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2em;
+    gap: 4em;
+    align-items: center;
+}
+.cabecalho_navbar{
+    display: flex;
+    justify-content: center;
+    background-image: url("../images/mapa.jpeg");
+}
+#search{
+    width: 40%;
+    padding: 0.5em;
+    border-radius: 20px;
+    text-align: center;
+}
+.div_search{
+    text-align: center;
+    margin: 10px;
+}
+#button, .read_more{
+   padding: 0.3em;
+   border-radius: 10px;
+   background-color: #261404;
+   color: white;
+   border-color: #261404;
+}
+
+.results_characters, .results_books, .results_houses{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5%;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.book_info, .houses_info, .character_info{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    padding: 2em;
+    width: 25%;
+    margin-bottom: 30px;
+    border: black 1px solid;
+    border-radius: 15px;
+    gap: 0.5em;
+} 
+
+@media screen and (max-width: 600px){
+    .logo{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .item_link{
+        font-size: 20px;
+    }
+    .navbar_lista{
+        gap:2em;
+    }
+    .book_info, .houses_info, .character_info{
+        margin: 1em;
+        width: 100%;
+    }
+    
 }

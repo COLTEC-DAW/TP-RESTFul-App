@@ -51,6 +51,7 @@ function criaCardLivros(book){
       
       var searchInput = document.getElementById('search');
       var searchButton = document.getElementById('button');
+      var parentElement = document.getElementsByClassName('results_books')
       console.log(searchInput.value)
       searchButton.addEventListener("click",()=>{
         var characters = document.querySelectorAll(".book_info")
@@ -63,9 +64,13 @@ function criaCardLivros(book){
           method: 'GET',
           dataType: 'json',
           success: function(data) {
-            console.log(data)
-            criaCardLivros(data[0])
-            // Manipula os dados recebidos da API
+            if(data[0]==null){
+              var minhaDiv = $('<div class="book_info"></div>');
+              minhaDiv.append("<p>book not found</p>")
+              $(parentElement).append(minhaDiv);
+            }else{
+              criaCardLivros(data[0]);
+            }
           },
           error: function(error) {
             // Manipula erros

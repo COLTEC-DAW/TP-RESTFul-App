@@ -5,28 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Characters</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="src/reset.css">
     <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
     <head class="cabecalho">
         <nav class="cabecalho_navbar">
+            <img src="images/Game-of-Thrones-logo.png" alt="logo" class="logo">
             <ul class="navbar_lista">
                 <li class="lista_item">
-                    <a href="index.html">Characters</a>
+                    <a  class="item_link" href="index.html">Characters</a>
                 </li>
                 <li class="lista_item">
-                    <a href="pages/books.html">Books</a>
+                    <a class="item_link" href="pages/books.html">Books</a>
                 </li>
                 <li class="lista_item">
-                    <a href="pages/houses.html">Houses</a>
+                    <a class="item_link" href="pages/houses.html">Houses</a>
                 </li>
             </ul>
         </nav>
     </head>
     <main>
-        <section class="results_characters">
-            <input type="search" name="name" id="search">
-            <button id="button"> pesquisar</button>
+        <section class="characters">
+            <div class="div_search">
+                <input type="search" name="name" id="search" placeholder="Search characters name">
+                <button id="button"> Search</button>
+            </div>
+            <div class="results_characters"></div>
         </section>
     </main>
 

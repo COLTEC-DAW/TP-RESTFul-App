@@ -51,7 +51,8 @@ function consultarAPI() {
     
     var searchInput = document.getElementById('search');
     var searchButton = document.getElementById('button');
-    console.log(searchInput.value)
+    var parentElement = document.getElementsByClassName('results_characters')
+
     searchButton.addEventListener("click",()=>{
       var characters = document.querySelectorAll(".character_info")
       characters.forEach(element => {
@@ -64,11 +65,19 @@ function consultarAPI() {
         dataType: 'json',
         success: function(data) {
           console.log(data)
-          criaCardPersonagens(data[0])
+          if(data[0]==null){
+            var minhaDiv = $('<div class="character_info"></div>');
+            minhaDiv.append("<p>Character not found</p>")
+            $(parentElement).append(minhaDiv);
+          }else{
+
+            criaCardPersonagens(data[0])
+          }
           // Manipula os dados recebidos da API
         },
         error: function(error) {
           // Manipula erros
+          console.log("ola")
           console.error('Erro na consulta à API:', error);
         }
       });

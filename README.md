@@ -15,6 +15,8 @@ npm run dev
 ```
 - Pode testar o código funcionando no seguinte link também: [Dexpedia](https://regal-nougat-f12725.netlify.app)
 
+- [Vídeo de apresentação do projeto](https://drive.google.com/file/d/1MVo6J25iM7TY5IFxFFxJzUooOsF92WTR/view?usp=sharing)
+
 ## O mundo RESTFUL
 
 Uma das principais vantagens das aplicações REST está presente na possibilidade de prover dados da aplicação para uso de terceiros. 

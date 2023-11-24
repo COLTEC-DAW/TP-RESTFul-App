@@ -1,3 +1,6 @@
+/*
+Grupo: Thales Eduardo, Artur Gonzaga, Bernardo Oliveira
+*/
 function listarRecursos() {
     document.getElementById("resources").style = "display: grid;";
     document.getElementById("resources").innerText = " ";

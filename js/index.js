@@ -162,7 +162,7 @@ setTimeout(() =>
 
         Object.keys(res.rates).forEach(c =>
         {
-            item = '<li>BRL (' + currencies['BRL'] + ') 1.00 &#8644; '
+            item = '<li>BRL (' + currencies['BRL'] + ') 1.00 &#8594; '
             item += c + ' (' + currencies[c] + ') '
             item += parseFloat(res.rates[c]).toFixed(2) + '</li>'
             $('#principais').append(item)

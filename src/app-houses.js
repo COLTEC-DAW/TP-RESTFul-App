@@ -17,14 +17,12 @@ function showInfo(text, houses){
 
 function criaCardCasas(houses) {
 
-    // Verifica se há um current lord antes de adicionar a informação
     if (houses.currentLord) {
       $.ajax({
         url: houses.currentLord,
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-          console.log(data);
           showInfo(data.name, houses)
         },
         error: function (error) {
@@ -32,29 +30,24 @@ function criaCardCasas(houses) {
         }
       });
     } else {
-      // Se não houver current lord, adiciona as outras informações sem fazer a chamada AJAX
       showInfo("No current lord", houses)
     }
   }
   
   function consultarAPI() {
-    // URL da API
     var apiUrl = 'https://www.anapioficeandfire.com/api/houses';
-  
-    // Faz a solicitação AJAX
+
     $.ajax({
       url: apiUrl,
       method: 'GET',
       dataType: 'json',
       success: function (data) {
-        console.log(data);
-        // Manipula os dados recebidos da API
+
         data.forEach(houses => {
           criaCardCasas(houses);
         });
       },
       error: function (error) {
-        // Manipula erros
         console.error('Erro na consulta à API:', error);
       }
     });
@@ -65,7 +58,6 @@ function criaCardCasas(houses) {
     var searchButton = document.getElementById('button');
     var parentElement = document.getElementsByClassName('results_houses');
 
-    console.log(searchInput.value);
     searchButton.addEventListener('click', () => {
       var characters = document.querySelectorAll('.houses_info');
       characters.forEach(element => {
@@ -77,7 +69,7 @@ function criaCardCasas(houses) {
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-          console.log(data);
+
           if(data[0]==null){
             var minhaDiv = $('<div class="houses_info"></div>');
             minhaDiv.append("<p>house not found</p>")
@@ -86,10 +78,8 @@ function criaCardCasas(houses) {
             criaCardCasas(data[0]);
           }
           
-          // Manipula os dados recebidos da API
         },
         error: function (error) {
-          // Manipula erros
           console.error('Erro na consulta à API:', error);
         }
       });

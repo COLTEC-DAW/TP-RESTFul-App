@@ -12,10 +12,8 @@ function criaCardPersonagens(character){
     var infos = minhaDiv.find('.info')
     for (i=0; i<infos.length; i++){
       if (infos[i].classList.contains('info_hidden')){
-        console.log("oi")
         infos[i].classList.remove('info_hidden');
       }else{
-        console.log("ola")
         infos[i].classList.add('info_hidden');
       }
     }
@@ -23,23 +21,19 @@ function criaCardPersonagens(character){
 }
 
 function consultarAPI() {
-    // URL da API
     var apiUrl = 'https://www.anapioficeandfire.com/api/characters';
 
-    // Faz a solicitação AJAX
     $.ajax({
       url: apiUrl,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
-        console.log(data)
-        // Manipula os dados recebidos da API
+
         data.forEach(character => {
           criaCardPersonagens(character)
         });
       },
       error: function(error) {
-        // Manipula erros
         console.error('Erro na consulta à API:', error);
       }
     });
@@ -64,7 +58,6 @@ function consultarAPI() {
         method: 'GET',
         dataType: 'json',
         success: function(data) {
-          console.log(data)
           if(data[0]==null){
             var minhaDiv = $('<div class="character_info"></div>');
             minhaDiv.append("<p>Character not found</p>")
@@ -73,11 +66,9 @@ function consultarAPI() {
 
             criaCardPersonagens(data[0])
           }
-          // Manipula os dados recebidos da API
+
         },
         error: function(error) {
-          // Manipula erros
-          console.log("ola")
           console.error('Erro na consulta à API:', error);
         }
       });

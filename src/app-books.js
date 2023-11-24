@@ -12,10 +12,8 @@ function criaCardLivros(book){
       var infos = minhaDiv.find('.info')
       for (i=0; i<infos.length; i++){
         if (infos[i].classList.contains('info_hidden')){
-          console.log("oi")
           infos[i].classList.remove('info_hidden');
         }else{
-          console.log("ola")
           infos[i].classList.add('info_hidden');
         }
       }
@@ -23,23 +21,20 @@ function criaCardLivros(book){
   }
   
   function consultarAPI() {
-      // URL da API
+    
       var apiUrl = 'https://www.anapioficeandfire.com/api/books';
   
-      // Faz a solicitação AJAX
+
       $.ajax({
         url: apiUrl,
         method: 'GET',
         dataType: 'json',
         success: function(data) {
-          console.log(data)
-          // Manipula os dados recebidos da API
           data.forEach(book => {
             criaCardLivros(book)
           });
         },
         error: function(error) {
-          // Manipula erros
           console.error('Erro na consulta à API:', error);
         }
       });
@@ -52,7 +47,7 @@ function criaCardLivros(book){
       var searchInput = document.getElementById('search');
       var searchButton = document.getElementById('button');
       var parentElement = document.getElementsByClassName('results_books')
-      console.log(searchInput.value)
+
       searchButton.addEventListener("click",()=>{
         var characters = document.querySelectorAll(".book_info")
         characters.forEach(element => {
@@ -73,7 +68,7 @@ function criaCardLivros(book){
             }
           },
           error: function(error) {
-            // Manipula erros
+
             console.error('Erro na consulta à API:', error);
           }
         });

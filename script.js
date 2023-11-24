@@ -1,9 +1,51 @@
-fetch('https://content.guardianapis.com/search?page=2&q=debate&api-key=test')
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(JSON.stringify(data.response.results, null, 2));
+document.addEventListener('DOMContentLoaded', () => {
+  const resultadoDiv = document.getElementById('resultado');
+  const consultaInput = document.getElementById('consulta');
+  const btnBuscar = document.getElementById('btnBuscar');
 
-  })
-  .catch((error) => {
-    console.error('Erro ao recuperar os dados:', error);
+  function exibirDados(apiEndpoint, extractData) {
+      fetch(apiEndpoint)
+          .then((res) => res.json())
+          .then((data) => {
+              const extractedData = extractData(data);
+
+              if (extractedData) {
+                  // Limpa o conteúdo anterior antes de exibir novos dados
+                  resultadoDiv.innerHTML = '';
+
+                  // Itera sobre cada resultado na resposta da API
+                  data.response.results.forEach((artigo, index) => {
+                      const paragrafo = document.createElement('p');
+                      paragrafo.textContent = `Resultado ${index + 1}:\nTítulo: ${artigo.webTitle}\nTipo: ${artigo.type}\n\n`;
+                      resultadoDiv.appendChild(paragrafo);
+                  });
+              } else {
+                  resultadoDiv.textContent = 'Nenhum resultado encontrado.';
+              }
+          })
+          .catch((error) => {
+              console.error('Erro ao recuperar os dados:', error);
+          });
+  }
+
+  // Adiciona um evento de clique ao botão para realizar a busca com base nos parâmetros inseridos
+  btnBuscar.addEventListener('click', () => {
+      const consulta = consultaInput.value.trim();
+      // Substitui espaços por %20 para formar uma consulta válida na URL
+
+      // Constrói a URL com base nos parâmetros fornecidos pelo usuário
+      const url = `https://content.guardianapis.com/${consulta}&api-key=test`;
+
+      // Chama a função para exibir os dados com base nos novos parâmetros
+      exibirDados(url, (data) => {
+          if (data.response && data.response.results && data.response.results.length > 0) {
+              // Retorna toda a lista de resultados
+              return data.response.results.map((artigo) => ({
+                  'Título': artigo.webTitle,
+                  'Tipo': artigo.type
+              }));
+          }
+          return null;
+      });
   });
+});

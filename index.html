@@ -6,12 +6,10 @@
     <title>Exemplo de Consumo de API</title>
     <script src="/js/script.js"></script>
     <script src="/js/busca.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 class="principal">Artigos do The Guardian</h1>
-    <p> The Guardian é um renomado jornal que atua na Inglaterra, Estados Unidos e Austrália, caso você queira consultar a Api deles de forma simplificada, seguem os principais comandos e suas funcionalidades</p>
-    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise itens da página" onkeyup="search()">
-    <aside id="sideBar">
+    <aside class="sideBar">
         <ul>
             <li>
                 <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
@@ -34,11 +32,17 @@
         </ul>
 
     </aside>
+
+    <div class="container"> 
+    <h1 class="principal">Artigos do The Guardian</h1>
+    <p> The Guardian é um renomado jornal que atua na Inglaterra, Estados Unidos e Austrália, caso você queira consultar a Api deles de forma simplificada, seguem os principais comandos e suas funcionalidades na barra lateral</p>
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise itens da página" onkeyup="search()">
     <h1>Após ver a documentção, sinta-se a vontade para pesquisar na Api</h1>
     <label for="consulta">Consulta:</label>
     <input type="text" id="consulta" placeholder="Digite sua consulta">
 
     <button id="btnBuscar">Buscar</button>
+    </div>
 
     <div id="resultado"></div>
 

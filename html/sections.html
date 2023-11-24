@@ -4,17 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
+    <script src="/js/script.js"></script>
+    <script src="/js/busca.js"></script> 
 </head>
 <body>
-    <script src="script.js"></script>
+    
 
-    <h1 id="principal">Sections </h1>
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
+
+    <h1 class="principal, searchable">Sections </h1>
     <p> Seções representam categorias principais ou grandes áreas temáticas do conteúdo do The Guardian. Cada artigo é associado a uma seção específica, indicando a área geral a que pertence. (para usar utilize sections) </p>
 
-    <h2 id="parametros "> q </h2>
+    <h2 class="parametros, searchable"> q </h2>
     <p> Seção de retorno com base no termo de consulta especificado </p>
-    <h2 id="example"> exemplo </h2>
+    <h2 class="example"> exemplo </h2>
     <p>sections?q=business </p>
+
+    <aside id="sideBar">]
+        <ul>
+            <li>
+                <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/search.html">Pesquisas</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/sections.html">Seções</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/singleItem.html">Apenas um Item</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/tags.html">Tags</a></span>
+            </li>
+        </ul>
+    </aside>
 
     
 </body>

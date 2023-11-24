@@ -4,86 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
+    <script src="/js/script.js"></script>
+    <script src="/js/busca.js"></script> 
 </head>
 <body>
-    <script src="script.js"></script>
 
-    <h1 id="principal">Search </h1>
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
+   
+
+    <h1 class="principal">Search </h1>
     <p> search é usado para pesquisar, veja os principais usos </p>
 
-    <h2 id="parametros "> q </h2>
+    <h2 class="parametros, searchable"> q </h2>
     <p> texto que você quer que seja solicitado, como se fosse um filtro, suporta operadores como AND, OR e NOT </p>
-    <h2 id="example"> exemplo </h2>
+    <h2 class="example"> exemplo </h2>
     <p> search?q=debate%20AND%20economy</p>
 
-    <h2 id="parametros "> query-fields </h2>
+    <h2 class="parametros, searchable"> query-fields </h2>
     <p> Especifique em quais campos indexados os termos de consulta devem ser pesquisados </p>
-    <h2 id="example"> exemplo </h2>
+    <h2 class="example"> exemplo </h2>
     <p> search?query-fields=body,thumbnail&q=tecnologia</p>
 
 
-    <h2 id="filtros">section</h2>
+    <h2 class="filtros, searchable">section</h2>
     <p>Retornar apenas o conteúdo dessas seções	</p>
 
-    <h2 id="filtros">reference</h2>
+    <h2 class="filtros, searchable">reference</h2>
     <p>Retorne apenas conteúdo com essas referências	</p>
     
-    <h2 id="filtros">reference-type</h2>
+    <h2 class="filtros, searchable">reference-type</h2>
     <p>Retornar apenas conteúdo com referências desses tipos</p>
 
-    <h2 id="filtros">tag</h2>
+    <h2 class="filtros, searchable">tag</h2>
     <p>	Retorne apenas conteúdo com essas tags</p>
 
-    <h2 id="filtros">rights</h2>
+    <h2 class="filtros, searchable">rights</h2>
     <p>	Devolva apenas conteúdo com esses direitos</p>
 
-    <h2 id="filtros">ids</h2>
+    <h2 class="filtros, searchable">ids</h2>
     <p>	Retornar apenas conteúdo com esses IDs	</p>
 
-    <h2 id="filtros">production-office</h2>
+    <h2 class="filtros, searchable">production-office</h2>
     <p>	Devolva apenas conteúdo desses escritórios de produção</p>
 
-    <h2 id="filtros">lang</h2>
+    <h2 class="filtros, searchable">lang</h2>
     <p>	Retornar apenas conteúdo nesses idiomas</p>
 
-    <h2 id="filtros">star-rating</h2>
+    <h2 class="filtros, searchable">star-rating</h2>
     <p>Retornar apenas conteúdo com uma determinada classificação por estrelas</p>
 
-    <h2 id="filtros">from-date</h2>
+    <h2 class="filtros, searchable">from-date</h2>
     <p>Retornar apenas conteúdo publicado nessa data ou após essa data(	por exemplo, 16/02/2014)</p>
 
-    <h2 id="filtros">to-date</h2>
+    <h2 class="filtros, searchable">to-date</h2>
     <p>Retornar apenas conteúdo publicado nessa data ou antes dela(	por exemplo, 17/02/2014)</p>
 
-    <h2 id="filtros">page</h2>
+    <h2 class="filtros, searchable">page</h2>
     <p>Retornar apenas o conjunto de resultados de uma página específica (por exemplo 5)</p>
 
-    <h2 id="filtros">page-size</h2>
+    <h2 class="filtros, searchable">page-size</h2>
     <p>Modifique o número de itens exibidos por página (por exempo 1 a 50)</p>
 
 
-    <h2 id="example"> exemplo </h2>
+    <h2 class="example"> exemplo </h2>
     <p> search?section=futebol&q=tecnologia&from-date=2023-01-01</p>
 
 
 
 
-    <aside id="sideBar">]
+    <aside id="sideBar">
         <ul>
             <li>
-                <span><a href="/html/editions.html">edições especificas do jornal</a></span>
+                <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
             </li>
             <li>
-                <span><a href="/html/search.html"> pesquisas</a></span>
+                <span><a class="searchable" href="/html/search.html">Pesquisas</a></span>
             </li>
             <li>
-                <span><a href="/html/sections.html"></a> seções </span>
+                <span><a class="searchable" href="/html/sections.html">Seções</a></span>
             </li>
             <li>
-                <span><a href="/html/singleItem.html"></a> apenas um item</span>
+                <span><a class="searchable" href="/html/singleItem.html">Apenas um Item</a></span>
             </li>
             <li>
-                <span><a href="/html/tags.html"> tags</a></span>
+                <span><a class="searchable" href="/html/tags.html">Tags</a></span>
             </li>
         </ul>
 

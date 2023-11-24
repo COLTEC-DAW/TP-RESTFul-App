@@ -1,4 +1,4 @@
-function criaResultado(character){
+function criaCardPersonagens(character){
   var parentElement = document.getElementsByClassName('results_characters')
   var minhaDiv = $('<div class="character_info"></div>');
   minhaDiv.append(`<h3>${character.aliases}<h3>`);
@@ -35,7 +35,7 @@ function consultarAPI() {
         console.log(data)
         // Manipula os dados recebidos da API
         data.forEach(character => {
-          criaResultado(character)
+          criaCardPersonagens(character)
         });
       },
       error: function(error) {
@@ -64,7 +64,7 @@ function consultarAPI() {
         dataType: 'json',
         success: function(data) {
           console.log(data)
-          criaResultado(data[0])
+          criaCardPersonagens(data[0])
           // Manipula os dados recebidos da API
         },
         error: function(error) {

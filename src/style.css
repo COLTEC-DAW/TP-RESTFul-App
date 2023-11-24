@@ -1,0 +1,6 @@
+.info_hidden{
+    display: none;
+}
+.info_show{
+    display: initial;
+}

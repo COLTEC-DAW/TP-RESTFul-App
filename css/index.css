@@ -18,6 +18,7 @@ body header img {
 }
 body header button {
   background-color: #39AEA9;
+  color: #E5EFC1;
   padding: 20px;
   border: 0px;
   float: right;
@@ -25,6 +26,7 @@ body header button {
 }
 body header button:hover {
   background-color: #E5EFC1;
+  color: #557B83;
 }
 body #area_da_pagina {
   background-color: #A2D5AB;
@@ -69,7 +71,8 @@ body .conversor input, body .conversor select {
   margin: 5px;
   border-radius: 15px;
   text-align: center;
-  border: 0px;
+  border: 1px solid rgba(127, 127, 127, .4);
+  box-shadow: 2px 2px color-mix(in srgb, #E5EFC1 80%, gray);
 }
 body .conversor input option, body .conversor select option {
   text-align: left;

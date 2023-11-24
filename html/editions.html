@@ -4,17 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
+    <script src="/js/script.js"></script>
+    <script src="/js/busca.js"></script> 
 </head>
 <body>
-    <script src="script.js"></script>
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
 
-    <h1 id="principal">Editions </h1>
+    
+
+    <h1 class="principal, searchable">Editions </h1>
     <p> representa as edições de determinado pais que existe o the guardiam (uk, us,au) </p>
 
-    <h2 id="parametros "> q </h2>
+    <h2 class="parametros,searchable"> q </h2>
     <p> Seção de retorno com base no termo de consulta especificado </p>
-    <h2 id="example"> exemplo </h2>
-    <p>editions?q=us </p>
+    <h2 class="example"> exemplo </h2>
+    <p>editions?q=us </p>]
+
+
+    <aside id="sideBar">]
+        <ul>
+            <li>
+                <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/search.html">Pesquisas</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/sections.html">Seções</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/singleItem.html">Apenas um Item</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/tags.html">Tags</a></span>
+            </li>
+        </ul>
+
+    </aside>
 
    
 </body>

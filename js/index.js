@@ -21,7 +21,7 @@ const converter_hj = () =>
                     conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
                 )
                 .fail(res =>
-                    conversor.children('.num_conv').text('Informações Indisponíveis no Momento!')
+                    alert('Informações Indisponíveis no Momento!')
                 )
         }
     }
@@ -53,8 +53,13 @@ const converter_his = () =>
                     conversor.children('.num_conv').text(parseFloat(res.rates[conv]).toFixed(2))
                 )
                 .fail(res =>
-                    conversor.children('.num_conv').text('Informações Indisponíveis no Momento!')
-                )
+                    {
+                        alert('Informações Indisponíveis no Momento!')
+                        conversor.children('.moeda_ref').val('')
+                        conversor.children('.moeda_conv').val('')
+                        conversor.children('.num_ref').val('')
+                        conversor.children('.date_search').val('')
+                    })
         }
     }
     else
@@ -100,8 +105,14 @@ const converter_periodo = () =>
                     $(window).on('resize', e => Plotly.newPlot('grafico_cotacao_periodo', data, layout))
                 })
             .fail(res =>
-                conversor.children('#grafico_cotacao_periodo').text('Informações Indisponíveis no Momento!')
-            )
+            {
+                alert('Informações Indisponíveis no Momento!')
+                conversor.children('.moeda_ref').val('')
+                conversor.children('.moeda_conv').val('')
+                conversor.children('.num_ref').val('')
+                conversor.children('.date_begin').val('')
+                conversor.children('.date_end').val('')
+            })
     }
 }
 
@@ -120,13 +131,13 @@ $('#btn_hj').on('click', () => muda_pag($('#moedas_hj')))
 $('#btn_his').on('click', () => muda_pag($('#historico')))
 
 $('#converter_hj').children('input, select')
-.on('change', converter_hj)
+.on('input', converter_hj)
 
 $('#converter_his').children('input, select')
-.on('change', converter_his)
+.on('input', converter_his)
 
 $('#cotacao_periodo').children('input, select')
-.on('change', converter_periodo)
+.on('input', converter_periodo)
 
 /* AVAILABLE CURRENCIES */
 

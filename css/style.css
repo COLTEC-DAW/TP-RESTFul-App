@@ -1,0 +1,55 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh; /* Garante que a altura da tela seja pelo menos 100% da altura da viewport */
+  }
+  
+  .sideBar {
+    width: 20%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente o conteúdo */
+    align-items: center; /* Centraliza horizontalmente o conteúdo */
+  }
+  
+  .container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #f2f2f2;
+    background-color: #66a3ff; /* Azul claro para o fundo */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  .searchable {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  /* Adaptação para telas menores */
+  @media (max-width: 768px) {
+    body {
+      flex-direction: column; /* Altera a direção do flex para coluna em telas menores */
+    }
+  
+    .sideBar {
+      width: 100%; /* A barra lateral ocupa 100% da largura em telas menores */
+    }
+  }
+  
+  
+  

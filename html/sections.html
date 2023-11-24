@@ -6,21 +6,10 @@
     <title>Search</title>
     <script src="/js/script.js"></script>
     <script src="/js/busca.js"></script> 
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    
-
-    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
-
-    <h1 class="principal, searchable">Sections </h1>
-    <p> Seções representam categorias principais ou grandes áreas temáticas do conteúdo do The Guardian. Cada artigo é associado a uma seção específica, indicando a área geral a que pertence. (para usar utilize sections) </p>
-
-    <h2 class="parametros, searchable"> q </h2>
-    <p> Seção de retorno com base no termo de consulta especificado </p>
-    <h2 class="example"> exemplo </h2>
-    <p>sections?q=business </p>
-
-    <aside id="sideBar">]
+    <aside id="sideBar">
         <ul>
             <li>
                 <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
@@ -37,8 +26,23 @@
             <li>
                 <span><a class="searchable" href="/html/tags.html">Tags</a></span>
             </li>
+            <li>
+                <span><a class="searchable" href="/index.html">Página Principal</a></span>
+            </li>
         </ul>
+
     </aside>
 
-    
+    <div class="container">
+    <h1 class="principal, searchable">Sections </h1>
+    <p> Seções representam categorias principais ou grandes áreas temáticas do conteúdo do The Guardian. Cada artigo é associado a uma seção específica, indicando a área geral a que pertence. (para usar utilize sections) </p>
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
+   
+
+    <h2 class="parametros, searchable"> q </h2>
+    <p> Seção de retorno com base no termo de consulta especificado </p>
+    <h2 class="example"> exemplo </h2>
+    <p>sections?q=business </p>
+    </div>
+
 </body>

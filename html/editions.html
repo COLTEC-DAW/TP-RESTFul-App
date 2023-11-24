@@ -6,22 +6,11 @@
     <title>Search</title>
     <script src="/js/script.js"></script>
     <script src="/js/busca.js"></script> 
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
-
+<body> 
     
-
-    <h1 class="principal, searchable">Editions </h1>
-    <p> representa as edições de determinado pais que existe o the guardiam (uk, us,au) </p>
-
-    <h2 class="parametros,searchable"> q </h2>
-    <p> Seção de retorno com base no termo de consulta especificado </p>
-    <h2 class="example"> exemplo </h2>
-    <p>editions?q=us </p>]
-
-
-    <aside id="sideBar">]
+    <aside id="sideBar">
         <ul>
             <li>
                 <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
@@ -38,9 +27,23 @@
             <li>
                 <span><a class="searchable" href="/html/tags.html">Tags</a></span>
             </li>
+            <li>
+                <span><a class="searchable" href="/index.html">Página Principal</a></span>
+            </li>
         </ul>
 
     </aside>
+
+    <div class="container">
+    <h1 class="principal, searchable">Editions </h1>
+    <p> representa as edições de determinado pais que existe o the guardiam (uk, us,au) </p>
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
+   
+    <h2 class="parametros,searchable"> q </h2>
+    <p> Seção de retorno com base no termo de consulta especificado </p>
+    <h2 class="example"> exemplo </h2>
+    <p>editions?q=us </p>]
+    </div>
 
    
 </body>

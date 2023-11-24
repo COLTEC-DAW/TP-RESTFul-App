@@ -6,9 +6,9 @@
     <title>single item</title>
     <script src="/js/busca.js"></script>
     <script src="/js/busca.js"></script> 
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
     <aside id="sideBar">
         <ul>
             <li>
@@ -26,9 +26,14 @@
             <li>
                 <span><a class="searchable" href="/html/tags.html">Tags</a></span>
             </li>
+            <li>
+                <span><a class="searchable" href="/index.html">Página Principal</a></span>
+            </li>
         </ul>
 
     </aside>
+    <div class="container">
+    <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
     
     <h1 class="principal">Pesquisar um item single </h1>
 
@@ -36,5 +41,5 @@
     <p> o id é o caminho completo para a notícia, caso voce queira descobrir algum id, é só pegar a noticia e substituir o dominio por content.guardianapis.com então voce copia o dominio no item de pesquisa </p>
     <h2 class="example"> exemplo </h2>
     <p> sport/2022/oct/07/cricket-jos-buttler-primed-for-england-comeback-while-phil-salt-stays-focused?</p>
-   
+    </div>
 </body>

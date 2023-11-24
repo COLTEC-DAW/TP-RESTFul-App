@@ -6,9 +6,33 @@
     <title>Search</title>
     <script src="/js/script.js"></script>
     <script src="/js/busca.js"></script> 
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <aside id="sideBar">
+        <ul>
+            <li>
+                <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/search.html">Pesquisas</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/sections.html">Seções</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/singleItem.html">Apenas um Item</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/html/tags.html">Tags</a></span>
+            </li>
+            <li>
+                <span><a class="searchable" href="/index.html">Página Principal</a></span>
+            </li>
+        </ul>
 
+    </aside>
+    <div class="container">
     <h1 class="principal">Search </h1>
     <p> search é usado para pesquisar, veja os principais usos </p>
     <input id="searchbar" type="text" name="searchbar" placeholder="Pesquise os comandos" onkeyup="search()">
@@ -68,28 +92,6 @@
 
     <h2 class="example"> exemplo </h2>
     <p> search?section=futebol&q=tecnologia&from-date=2023-01-01</p>
+</div>
 
-
-
-
-    <aside id="sideBar">]
-            <ul>
-                <li>
-                    <span><a class="searchable" href="/html/editions.html">Edições Específicas do Jornal</a></span>
-                </li>
-                <li>
-                    <span><a class="searchable" href="/html/search.html">Pesquisas</a></span>
-                </li>
-                <li>
-                    <span><a class="searchable" href="/html/sections.html">Seções</a></span>
-                </li>
-                <li>
-                    <span><a class="searchable" href="/html/singleItem.html">Apenas um Item</a></span>
-                </li>
-                <li>
-                    <span><a class="searchable" href="/html/tags.html">Tags</a></span>
-                </li>
-            </ul>
-
-    </aside>
 </body>

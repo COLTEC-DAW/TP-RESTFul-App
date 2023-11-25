@@ -1,0 +1,119 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  padding: 0%;
+  margin: 0%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: white; 
+  color: black;
+}
+
+/* main {
+  margin-left: 550px;
+  margin-top: 100px;
+} */
+
+h1 {
+  color: #16506d; 
+  display: flex;
+  font-size: 50px;
+  padding-bottom: 20px;
+  padding-top: 50px;
+  margin-left: 570px;
+}
+
+#nasalogo {
+  width: 200px;
+  height: 170px;
+  padding-left: 25px;
+  padding-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #6d6c6c;
+  margin-left: 570px;
+}
+
+input {
+  height: 30px;
+  margin-right: 10px;
+  width: 100px;
+  margin-left: 570px;
+}
+
+input, button {
+  margin-bottom: 16px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; 
+}
+
+button:hover {
+  background-color: #555; 
+}
+
+section {
+  margin: 0;
+}
+
+#content {
+  margin-top: 20px;
+}
+
+p {
+  margin-bottom: 16px;
+  padding-left: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  padding-bottom: 16px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+  max-height: 300px; 
+  border-radius: 8px; 
+
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -2,9 +2,11 @@
 
 **Data de Entrega: 24/11**
 
-Grupo: Três alunos
+Grupo: Caio César, Arthur Henrique, Eduardo Santos Birchal
 
 Valor: 10 pontos
+
+Só tem um commit porque fizemos em outro repositorio e colocamos nesse.
 
 ## O mundo RESTFUL
 

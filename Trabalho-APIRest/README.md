@@ -1,5 +1,7 @@
 # Trabalho-APIRest
 
+Grupo: Anny Caroline, Nicolle Taila, Vitória Ellen
+
 [Link api do Harry Potter](https://hp-api.onrender.com/)
 
  :warning: Sobre a seleção de recursos: perdemos contato com o integrante do grupo responsável por essa parte

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin-bottom: 0;
+    padding-left: 0;
+    font-family: 'Fira Sans';
+}
+
+body{
+    background-color: #eee;
+}
+
+.principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 20px;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    color: #616161;
+    font-size: 42px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+header p{
+    color: #616161;
+    font-weight: bold;
+}
+
+.search-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 720px;
+    margin-bottom: 16px;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.search-box input{
+    display: block;
+    appearance: none;
+    outline: none;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.search-box:focus-within{
+    box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+    transform: translateY(-3px);
+}
+
+.results{
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.result{
+    margin-bottom: 47px;
+}
+
+.result > a {
+    color: #E8583A;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration-line: none;
+}
+
+.result > a:hover {
+    color: #AC582B;
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration-line: underline;
+}
+
+.details{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    justify-content: space-around;
+}
+
+.detailBox {
+    display: flex;
+    background-color: #E62A02;
+    border-radius: 18px;
+}
+
+.detailBox > p {
+    margin: 5px 7px 5px 7px;
+    color: #EDEDED;
+}
+
+.modalTexto {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalTexto-conteudo {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    overflow: scroll;
+    height: 80%;
+}
+
+.fecharModal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.fecharModal:hover,
+.fecharModal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

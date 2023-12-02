@@ -71,7 +71,7 @@ body .conversor input, body .conversor select {
   margin: 5px;
   border-radius: 15px;
   text-align: center;
-  border: 1px solid rgba(127, 127, 127, .4);
+  border: 1px solid rgba(127, 127, 127, 0.4);
   box-shadow: 2px 2px color-mix(in srgb, #E5EFC1 80%, gray);
 }
 body .conversor input option, body .conversor select option {

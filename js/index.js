@@ -116,19 +116,27 @@ const converter_periodo = () =>
     }
 }
 
-let current_page = $('#pagina_principal')
-let currencies
-
-const muda_pag = (e =>
+const muda_pag = (pag =>
 {
     current_page.hide()
-    current_page = e
+    sessionStorage.setItem('current_page', pag)
+    current_page = $(pag)
     current_page.show()
 })
 
-$('#btn_main').on('click', () => muda_pag($('#pagina_principal')))
-$('#btn_hj').on('click', () => muda_pag($('#moedas_hj')))
-$('#btn_his').on('click', () => muda_pag($('#historico')))
+if(sessionStorage.getItem('current_page') == null)
+{
+    sessionStorage.setItem('current_page', '#pagina_principal')
+}
+
+let current_page = $(sessionStorage.getItem('current_page'))
+let currencies
+
+muda_pag(sessionStorage.getItem('current_page'))
+
+$('#btn_main').on('click', () => muda_pag('#pagina_principal'))
+$('#btn_hj').on('click', () => muda_pag('#moedas_hj'))
+$('#btn_his').on('click', () => muda_pag('#historico'))
 
 $('#converter_hj').children('input, select')
 .on('input', converter_hj)
